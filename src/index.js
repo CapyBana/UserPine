@@ -1,9 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import GlobalStyles from './components/GlobalStyles';
 
 const container = document.getElementById('root');
 
@@ -12,9 +12,11 @@ if (container) {
 
     root.render(
         <React.StrictMode>
-            <Router>
-                <App />
-            </Router>
+            <GlobalStyles>
+                <Router>
+                    <App />
+                </Router>
+            </GlobalStyles>
         </React.StrictMode>,
     );
 

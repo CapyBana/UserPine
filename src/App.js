@@ -1,7 +1,5 @@
 import { Route, Routes, Link } from 'react-router-dom';
-import Dashboard from './components/Dashboard/Dashboard';
-import PrinterPage from './components/PrinterPage';
-import StudentPage from './components/StudentPages';
+import { routes } from './routes';
 function App() {
     return (
         <div className="app">
@@ -19,9 +17,10 @@ function App() {
             <h3>Content</h3>
             <div className="content">
                 <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/Printer" element={<PrinterPage />} />
-                    <Route path="/StudentPage" element={<StudentPage />} />
+                    {routes.map((route, index) => {
+                        const Page = route.component;
+                        return <Route key={index} path={route.path} element={<Page />} />;
+                    })}
                 </Routes>
             </div>
         </div>

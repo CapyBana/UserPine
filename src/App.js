@@ -1,5 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import { routes } from './routes';
+import DefaultLayout from './components/Layout';
+import { Fragment } from 'react';
 function App() {
     return (
         <div className="app">
@@ -18,8 +20,19 @@ function App() {
             <div className="content">
                 <Routes>
                     {routes.map((route, index) => {
+                        const Layout = route.layout === null ? Fragment : DefaultLayout;
                         const Page = route.component;
-                        return <Route key={index} path={route.path} element={<Page />} />;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
                     })}
                 </Routes>
             </div>

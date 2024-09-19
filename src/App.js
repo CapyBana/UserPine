@@ -1,9 +1,7 @@
-import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
-import Dashboard from "./components/Dashbroad/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import PrinterPage from "./components/PrinterPage";
 import StudentPage from "./components/StudentPages";
-
 function App() {
   return (
     <div className="app">

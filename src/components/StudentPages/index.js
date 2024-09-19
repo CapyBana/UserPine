@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function StudentPage() {
-  return (
-    <div>
-      StudentPage
-    </div>
-  )
+    return <div>StudentPage</div>;
 }

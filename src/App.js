@@ -9,10 +9,10 @@ function App() {
                 <Link to="/">
                     <h1>Dashboard</h1>
                 </Link>
-                <Link to="/Printer">
+                <Link to="/printerPage">
                     <h1>Printer Page</h1>
                 </Link>
-                <Link to="/StudentPage">
+                <Link to="/studentPage">
                     <h1>StudentPage</h1>
                 </Link>
             </div>
@@ -20,7 +20,7 @@ function App() {
             <div className="content">
                 <Routes>
                     {routes.map((route, index) => {
-                        const Layout = route.layout === null ? Fragment : DefaultLayout;
+                        const Layout = route.layout ? route.layout : Fragment;
                         const Page = route.component;
                         return (
                             <Route

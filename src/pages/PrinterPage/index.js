@@ -1,10 +1,24 @@
-import React from 'react';
-import PrinterContainer from './printerContainer';
-export default function PrinterPage() {
+import styled from 'styled-components';
+
+const Button = styled.button`
+    background-color: blue;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darkblue;
+    }
+`;
+
+function PrinterPage() {
     return (
         <div>
-            <PrinterContainer></PrinterContainer>
-            PrinterPage
+            <Button>Click Me!</Button>
         </div>
     );
 }
+
+export default PrinterPage;

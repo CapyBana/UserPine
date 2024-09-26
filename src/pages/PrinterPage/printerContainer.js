@@ -1,6 +1,13 @@
 import { Card } from '@mui/material';
-import React from 'react';
-import './cardContainer.module.css';
+import { React, useState } from 'react';
+import style from './cardContainer.module.scss';
+import { Delete, Edit } from '@mui/icons-material';
 export default function PrinterContainer() {
-    return <Card className="cardContainer"></Card>;
+    return (
+        <Card className={style.cardContainer}>
+            <Delete className={style.logo}></Delete>
+            <Edit className={style.logo}></Edit>
+            Alpha
+        </Card>
+    );
 }

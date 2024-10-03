@@ -13,11 +13,15 @@ const Button = styled.button`
     }
 `;
 
+const Printer = styled.div`
+    height: 2000px;
+    overflow-y: scroll;
+`;
 function PrinterPage() {
     return (
-        <div>
+        <Printer>
             <Button>Click Me!</Button>
-        </div>
+        </Printer>
     );
 }
 

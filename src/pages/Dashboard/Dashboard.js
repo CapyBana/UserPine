@@ -1,5 +1,10 @@
 import React from 'react';
+import VerticalMvCard from '~/components/VerticalMvCard/VerticalMvCard';
 
 export default function Dashboard() {
-    return <div>Lets me cook</div>;
+    return (
+        <div>
+            <VerticalMvCard />
+        </div>
+    );
 }

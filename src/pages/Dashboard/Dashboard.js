@@ -1,5 +1,6 @@
 import React from 'react';
+import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
 
 export default function Dashboard() {
-    return <div>Lets me cook</div>;
+    return <VerticalMvList />;
 }

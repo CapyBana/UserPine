@@ -3,7 +3,7 @@ import { Image, MovieCard, MvDetail, MvRating } from './VerticalMvCard.style';
 import Img from 'src/assets/images/naruto.png';
 import { useState } from 'react';
 
-const VerticalMvCard = () => {
+const VerticalMvCard = (props) => {
     const [rating, setRating] = useState(1);
 
     return (
@@ -20,7 +20,7 @@ const VerticalMvCard = () => {
             />
             <MvDetail>
                 <h1>{rating}</h1>
-                <h2>Naruto</h2>
+                <h2>{props.name}</h2>
             </MvDetail>
         </MovieCard>
     );

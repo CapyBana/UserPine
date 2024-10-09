@@ -1,14 +1,16 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Image, MovieCard, MvDetail, MvRating } from './VerticalMvCard.style';
 import Img from 'src/assets/images/naruto.png';
-import { useState } from 'react';
+import { useState, React } from 'react';
 
 const VerticalMvCard = (props) => {
     const [rating, setRating] = useState(1);
 
     return (
         <MovieCard style={{ borderRadius: '10px' }}>
-            <Image src={Img}></Image>
+            <Link to='/review'>
+                <Image src={Img}></Image>
+            </Link>
             <MvRating
                 onChange={(event, newValue) => {
                     setRating(newValue);

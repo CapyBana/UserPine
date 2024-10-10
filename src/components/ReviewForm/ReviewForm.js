@@ -4,9 +4,11 @@ import naruto from 'src/assets/images/naruto.png';
 
 const ReviewForm = () => {
     const [rating] = useState(1);
+    const [rating2, setRating] = useState(1);
 
     return (
         <ReviewObj.GeneralReview>
+            <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet" />
             <ReviewObj.HorizontalMovieCard>
                 <ReviewObj.MovieImg src={naruto} alt='Movie Picture'/>
                 <ReviewObj.Movie>
@@ -25,15 +27,32 @@ const ReviewForm = () => {
                             size="large"
                             name="rt"
                             value={rating}
-                            precision={0.5}
+                            precision={0.1}
+                            readOnly
                         />
                     </ReviewObj.MovieRating>
                 </ReviewObj.Movie>
             </ReviewObj.HorizontalMovieCard>
             <ReviewObj.Review>
                 <ReviewObj.StarReview>
-                    
+                    <ReviewObj.Question>How much would you rate this movie?</ReviewObj.Question>
+                    <ReviewObj.StarPrompt>
+                    <ReviewObj.NumRating style={{fontSize:19}}>{rating2}</ReviewObj.NumRating>
+                        <ReviewObj.StarReviewRating
+                            onChange={(event, newValue) => {
+                                setRating(newValue);
+                            }}
+                            size="medium"
+                            name="rt"
+                            value={rating2}
+                            precision={0.5}
+                        />
+                    </ReviewObj.StarPrompt>
                 </ReviewObj.StarReview>
+                <ReviewObj.TextReview>
+                    <ReviewObj.Question>Share your thoughts</ReviewObj.Question>
+                    <ReviewObj.CommentSection />
+                </ReviewObj.TextReview>
             </ReviewObj.Review>
         </ReviewObj.GeneralReview>
     );

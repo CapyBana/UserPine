@@ -4,58 +4,61 @@ import { Rating } from '@mui/material';
 export const GeneralReview = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 1300px;
+    width: 80%;
     margin: 50px 80px;
-    font-family: "Unbounded";
+    * {
+        font-family: var(--boundedFont);
+    }
+    h1 {
+        font-size: var(--primary-text_size);
+    }
+    h3 {
+        font-size: var(--large-text_size);
+    }
+    p {
+        font-size: var(--normal-text_size);
+        font-weight: var(--small-fontWeight);
+    }
 `;
 
 export const HorizontalMovieCard = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 1300px;
+    width: 100%;
     height: 250px;
     border-radius: 30px;
-    background-color: #180D0D;
+    background-color: #180d0d;
 `;
 
 export const MovieImg = styled.img`
-    padding-left: 60px;
-    display: block;
-    width: 26%;
+    width: 140px;
+    margin: 35px 0 35px 60px;
+    height: 100%;
+    border-radius: 10px;
 `;
 
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0px 65px;
-    color: #FAE6E5;
-`;
-
-export const MovieTitle = styled.h2`
-    margin-bottom: 15px;
-    font-weight: 900;
-    font-size: 40px;
-`;
-
-export const MovieDescription = styled.p`
-    font-size: 13px;
-    margin-bottom: 20px;
-    text-align: justify;
-    font-weight: 200;
+    color: #fae6e5;
+    h1 {
+        margin-bottom: 15px;
+    }
+    p {
+        margin-bottom: 20px;
+    }
 `;
 
 export const MovieRating = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center
+    align-items: center;
+    h3 {
+        padding-right: 16px;
+    }
 `;
-
-export const NumRating = styled.p`
-    font-size: 25px;
-    padding-right: 35px;
-`
 
 export const StarRating = styled(Rating)`
     width: 100%;
@@ -66,12 +69,12 @@ export const StarRating = styled(Rating)`
 export const Review = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1300px;
+    width: 100%;
     height: 960px;
     border-radius: 30px;
     background-color: #401313;
     margin: 70px 0px;
-    color: #FAE6E5;
+    color: #fae6e5;
 `;
 
 export const StarReview = styled.div`
@@ -82,16 +85,19 @@ export const StarReview = styled.div`
     height: 0px;
 `;
 
-export const Question = styled.p`
-    font-weight: 400;
-    font-size: 24px;
-`;
+// export const Question = styled.p`
+//     font-weight: 400;
+//     font-size: 24px;
+// `;
 
 export const StarPrompt = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 600px;
+    h3 {
+        padding-right: 16px;
+    }
 `;
 
 export const StarReviewRating = styled(Rating)`
@@ -105,12 +111,12 @@ export const TextReview = styled.div`
 
 export const CommentArea = styled.textarea`
     width: 100%;
-    background-color: #231B1B;
+    background-color: #231b1b;
     border: 0px;
     padding: 20px;
-    color: #FAE6E5;
+    color: #fae6e5;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: var(--medium-text_size);
     border-radius: 10px;
 `;
 
@@ -123,21 +129,11 @@ export const PostContainer = styled.div`
 `;
 
 export const Post = styled.input`
-    font-family: "Unbounded";
-    font-weight: 600;
-    font-size: 30px;
-    background-color: #1D269A;
-    color: #FAE6E5;
+    font-weight: var(--normal-fontWeight);
+    font-size: var(--large-text_size);
+    background-color: #1d269a;
+    color: #fae6e5;
     border: 0px;
     padding: 15px 30px;
     border-radius: 40px;
 `;
-
-export const CommentSection = () => {
-    return (
-        <form target='_self' method='post'>
-            <CommentArea rows='25' placeholder='Whatcha thinking about?' required/>
-            <PostContainer><Post type='submit' value='Post' /></PostContainer>
-        </form>
-    );
-};

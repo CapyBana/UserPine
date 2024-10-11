@@ -34,7 +34,7 @@ const ReviewForm = () => {
     return (
         <GeneralReview>
             <HorizontalMovieCard>
-                <div style={{ borderRadius: '10px', width: '26%' }}>
+                <div style={{ borderRadius: '10px' }}>
                     <MovieImg src={naruto} alt="Movie Picture" />
                 </div>
                 <Movie>

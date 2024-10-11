@@ -32,10 +32,10 @@ export const HorizontalMovieCard = styled.div`
 `;
 
 export const MovieImg = styled.img`
-    border-radius: 10px;
-    width: 26%;
-    padding: 35px 0 35px 60px;
+    width: 140px;
+    margin: 35px 0 35px 60px;
     height: 100%;
+    border-radius: 10px;
 `;
 
 export const Movie = styled.div`
@@ -60,11 +60,6 @@ export const MovieRating = styled.div`
     }
 `;
 
-// export const NumRating = styled.p`
-//     font-size: 25px;
-//     padding-right: 35px;
-// `;
-
 export const StarRating = styled(Rating)`
     width: 100%;
     gap: 10px;
@@ -74,7 +69,7 @@ export const StarRating = styled(Rating)`
 export const Review = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1300px;
+    width: 100%;
     height: 960px;
     border-radius: 30px;
     background-color: #401313;

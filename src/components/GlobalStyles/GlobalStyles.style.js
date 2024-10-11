@@ -16,10 +16,16 @@ const GlobalStyles = createGlobalStyle`
     --primary-red-hover: #ff6347; 
     --primary-black: #D9D9D9;
     --boundedFont: 'Unbounded', sans-serif;
-    
-    --primary-text_size: '40px'
-    --title-text_size: '32px'
-    --normal-text_size: '16px'
+    --primary-text_size: 40px;
+    --title-text_size: 32px;
+    --large-text_size: 24px;
+    --medium-text_size: 20px;
+    --normal-text_size: 16px;
+    //fontWeight: 
+    --small-fontWeight: 400;
+    --normal-fontWeight: 600;
+    --large-fontWeight: 800;
+    --XL-fontWeight: 900;
   }
 
   html {

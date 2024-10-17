@@ -1,12 +1,16 @@
 import React from 'react';
-import { NavbarContainer, Logo, MenuItem, SearchBlock } from './Navbar.style';
+import { NavbarContainer, Logo, MenuItem, SearchBlock, Search } from './Navbar.style';
+import SearchResultList from '../SearchResultList/SearchResultList';
 
 const Navbar = () => {
     return (
         <NavbarContainer>
             <Logo>MyLogo</Logo>
             <div></div>
-            <SearchBlock></SearchBlock>
+            <Search>
+                <SearchBlock></SearchBlock>
+                <SearchResultList />
+            </Search>
             <MenuItem>Services</MenuItem>
             <MenuItem>Contact</MenuItem>
         </NavbarContainer>

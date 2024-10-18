@@ -14,6 +14,7 @@ import {
     StarReview,
     StarReviewRating,
     TextReview,
+    MovieTitle
 } from './ReviewForm.style';
 import naruto from 'src/assets/images/naruto.png';
 
@@ -34,18 +35,16 @@ const ReviewForm = () => {
     return (
         <GeneralReview>
             <HorizontalMovieCard>
-                <div style={{ borderRadius: '10px' }}>
-                    <MovieImg src={naruto} alt="Movie Picture" />
-                </div>
+                <MovieImg src={naruto} alt="Movie Picture" />
                 <Movie>
-                    <h1>Movie Title</h1>
+                    <MovieTitle>Movie Title</MovieTitle>
                     <p>
                         Naruto là một loạt manga Nhật Bản được viết và minh họa bởi Kishimoto Masashi. Câu chuyện xoay
                         quanh Uzumaki Naruto, một ninja trẻ muốn tìm cách khẳng định mình để được mọi người công nhận và
                         nuôi ước mơ trở thành Hokage - người lãnh đạo Làng Lá.
                     </p>
                     <MovieRating>
-                        <h3>{rating}</h3>
+                        <h4 style={{ marginRight:'30px' }}>{rating}</h4>
                         <StarRating size="large" name="rt" value={rating} precision={0.1} readOnly />
                     </MovieRating>
                 </Movie>

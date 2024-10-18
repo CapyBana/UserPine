@@ -4,8 +4,12 @@ import { Rating } from '@mui/material';
 export const GeneralReview = styled.div`
     display: flex;
     flex-direction: column;
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 80%;
-    margin: 50px 80px;
+    z-index: -1;
     * {
         font-family: var(--boundedFont);
     }
@@ -24,7 +28,7 @@ export const GeneralReview = styled.div`
 export const HorizontalMovieCard = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 250px;
     border-radius: 30px;
@@ -33,31 +37,30 @@ export const HorizontalMovieCard = styled.div`
 
 export const MovieImg = styled.img`
     width: 140px;
-    margin: 35px 0 35px 60px;
-    height: 100%;
+    margin: 20px 50px;
     border-radius: 10px;
 `;
 
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0px 65px;
+    margin: 0px 30px;
     color: #fae6e5;
-    h1 {
-        margin-bottom: 15px;
-    }
     p {
         margin-bottom: 20px;
     }
+`;
+
+export const MovieTitle = styled.div`
+    font-size: 40px;
+    font-weight: 800;
+    margin: 20px 0 15px;
 `;
 
 export const MovieRating = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    h3 {
-        padding-right: 16px;
-    }
 `;
 
 export const StarRating = styled(Rating)`

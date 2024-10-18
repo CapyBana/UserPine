@@ -9,7 +9,6 @@ export const GeneralReview = styled.div`
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    z-index: -1;
     * {
         font-family: var(--boundedFont);
     }

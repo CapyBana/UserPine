@@ -3,11 +3,14 @@ import styled from 'styled-components';
 export const ResultBar = styled.div`
     display: flex;
     align-items: center;
-    flex-direction: row;
-    background-color: rgba(10, 103, 79, 0.8);
     height: 90px;
+`;
+
+export const Link = styled.a`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     text-decoration: none;
-    width: 100%;
     font-family: var(--boundedFont);
     color: #FAE6E5;
     .title {

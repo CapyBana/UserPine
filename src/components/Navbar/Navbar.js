@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavbarContainer, Logo, MenuItem, SearchBlock } from './Navbar.style';
 import SearchResultList from '../SearchResultList/SearchResultList';
 
 const Navbar = () => {
     const [showComponent, setShowComponent] = useState(false);
-    const componentRef = useRef(null);
     const handleToggle = () => {
-        setShowComponent(true); // Toggle the visibility
+        setShowComponent(true);
     };
 
     return (

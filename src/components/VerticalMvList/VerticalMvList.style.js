@@ -13,6 +13,7 @@ export const MovieListContainer = styled.div`
         display: flex;
         flex-direction: row;
     }
+    z-index: -1;
 `;
 export const MovieList = styled.div`
     display: flex;

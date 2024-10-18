@@ -13,12 +13,6 @@ export const NavbarContainer = styled.nav`
     color: white;
 `;
 
-export const Search = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-`;
-
 export const SearchBlock = styled(TextField)`
     flex-basis: 50%;
     background-color: #d9d9d9;

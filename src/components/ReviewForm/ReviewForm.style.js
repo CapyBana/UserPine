@@ -5,10 +5,10 @@ export const GeneralReview = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
+    width: 100%;
+    background-color: #000000;
+    padding-bottom: 20px;
+    z-index: -1;
     * {
         font-family: var(--boundedFont);
     }
@@ -24,11 +24,31 @@ export const GeneralReview = styled.div`
     }
 `;
 
+export const Return = styled.a`
+    text-decoration: none;
+    margin: 80px 0 70px 2.5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: var(--boundedFont);
+    color: #DCD1D1;
+    .back {
+        font-size: 28px;
+        font-weight: 500;
+    }
+    &:hover {
+        text-decoration: underlined;
+    }
+`;
+
 export const HorizontalMovieCard = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
     height: 250px;
     border-radius: 30px;
     background-color: #180d0d;
@@ -43,7 +63,8 @@ export const MovieImg = styled.img`
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0px 30px;
+    margin-left: 30px;
+    margin-right: 50px;
     color: #fae6e5;
     p {
         margin-bottom: 20px;
@@ -71,11 +92,14 @@ export const StarRating = styled(Rating)`
 export const Review = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
     height: 960px;
     border-radius: 30px;
     background-color: #401313;
-    margin: 70px 0px;
+    margin: 50px 0;
     color: #fae6e5;
 `;
 

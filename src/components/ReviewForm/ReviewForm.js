@@ -14,9 +14,11 @@ import {
     StarReview,
     StarReviewRating,
     TextReview,
-    MovieTitle
+    MovieTitle,
+    Return
 } from './ReviewForm.style';
 import naruto from 'src/assets/images/naruto.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CommentSection = () => {
     return (
@@ -28,12 +30,17 @@ const CommentSection = () => {
         </form>
     );
 };
+
 const ReviewForm = () => {
     const [rating] = useState(1);
     const [rating2, setRating] = useState(1);
 
     return (
         <GeneralReview>
+            <Return href='/movie'>
+                <ArrowBackIcon style={{ fontSize:'40px', marginRight:'20px' }} />
+                <div className='back'>Back to movie page</div>
+            </Return>
             <HorizontalMovieCard>
                 <MovieImg src={naruto} alt="Movie Picture" />
                 <Movie>

@@ -10,6 +10,7 @@ export const Link = styled.a`
     display: flex;
     align-items: center;
     flex-direction: row;
+    width: 90%;
     text-decoration: none;
     font-family: var(--boundedFont);
     color: #FAE6E5;

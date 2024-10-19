@@ -3,10 +3,7 @@ import { NavbarContainer, Logo, MenuItem, SearchBlock } from './Navbar.style';
 import SearchResultList from '../SearchResultList/SearchResultList';
 
 const Navbar = () => {
-    const [showComponent, setShowComponent] = useState(false);
-    const handleToggle = () => {
-        setShowComponent(true);
-    };
+    const [showList, setShowList] = useState(false);
 
     return (
         <div style={{
@@ -16,11 +13,11 @@ const Navbar = () => {
             <NavbarContainer>
                 <Logo>MyLogo</Logo>
                 <div></div>
-                <SearchBlock onClick={handleToggle}></SearchBlock>
+                <SearchBlock onClick={() => setShowList(true)}></SearchBlock>
                 <MenuItem>Services</MenuItem>
                 <MenuItem>Contact</MenuItem>
             </NavbarContainer>
-            {showComponent && <SearchResultList />}
+            {showList && <SearchResultList/>}
         </div>
     );
 };

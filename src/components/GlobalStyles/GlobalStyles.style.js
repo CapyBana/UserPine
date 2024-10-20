@@ -41,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     min-height: 100vh; 
     text-rendering: optimizeSpeed;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
   }
 
   #root {

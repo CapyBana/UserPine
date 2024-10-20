@@ -1,78 +1,173 @@
 import styled from 'styled-components';
 
+
+
 export const SignInPage = styled.div`
-    
-`;
-export const SubmitButton = styled.button`
-    height: 100%;
-    padding: 2% 5%;
-    margin: 2%;
-    background-color: #1D269A;
-    color: #FAE6E5;
-    border-radius: 45px;
-    font-size: var(--large-text_size);
-    text-align: center;
-    cursor: pointer;
-    border: none;
+    height: 100vh;
+    text {
+        text-align: center;
+        color: #fae6e5;
+        font-size: var(--medium-text_size);
+    }
+    @media (max-width: 480px) {
+        font-size: var(--normal-text_size);
+    }
+    @media (min-width: 480px) and (max-width: 768px) {
+        font-size: var(--large-text_size);
+    }
 `;
 export const SignInBox = styled.div`
     width: 50%;
     font-family: arial;
-    background-color: #100C0C;
-    color: #FAE6E5;
+    background-color: #100c0c;
+    color: #fae6e5;
     justify-content: space-between;
     text-align: center;
     border-radius: 45px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
+    margin-top: 3%;
     margin-bottom: auto;
-    padding: 2% 5% 2% 5%;
-`;
-export const MainContent = styled.h1`
-    text-align: center;
-    color: #FAE6E5;
-    font-style: strong;
-    font-size: var(--super-text_size);
-    margin-top: 0;
-    margin-bottom: 1%;
-`;
-export const Content = styled.text`
-    text-align: center;
-    color: #FAE6E5;
-    font-size: var(--medium-text_size);
+    padding: 2% 8% 2% 8%;
+
+    .mainContent {
+        text-align: center;
+        color: #fae6e5;
+        font-style: strong;
+        font-size: var(--super-text_size);
+        margin-top: 0;
+        margin-bottom: 1%;
+    }
+    form {
+        button {
+            height: 100%;
+            padding: 2.5% 5%;
+            margin: 2%;
+            background-color: #1d269a;
+            color: #fae6e5;
+            border-radius: 45px;
+            font-size: var(--large-text_size);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        .fillInBox {
+            padding: 2% 9% 2% 4%;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            font-size: var(--medium-text_size);
+            color: #fae6e5;
+            outline: none;
+            border: none;
+        }
+    }
+    @media (max-width: 480px) {
+        width: 80%;
+        padding: 5% 8% 5% 8%;
+        form {
+            button {
+                padding: 4% 7%;
+                margin-bottom: 0;
+                font-size: var(--medium-text_size);
+                border: none;
+            }
+            .fillInBox {
+                padding: 4% 9% 4% 6%;
+            }
+        }
+        .mainContent {
+            font-size: var(--primary-text_size);
+            margin-top: 0;
+            margin-bottom: 2%;
+        }
+    }
+    @media (min-width: 480px) and (max-width: 768px) {
+        width: 80%;
+        padding: 5% 8% 5% 8%;
+        form {
+            button {
+                padding: 3.5% 6%;
+                margin-bottom: 0;
+                font-size: var(--large-text_size);
+                border: none;
+            }
+            .fillInBox {
+                padding: 3% 9% 3% 4%;
+            }
+        }
+        .mainContent {
+            font-size: var(--super-text_size);
+            margin-top: 0;
+            margin-bottom: 2%;
+        }
+    }
+        
+    @media (min-width: 768px) and (max-width: 1024px) {
+        width: 75%;
+        padding: 5% 8% 5% 8%;
+        margin-top: 4%;
+        form {
+            button {
+                padding: 3.5% 6%;
+                margin-bottom: 0;
+                font-size: var(--large-text_size);
+                border: none;
+            }
+            .fillInBox {
+                padding: 3% 9% 3% 4%;
+            }
+        }
+        .mainContent {
+            font-size: var(--super-text_size);
+            margin-top: 0;
+            margin-bottom: 2%;
+        }
+    }
 `;
 export const InputBox = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #231B1B;
+    background-color: #231b1b;
     align-content: center;
-    color: #FAE6E5;
+    color: #fae6e5;
     border: none;
     border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 2%;
-`
-export const FillInBox = styled.input`
-    padding: 2% 9% 2% 4%;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    font-size: var(--medium-text_size);
-    color: #FAE6E5;
-    outline: none;
-    border: none;
-`;
-export const BackToHomePage = styled.button`
-    background-color: transparent;
-    margin: 2% 2.5%;
-    color: #DCD1D1;
-    border: none;
-    cursor: pointer;
+    margin-bottom: 2.5%;
+
+    box-icon {
+        position: absolute;
+        top: 22%;
+        right: 18px;
+    }
+
+    @media (max-width: 480px) {
+        margin-bottom: 4%;
+    }
+    @media (min-width: 480px) and (max-width: 768px) {
+        margin-bottom: 2.5%;
+        box-icon {
+            position: absolute;
+            top: 23%;
+            right: 18px;
+        }
+    }
+        @media (min-width: 768px) and (max-width: 1024px) {
+        margin-bottom: 2.5%;
+        box-icon {
+            position: absolute;
+            top: 28%;
+            right: 18px;
+        }
+    }
 `;
 export const Capybana = styled.text`
     font-family: algerian, fantasy;
     justify-content: center;
     font-size: var(--large-text_size);
+    @media (max-width: 480px) {
+        font-size: var(--normal-text_size);
+    }
 `;

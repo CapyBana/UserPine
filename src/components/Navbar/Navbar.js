@@ -6,9 +6,9 @@ const Navbar = () => {
         <NavbarContainer>
             <Logo>MyLogo</Logo>
             <div></div>
-            <SearchBlock></SearchBlock>
-            <MenuItem>Services</MenuItem>
-            <MenuItem>Contact</MenuItem>
+            <div> <SearchBlock/> </div>
+            <MenuItem>Categories</MenuItem>
+            <MenuItem>Sign In</MenuItem>
         </NavbarContainer>
     );
 };

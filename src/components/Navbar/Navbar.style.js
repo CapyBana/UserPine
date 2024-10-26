@@ -11,6 +11,7 @@ export const NavbarContainer = styled.nav`
     align-items: center;
     justify-content: space-between;
     color: white;
+    z-index: 1;
 `;
 
 export const SearchBlock = styled(TextField)`

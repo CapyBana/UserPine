@@ -4,8 +4,11 @@ import { Rating } from '@mui/material';
 export const GeneralReview = styled.div`
     display: flex;
     flex-direction: column;
-    width: 80%;
-    margin: 50px 80px;
+    position: relative;
+    width: 100%;
+    background-color: #000000;
+    padding-bottom: 20px;
+    z-index: -1;
     * {
         font-family: var(--boundedFont);
     }
@@ -21,11 +24,31 @@ export const GeneralReview = styled.div`
     }
 `;
 
-export const HorizontalMovieCard = styled.div`
+export const Return = styled.a`
+    text-decoration: none;
+    margin: 80px 0 70px 2.5%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    font-family: var(--boundedFont);
+    color: #DCD1D1;
+    .back {
+        font-size: 28px;
+        font-weight: 500;
+    }
+    &:hover {
+        text-decoration: underlined;
+    }
+`;
+
+export const HorizontalMovieCard = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
     height: 250px;
     border-radius: 30px;
     background-color: #180d0d;
@@ -33,31 +56,31 @@ export const HorizontalMovieCard = styled.div`
 
 export const MovieImg = styled.img`
     width: 140px;
-    margin: 35px 0 35px 60px;
-    height: 100%;
+    margin: 20px 50px;
     border-radius: 10px;
 `;
 
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0px 65px;
+    margin-left: 30px;
+    margin-right: 50px;
     color: #fae6e5;
-    h1 {
-        margin-bottom: 15px;
-    }
     p {
         margin-bottom: 20px;
     }
+`;
+
+export const MovieTitle = styled.div`
+    font-size: 40px;
+    font-weight: 800;
+    margin: 20px 0 15px;
 `;
 
 export const MovieRating = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    h3 {
-        padding-right: 16px;
-    }
 `;
 
 export const StarRating = styled(Rating)`
@@ -69,11 +92,14 @@ export const StarRating = styled(Rating)`
 export const Review = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
     height: 960px;
     border-radius: 30px;
     background-color: #401313;
-    margin: 70px 0px;
+    margin: 50px 0;
     color: #fae6e5;
 `;
 

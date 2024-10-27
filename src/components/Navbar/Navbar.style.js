@@ -12,6 +12,7 @@ export const NavbarContainer = styled.nav`
     justify-content: space-between;
     color: white;
 `;
+
 export const SearchBlock = styled(TextField)`
     background-color: #f5f5f5;
     border-radius: 10px;

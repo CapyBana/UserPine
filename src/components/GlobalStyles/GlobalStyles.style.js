@@ -3,7 +3,8 @@ import normalize from 'normalize.css';
 
 const GlobalStyles = createGlobalStyle`
   ${normalize}
-  @import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+
+  @import url('//fonts.googleapis.com/css2?family=Unbounded');
 
   *, *::after, *::before {
     margin: 0;

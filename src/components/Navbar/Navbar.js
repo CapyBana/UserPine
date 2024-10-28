@@ -6,19 +6,26 @@ const Navbar = () => {
     const [showList, setShowList] = useState(false);
 
     return (
-        <div style={{
-            display:"flex",
-            flexDirection:"column"
-        }}>
-            <NavbarContainer>
-                <Logo>MyLogo</Logo>
-                <div></div>
-                <SearchBlock onClick={() => setShowList(true)}></SearchBlock>
-                <MenuItem>Services</MenuItem>
-                <MenuItem>Contact</MenuItem>
-            </NavbarContainer>
-            {showList && <SearchResultList/>}
-        </div>
+        <NavbarContainer>
+            <Logo>MyLogo</Logo>
+            <div></div>
+            <div> <SearchBlock/> </div>
+            <MenuItem>Categories</MenuItem>
+            <MenuItem>Sign In</MenuItem>
+        </NavbarContainer>
+//         <div style={{
+//             display:"flex",
+//             flexDirection:"column"
+//         }}>
+//             <NavbarContainer>
+//                 <Logo>MyLogo</Logo>
+//                 <div></div>
+//                 <SearchBlock onClick={() => setShowList(true)}></SearchBlock>
+//                 <MenuItem>Services</MenuItem>
+//                 <MenuItem>Contact</MenuItem>
+//             </NavbarContainer>
+//             {showList && <SearchResultList/>}
+//         </div>
     );
 };
 

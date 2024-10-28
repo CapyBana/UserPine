@@ -1,97 +1,86 @@
 import React from 'react';
-import {
-    BackToHomePage,
-    Capybana,
-    FillInBox,
-    InputBox,
-    MainContent,
-    SignInBox,
-    SubmitButton,
-    ThirdContent,
-} from './signUpPage.style';
+import {Capybana,  
+         InputBox, 
+         SignInBox, 
+         SignInPage} from './signUpPage.style';
+import Boxicons from 'boxicons'; //để nguyên cái này đừng xoá nha
 const SignUpPage = () => {
     return (
         <div>
-            <a href="log-in">
-                <BackToHomePage>⬅ Back to Home page</BackToHomePage>
-            </a>
-            <SignInBox>
-                <ThirdContent>
-                    Be a part of <Capybana>Capybana Community</Capybana>
-                </ThirdContent>
-                <MainContent>Sign up</MainContent>
-                <form action="somewhere" method="POST">
-                    <InputBox style={{ position: 'relative' }}>
-                        <FillInBox
-                            type="text"
-                            id="username"
-                            placeholder="Username"
-                            minlength="6"
-                            maxlength="30"
-                            required
-                        ></FillInBox>
-                        <box-icon
-                            style={{ position: 'absolute', top: '32.5%', right: '20px' }}
-                            type="solid"
-                            name="user"
-                            size="sm"
-                        ></box-icon>
-                    </InputBox>
-                    <br></br>
-                    <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="email" id="email" placeholder="Email" required></FillInBox>
-                        <box-icon
-                            style={{ position: 'absolute', top: '32.5%', right: '20px' }}
-                            type="solid"
-                            name="envelope"
-                            size="sm"
-                        ></box-icon>
-                    </InputBox>
-                    <br></br>
-                    <InputBox style={{ position: 'relative' }}>
-                        <FillInBox
-                            type="password"
-                            id="password"
-                            placeholder="Password"
-                            minlength="8"
-                            maxlength="30"
-                            required
-                        ></FillInBox>
-                        <box-icon
-                            style={{ position: 'absolute', top: '32.5%', right: '20px' }}
-                            type="solid"
-                            name="lock-alt"
-                            size="sm"
-                        ></box-icon>
-                    </InputBox>
-                    <br></br>
-                    <InputBox style={{ position: 'relative' }}>
-                        <FillInBox
-                            type="password"
-                            id="cfpassword"
-                            placeholder="Comfirm Password"
-                            minlength="8"
-                            maxlength="30"
-                            required
-                        ></FillInBox>
-                        <box-icon
-                            style={{ position: 'absolute', top: '32.5%', right: '20px' }}
-                            type="solid"
-                            name="lock-alt"
-                            size="sm"
-                        ></box-icon>
-                    </InputBox>
-                    <br></br>
-                    <text>
-                        Already have an account? <a href="log-in">Log in</a>
+            <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+            <SignInPage>
+                <a href = "log-in">
+                    <text>⬅ Back to Home page</text>
+                </a>
+                <SignInBox>
+                    <text class = "intro">
+                        Be a part of <Capybana>Capybana Community</Capybana>
                     </text>
-                    <br></br>
-
-                    <SubmitButton type="submit" id="submitButton">
-                        Sign up
-                    </SubmitButton>
-                </form>
-            </SignInBox>
+                    <h1 class = "mainContent">Sign up</h1>
+                    <form action = "somewhere" method = "POST" class = "PC">
+                        <InputBox style = {{position: "relative"}}>
+                            <input class = "fillInBox"
+                                    type = "text" 
+                                    id = "username" 
+                                    placeholder = "Username" 
+                                    minlength = "6" 
+                                    maxlength = "30" 
+                                    required>
+                            </input>
+                            <box-icon type='solid' 
+                                      name='user'
+                                      size="sm">
+                            </box-icon>
+                        </InputBox>
+                        <InputBox style = {{position: "relative"}}>
+                            <input class = "fillInBox"
+                                    type = "email" 
+                                    id = "email" 
+                                    placeholder = "Email" 
+                                    required>
+                            </input>
+                            <box-icon type='solid' 
+                                      name='envelope' 
+                                      size="sm">
+                            </box-icon>
+                        </InputBox>
+                        <InputBox style = {{position: "relative"}}>
+                            <input class = "fillInBox"
+                                    type = "password" 
+                                    id = "password" 
+                                    placeholder = "Password" 
+                                    minlength = "8" 
+                                    maxlength = "30" 
+                                    required>
+                            </input>
+                            <box-icon type='solid' 
+                                      name='lock-alt' 
+                                      size="sm">
+                            </box-icon>
+                        </InputBox>
+                        <InputBox style = {{position: "relative"}}>
+                            <input class = "fillInBox"
+                                    type = "password" 
+                                    id = "cfpassword" 
+                                    placeholder = "Confirm Password" 
+                                    minlength = "8" 
+                                    maxlength = "30" 
+                                    required>
+                            </input>
+                            <box-icon type='solid' 
+                                      name='lock-alt' 
+                                      size="sm">
+                            </box-icon>
+                        </InputBox>
+                        <text>
+                            Already have an account? <a href = "log-in">Log in</a>
+                        </text><br></br>
+                        <button type = "submit" id = "submitButton">
+                            Sign up
+                        </button>
+                    </form>
+                </SignInBox>
+            </SignInPage>
         </div>
     );
 };

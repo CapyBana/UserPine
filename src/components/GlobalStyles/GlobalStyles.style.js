@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
     --primary-red-hover: #ff6347; 
     --primary-black: #D9D9D9;
     --boundedFont: 'Unbounded', sans-serif;
+    --super-text_size: 52px;
     --primary-text_size: 40px;
     --title-text_size: 32px;
     --large-text_size: 24px;
@@ -41,6 +42,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     min-height: 100vh; 
     text-rendering: optimizeSpeed;
+    background-color: #ffffff;
   }
 
   #root {

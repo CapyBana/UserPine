@@ -3,6 +3,7 @@ import {Capybana,
          InputBox, 
          SignInBox, 
          SignInPage} from './signUpPage.style';
+import Boxicons from 'boxicons'; //để nguyên cái này đừng xoá nha
 const SignUpPage = () => {
     return (
         <div>
@@ -28,7 +29,8 @@ const SignUpPage = () => {
                             </input>
                             <box-icon type='solid' 
                                       name='user'
-                                      size="sm"></box-icon>
+                                      size="sm">
+                            </box-icon>
                         </InputBox>
                         <InputBox style = {{position: "relative"}}>
                             <input class = "fillInBox"

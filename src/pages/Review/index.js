@@ -6,4 +6,4 @@ const Review = () => {
     return <ReviewForm></ReviewForm>;
 };
 
-export default Index;
+export default Review;

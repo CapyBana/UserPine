@@ -2,7 +2,7 @@ import Dashboard from '~/pages/Dashboard/Dashboard';
 import SignUpPage from '~/pages/SignUpPage/signUpPage';
 import LogInPage from '~/pages/LogInPage/LogInPage';
 import UserProfile from '~/pages/UserProfile/userProfile';
-import { Review } from '~/components/ReviewForm/ReviewForm.style';
+import Review from '~/pages/Review';
 
 const routes = [
     { path: '/', component: Dashboard },

@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-import { MyMovieRatingBlock, MyMovieRatingTitler, Titler, MovieList, MovieListScroll } from "./myMovieRating.style";
-import VerticalMvCard from "../VerticalMvCard/VerticalMvCard";
+import {
+    MyMovieRatingBlock, 
+    MyMovieRatingTitler, 
+    Titler, 
+    MovieList, 
+    MovieListScroll
+} from "./myMovieRating.style";
 import React, { useState, useRef } from "react";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { IconButton } from "@mui/material";
+import VerticalMvCard from "../VerticalMvCard/VerticalMvCard";
 
 const ITEM_WIDTH = 196;
 

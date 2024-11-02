@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-    BackToHomePage,
-    FillInBox,
-    InputBox,
-    MainContent,
-    SignInBox,
-    SubmitButton,
-} from './logInStyle';
+import { BackToHomePage, FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
 
 const LogInPage = () => {
     return (
-        <div>
+        <LogInLayout>
             <a href="sign-up">
                 <BackToHomePage>⬅ Back to Home page</BackToHomePage>
             </a>
@@ -21,13 +14,7 @@ const LogInPage = () => {
                         <text> Username or Email </text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
-                        <FillInBox
-                            type="text"
-                            id="username"
-                            minLength="6"
-                            maxLength="30"
-                            required
-                        />
+                        <FillInBox type="text" id="username" minLength="6" maxLength="30" required />
                         <box-icon
                             style={{ position: 'absolute', top: '32.5%', right: '20px' }}
                             type="solid"
@@ -37,18 +24,14 @@ const LogInPage = () => {
                     </InputBox>
                     <br />
                     <InputBox style={{ position: 'relative' }} />
-                    
-                    <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}> {/* Tăng margin ở đây */}
+
+                    <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}>
+                        {' '}
+                        {/* Tăng margin ở đây */}
                         Password
                     </div>
                     <InputBox style={{ position: 'relative' }}>
-                        <FillInBox
-                            type="password"
-                            id="password"
-                            minLength="8"
-                            maxLength="30"
-                            required
-                        />
+                        <FillInBox type="password" id="password" minLength="8" maxLength="30" required />
                         <box-icon
                             style={{ position: 'absolute', top: '32.5%', right: '20px' }}
                             type="solid"
@@ -58,7 +41,7 @@ const LogInPage = () => {
                     </InputBox>
                     <br />
                     <InputBox style={{ position: 'relative' }} />
-                    
+
                     {/* Centered link */}
                     <div style={{ textAlign: 'center' }}>
                         <a href="sign-up">Forgot password • Create an account</a>
@@ -72,7 +55,7 @@ const LogInPage = () => {
                     </div>
                 </form>
             </SignInBox>
-        </div>
+        </LogInLayout>
     );
 };
 

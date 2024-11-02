@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-
+export const LogInLayout = styled.div`
+    width: 100%;
+`;
 export const SubmitButton = styled.button`
     height: 100%;
     padding: 4% 10%;
@@ -20,6 +22,13 @@ export const SubmitButton = styled.button`
 
 export const SignInBox = styled.div`
     width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
     font-family: unbounded, arial;
     background-color: #100c0c;
     color: #fae6e5;
@@ -27,7 +36,6 @@ export const SignInBox = styled.div`
     text-align: left; /* Change to left for alignment */
     border-radius: 45px;
     padding: 5% 10%;
-    margin: auto;
 `;
 
 export const MainContent = styled.h1`

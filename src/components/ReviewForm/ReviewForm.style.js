@@ -6,9 +6,7 @@ export const GeneralReview = styled.div`
     flex-direction: column;
     position: relative;
     width: 100%;
-    background-color: #000000;
-    padding-bottom: 20px;
-    z-index: -1;
+    margin-top: 50px;
     * {
         font-family: var(--boundedFont);
     }
@@ -21,23 +19,6 @@ export const GeneralReview = styled.div`
     p {
         font-size: var(--normal-text_size);
         font-weight: var(--small-fontWeight);
-    }
-`;
-
-export const Return = styled.a`
-    text-decoration: none;
-    margin: 80px 0 70px 2.5%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family: var(--boundedFont);
-    color: #DCD1D1;
-    .back {
-        font-size: 28px;
-        font-weight: 500;
-    }
-    &:hover {
-        text-decoration: underlined;
     }
 `;
 
@@ -99,7 +80,7 @@ export const Review = styled.div`
     height: 960px;
     border-radius: 30px;
     background-color: #401313;
-    margin: 50px 0;
+    margin-top: 50px;
     color: #fae6e5;
 `;
 

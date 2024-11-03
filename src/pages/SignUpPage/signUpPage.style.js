@@ -15,6 +15,10 @@ export const SignInPage = styled.div`
     }
 `;
 export const SignInBox = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 50%;
     font-family: arial;
     background-color: #100c0c;
@@ -22,10 +26,6 @@ export const SignInBox = styled.div`
     justify-content: space-between;
     text-align: center;
     border-radius: 45px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
-    margin-bottom: auto;
     padding: 2% 8% 2% 8%;
 
     .mainContent {
@@ -37,6 +37,9 @@ export const SignInBox = styled.div`
         margin-bottom: 1%;
     }
     form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         button {
             height: 100%;
             padding: 2.5% 5%;
@@ -100,7 +103,7 @@ export const SignInBox = styled.div`
             margin-bottom: 2%;
         }
     }
-        
+
     @media (min-width: 768px) and (max-width: 1024px) {
         width: 75%;
         padding: 5% 8% 5% 8%;
@@ -152,7 +155,7 @@ export const InputBox = styled.div`
             right: 18px;
         }
     }
-        @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 768px) and (max-width: 1024px) {
         margin-bottom: 2.5%;
         box-icon {
             position: absolute;

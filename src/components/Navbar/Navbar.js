@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
-import { NavbarContainer, Logo, MenuItem, SearchBlock } from './Navbar.style';
-import SearchResultList from '../SearchResultList/SearchResultList';
+import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
+import { BrowserRouter as Router } from 'react-router-dom';
+//import SearchResultList from '../SearchResultList/SearchResultList';
+import { Money } from '@mui/icons-material';
+
 
 const Navbar = () => {
-    const [showList, setShowList] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    //const [isMobile, setIsMobile] = useState(false); // Track mobile view
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
         <NavbarContainer>
-            <Logo>MyLogo</Logo>
-            <div></div>
-            <div> <SearchBlock/> </div>
-            <MenuItem>Categories</MenuItem>
-            <MenuItem>Sign In</MenuItem>
+            <Logo to="/">MyLogo</Logo>
+            <SearchContainer>
+                <SearchInput type="text" placeholder="Search..." />
+            </SearchContainer>
+            <HamburgerIcon onClick={toggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </HamburgerIcon>
+            <Menu isOpen={isOpen}>
+                <MenuItem to="/">Home</MenuItem>
+                <MenuItem to="/about">Categories</MenuItem>
+                <MenuItem to="/sign-up">Sign Up</MenuItem>
+                <MenuItem to="/log-in">Log In</MenuItem>
+            </Menu>
         </NavbarContainer>
-//         <div style={{
-//             display:"flex",
-//             flexDirection:"column"
-//         }}>
-//             <NavbarContainer>
-//                 <Logo>MyLogo</Logo>
-//                 <div></div>
-//                 <SearchBlock onClick={() => setShowList(true)}></SearchBlock>
-//                 <MenuItem>Services</MenuItem>
-//                 <MenuItem>Contact</MenuItem>
-//             </NavbarContainer>
-//             {showList && <SearchResultList/>}
-//         </div>
     );
 };
 

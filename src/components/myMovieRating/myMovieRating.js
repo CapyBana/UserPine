@@ -1,16 +1,10 @@
-import { Link } from "react-router-dom";
-import {
-    MyMovieRatingBlock, 
-    MyMovieRatingTitler, 
-    Titler, 
-    MovieList, 
-    MovieListScroll
-} from "./myMovieRating.style";
-import React, { useState, useRef } from "react";
+import { Link } from 'react-router-dom';
+import { MyMovieRatingBlock, MyMovieRatingTitler, Titler, MovieList, MovieListScroll } from './myMovieRating.style';
+import React, { useState, useRef } from 'react';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import { IconButton } from "@mui/material";
-import VerticalMvCard from "../VerticalMvCard/VerticalMvCard";
+import { IconButton } from '@mui/material';
+import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
 
 const ITEM_WIDTH = 196;
 
@@ -25,7 +19,7 @@ const MyMovieRating = () => {
         if (containerRef.current) {
             containerRef.current.scroll({ left: newPosition });
         }
-    }
+    };
 
     const sample = [
         { id: '1' },
@@ -43,35 +37,42 @@ const MyMovieRating = () => {
             <MyMovieRatingTitler>
                 <Titler />
                 <div>MY MOVIE RATINGS</div>
-                <Link to='/mymovieratings' style={{ 
-                    textDecoration:'none', 
-                    color:'#FAE6E5', 
-                    marginLeft:'750px' 
-                }}>
+                <Link
+                    to="/mymovieratings"
+                    style={{
+                        textDecoration: 'none',
+                        color: '#FAE6E5',
+                        marginLeft: '750px',
+                    }}
+                >
                     <div>View all</div>
                 </Link>
             </MyMovieRatingTitler>
             <MovieListScroll>
-                <IconButton 
-                    onClick={() => {handleScroll(-ITEM_WIDTH)}}
-                    style={{ marginRight: '20px', cursor:'pointer', color:'white' }}
+                <IconButton
+                    onClick={() => {
+                        handleScroll(-ITEM_WIDTH);
+                    }}
+                    style={{ marginRight: '20px', cursor: 'pointer', color: 'white' }}
                 >
                     <ArrowCircleLeftIcon />
                 </IconButton>
-                <MovieList ref={containerRef} style={{ gap:'20px' }}>
+                <MovieList ref={containerRef} style={{ gap: '20px' }}>
                     {sample.map(() => (
-                        <VerticalMvCard />
+                        <VerticalMvCard style={{ backgroundColor: 'inherit !important' }} />
                     ))}
                 </MovieList>
                 <IconButton
-                    onClick={() => {handleScroll(ITEM_WIDTH)}}
-                    style={{ marginLeft: '20px', cursor:'pointer', color:'white' }}
+                    onClick={() => {
+                        handleScroll(ITEM_WIDTH);
+                    }}
+                    style={{ marginLeft: '20px', cursor: 'pointer', color: 'white' }}
                 >
                     <ArrowCircleRightIcon />
                 </IconButton>
             </MovieListScroll>
         </MyMovieRatingBlock>
     );
-}
+};
 
 export default MyMovieRating;

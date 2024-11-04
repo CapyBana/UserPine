@@ -7,6 +7,9 @@ export const MovieCard = styled(Card)`
     display: flex;
     flex-direction: column;
     gap: 6px;
+    && {
+        background-color: inherit;
+    }
 `;
 
 export const Image = styled.img`

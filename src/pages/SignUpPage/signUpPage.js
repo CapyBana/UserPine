@@ -1,9 +1,9 @@
 import React from 'react';
-import { Capybana, InputBox, SignInBox, SignInPage } from './signUpPage.style';
+import { Capybana, InputBox, SignInBox, SignInLayout, SignInPage } from './signUpPage.style';
 import Boxicons from 'boxicons'; //để nguyên cái này đừng xoá nha
 const SignUpPage = () => {
     return (
-        <div>
+        <SignInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <SignInPage>
                 <a href="log-in">
@@ -64,7 +64,7 @@ const SignUpPage = () => {
                     </form>
                 </SignInBox>
             </SignInPage>
-        </div>
+        </SignInLayout>
     );
 };
 export default SignUpPage;

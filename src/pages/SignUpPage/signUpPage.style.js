@@ -1,7 +1,16 @@
 import styled from 'styled-components';
+export const SignInLayout = styled.div``;
 
 export const SignInPage = styled.div`
+    width: 100vw;
     height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);
+    inset: 0px;
+    z-index: 1;
     text {
         text-align: center;
         color: #fae6e5;

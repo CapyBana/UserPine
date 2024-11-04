@@ -4,7 +4,6 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.style';
-import Navbar from './components/Navbar/Navbar';
 
 const container = document.getElementById('root');
 
@@ -15,7 +14,6 @@ if (container) {
         <React.StrictMode>
             <GlobalStyles />
             <Router>
-                <Navbar />
                 <App />
             </Router>
         </React.StrictMode>,

@@ -4,8 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 //import SearchResultList from '../SearchResultList/SearchResultList';
 import { Money } from '@mui/icons-material';
 
-
-const Navbar = () => {
+const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     //const [isMobile, setIsMobile] = useState(false); // Track mobile view
 
@@ -25,9 +24,11 @@ const Navbar = () => {
                 <span></span>
             </HamburgerIcon>
             <Menu isOpen={isOpen}>
-                <MenuItem to="/">Home</MenuItem>
+                <MenuItem onClick={() => props.handlePage('/')} to="/">
+                    Home
+                </MenuItem>
                 <MenuItem to="/about">Categories</MenuItem>
-                <MenuItem to="/sign-up">Sign Up</MenuItem>
+                <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>
                 <MenuItem to="/log-in">Log In</MenuItem>
             </Menu>
         </NavbarContainer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Capybana, InputBox, SignInBox, SignInLayout, SignInPage } from './signUpPage.style';
-import Boxicons from 'boxicons'; //để nguyên cái này đừng xoá nha
+// import Boxicons from 'boxicons'; //để nguyên cái này đừng xoá nha
 const SignUpPage = () => {
     return (
         <SignInLayout>

@@ -30,8 +30,7 @@ export const Logo = styled(Link)`
 // Menu items container
 export const Menu = styled.div`
     display: flex;
-    justify-content: space-between;
-    flex-basis: 30%;
+    justify-content: right;
     @media (max-width: 768px) {
         display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
         flex-direction: column;
@@ -47,11 +46,56 @@ export const Menu = styled.div`
 export const MenuItem = styled(Link)`
     color: white;
     text-decoration: none;
+    position: relative;
     font-size: 20px;
     font-weight: 500;
     font-family: var(--boundedFont);
+    background: var(--primary-red);
+    display: block;
+    padding: 15px 15px 15px 15px;
+    ul {
+        list-style: none;
+    }
+    ul li {
+        display: inline-block;
+        position: relative;
+    }
+    ul li a {
+        display: block;
+        padding: 10px 0 10px 0;
+        margin: 5px;
+        border-radius: 10px;
+        background-color: #0a674f;
+        text-decoration: none;
+        text-align: center;
+        font-size: 20px;
+    }
+    ul li ul.dropdown {
+        width: 150%;
+        background: #791B16;
+        border-radius: 20px;
+        padding: 5px 5px 5px 5px;
+        position: absolute;
+        transform: translate(-22px, 0);
+        z-index: 999;
+        display: none;
+    }
+    ul li ul.dropdown li {
+        display: block;
+        align: center;
+    }
+    
+    ul li a:hover {
+        background-color: #1b493d;
+    }
+    ul:hover li ul.dropdown {
+        display: block;
+    }
     &:hover {
         color: #fae6e5;
+        ul.dropdown {
+            display: block;
+        }
     }
 `;
 

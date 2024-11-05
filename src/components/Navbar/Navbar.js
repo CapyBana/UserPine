@@ -27,7 +27,21 @@ const Navbar = (props) => {
                 <MenuItem onClick={() => props.handlePage('/')} to="/">
                     Home
                 </MenuItem>
-                <MenuItem to="/about">Categories</MenuItem>
+                <MenuItem class="categories" to="/about">
+                    <ul>
+                        <li>Categories
+                            <ul class="dropdown">
+                                <li><a>Action</a></li>
+                                <li><a>Crime</a></li>
+                                <li><a>Horror</a></li>
+                                <li><a>Drama</a></li>
+                                <li><a>Fantasy</a></li>
+                                <li><a>Comedy</a></li>
+                                <li><a>Mystery</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </MenuItem>
                 <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>
                 <MenuItem to="/log-in">Log In</MenuItem>
             </Menu>

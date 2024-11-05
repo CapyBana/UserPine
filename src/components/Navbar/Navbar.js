@@ -27,7 +27,7 @@ const Navbar = (props) => {
                 <MenuItem onClick={() => props.handlePage('/')} to="/">
                     Home
                 </MenuItem>
-                <MenuItem class="categories" to="/about">
+                <MenuItem to="/about">
                     <ul>
                         <li>Categories
                             <ul class="dropdown">

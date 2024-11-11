@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 export const LogInLayout = styled.div`
     width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);
+    inset: 0px;
+    z-index: 1;
 `;
 export const SubmitButton = styled.button`
     height: 100%;

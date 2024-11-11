@@ -11,7 +11,8 @@ export default function UserProfile() {
                 style={{
                     textDecoration: 'none',
                     width: '400px',
-                    padding: '80px 2.5% 15px',
+                    paddingLeft: '80px',
+                    paddingTop: '80px',
                 }}
             >
                 <ReturnBlock backmessage="Back to homepage" />

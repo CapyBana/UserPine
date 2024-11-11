@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ReviewPage = styled.div`
+export const ReviewLayout = styled.div`
     background-color: #000000;
     display: flex;
     flex-direction: column;

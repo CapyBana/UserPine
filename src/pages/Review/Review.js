@@ -1,11 +1,11 @@
 import ReviewForm from "~/components/ReviewForm/ReviewForm";
-import { ReviewPage } from "./Review.style";
+import { ReviewLayout } from "./Review.style";
 import ReturnBlock from "~/components/ReturnLink/Return";
 import { Link } from "react-router-dom";
 
-export default function Review() {
+export default function ReviewPage() {
     return (
-        <ReviewPage>
+        <ReviewLayout>
             <Link to='/' style={{ 
                 textDecoration:'none', 
                 width:'400px', 
@@ -14,6 +14,6 @@ export default function Review() {
                 <ReturnBlock backmessage="Back to homepage" />
             </Link>
             <ReviewForm />
-        </ReviewPage>
+        </ReviewLayout>
     );
 }

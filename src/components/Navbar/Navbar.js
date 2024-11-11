@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
-import { BrowserRouter as Router } from 'react-router-dom';
-//import SearchResultList from '../SearchResultList/SearchResultList';
-import { Money } from '@mui/icons-material';
 
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    //const [isMobile, setIsMobile] = useState(false); // Track mobile view
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -19,14 +15,13 @@ const Navbar = () => {
             <SearchContainer>
                 <SearchInput type="text" placeholder="Search..." />
             </SearchContainer>
+            <MenuItem to="/about">Categories</MenuItem>
             <HamburgerIcon onClick={toggleMenu}>
                 <span></span>
                 <span></span>
                 <span></span>
             </HamburgerIcon>
             <Menu isOpen={isOpen}>
-                <MenuItem to="/">Home</MenuItem>
-                <MenuItem to="/about">Categories</MenuItem>
                 <MenuItem to="/sign-up">Sign Up</MenuItem>
                 <MenuItem to="/log-in">Log In</MenuItem>
             </Menu>

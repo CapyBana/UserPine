@@ -13,9 +13,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   :root {
+    //color
     --primary-red: #e12117; 
     --primary-red-hover: #ff6347; 
     --primary-black: #D9D9D9;
+    --blue-effect: #1D269A;
     --boundedFont: 'Unbounded', sans-serif;
     --super-text_size: 52px;
     --primary-text_size: 40px;
@@ -42,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     min-height: 100vh; 
     text-rendering: optimizeSpeed;
-    background-color: #ffffff;
+    background-color: #181818;
   }
 
   #root {

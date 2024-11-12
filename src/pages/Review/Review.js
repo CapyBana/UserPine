@@ -3,7 +3,7 @@ import { ReviewPage } from "./Review.style";
 import ReturnBlock from "~/components/ReturnLink/Return";
 import { Link } from "react-router-dom";
 
-export default function Review() {
+const Review = () => {
     return (
         <ReviewPage>
             <Link to='/' style={{ 
@@ -13,7 +13,9 @@ export default function Review() {
             }}>
                 <ReturnBlock backmessage="Back to homepage" />
             </Link>
-            <ReviewForm />
+            <ReviewForm name="Movie Title" />
         </ReviewPage>
     );
 }
+
+export default Review;

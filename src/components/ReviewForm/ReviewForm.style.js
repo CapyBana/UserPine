@@ -74,13 +74,15 @@ export const Review = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
+    float: left;
+    width: 85%;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
     height: 960px;
     border-radius: 30px;
     background-color: #401313;
     margin-top: 50px;
+    padding: 40px 60px 40px;
     color: #fae6e5;
 `;
 
@@ -88,8 +90,6 @@ export const StarReview = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 60px 60px 70px;
-    height: 0px;
 `;
 
 // export const Question = styled.p`
@@ -113,7 +113,7 @@ export const StarReviewRating = styled(Rating)`
 `;
 
 export const TextReview = styled.div`
-    margin: 0px 60px;
+    margin: 40px 0px;
 `;
 
 export const CommentArea = styled.textarea`

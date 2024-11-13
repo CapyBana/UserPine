@@ -1,14 +1,23 @@
 import React from 'react';
 import { Capybana, InputBox, SignInBox, SignInLayout, SignInPage } from './signUpPage.style';
+import ReturnBlock from '~/components/ReturnLink/Return';
+import { Link } from 'react-router-dom';
 // import Boxicons from 'boxicons'; //để nguyên cái này đừng xoá nha
 const SignUpPage = () => {
     return (
         <SignInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <SignInPage>
-                <a href="log-in">
-                    <text>⬅ Back to Home page</text>
-                </a>
+                <Link
+                    to="/"
+                    style={{
+                        textDecoration: 'none',
+                        width: '400px',
+                        padding: '80px 2.5% 15px',
+                    }}
+                >
+                    <ReturnBlock backmessage="Back to homepage" />
+                </Link>
                 <SignInBox>
                     <text class="intro">
                         Be a part of <Capybana>Capybana Community</Capybana>

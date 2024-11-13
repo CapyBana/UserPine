@@ -61,6 +61,8 @@ export const Review = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
+    float: left;
+    width: 85%;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -102,6 +104,7 @@ export const TextReview = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin: 40px 0px;
 `;
 
 export const CommentArea = styled.textarea`

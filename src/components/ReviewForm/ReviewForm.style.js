@@ -7,17 +7,14 @@ export const GeneralReview = styled.div`
     position: relative;
     width: 100%;
     margin-top: 50px;
+    color: var(--primary-white);
     * {
         font-family: var(--boundedFont);
     }
     h1 {
         font-size: var(--primary-text_size);
     }
-    h3 {
-        font-size: var(--large-text_size);
-    }
     p {
-        font-size: var(--normal-text_size);
         font-weight: var(--small-fontWeight);
     }
 `;
@@ -29,33 +26,24 @@ export const HorizontalMovieCard = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
-    height: 250px;
+    width: 80%;
     border-radius: 30px;
-    background-color: #180d0d;
+    background-color: var(--horizontal-mv-card-background);
 `;
 
 export const MovieImg = styled.img`
     width: 140px;
-    margin: 20px 50px;
     border-radius: 10px;
 `;
 
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
-    margin-right: 50px;
-    color: #fae6e5;
-    p {
-        margin-bottom: 20px;
-    }
+    justify-content: space-between;
 `;
 
 export const MovieTitle = styled.div`
-    font-size: 40px;
-    font-weight: 800;
-    margin: 20px 0 15px;
+    font-weight: var(--large-fontWeight);
 `;
 
 export const MovieRating = styled.div`
@@ -67,7 +55,6 @@ export const MovieRating = styled.div`
 export const StarRating = styled(Rating)`
     width: 100%;
     gap: 10px;
-    justify-content: flex-start;
 `;
 
 export const Review = styled.div`
@@ -78,17 +65,16 @@ export const Review = styled.div`
     width: 85%;
     left: 50%;
     transform: translateX(-50%);
-    height: 960px;
+    width: 80%;
     border-radius: 30px;
-    background-color: #401313;
-    margin-top: 50px;
-    padding: 40px 60px 40px;
-    color: #fae6e5;
+    background-color: var(--prompt-container-background);
 `;
 
 export const StarReview = styled.div`
     display: flex;
-    flex-direction: row;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     align-items: center;
 `;
 
@@ -99,31 +85,35 @@ export const StarReview = styled.div`
 
 export const StarPrompt = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    width: 600px;
-    h3 {
-        padding-right: 16px;
+    h5 {
+        padding-right: 20px;
     }
 `;
 
 export const StarReviewRating = styled(Rating)`
+    display: flex;
     width: 100%;
     gap: 5px;
 `;
 
 export const TextReview = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 40px 0px;
 `;
 
 export const CommentArea = styled.textarea`
     width: 100%;
-    background-color: #231b1b;
+    background-color: var(--prompt-area-background);
+    color: var(--primary-white);
     border: 0px;
     padding: 20px;
-    color: #fae6e5;
     margin-top: 20px;
-    font-size: var(--medium-text_size);
     border-radius: 10px;
 `;
 
@@ -132,15 +122,12 @@ export const PostContainer = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     width: 100%;
-    margin: 30px 0px;
 `;
 
 export const Post = styled.input`
     font-weight: var(--normal-fontWeight);
-    font-size: var(--large-text_size);
-    background-color: #1d269a;
-    color: #fae6e5;
+    background-color: var(--blue-effect);
     border: 0px;
-    padding: 15px 30px;
     border-radius: 40px;
+    color: var(--primary-white);
 `;

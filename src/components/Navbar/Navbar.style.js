@@ -74,9 +74,9 @@ export const MenuItem = styled(Link)`
         width: 150%;
         background: #791B16;
         border-radius: 20px;
-        padding: 5px 5px 5px 5px;
+        transform: translate(-17.5%, 0);
+        padding: 5%;
         position: absolute;
-        transform: translate(-22px, 0);
         z-index: 999;
         display: none;
     }

@@ -14,10 +14,14 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
     //color
+    --primary-white: #fae6e5;
     --primary-red: #e12117; 
     --primary-red-hover: #ff6347; 
     --primary-black: #D9D9D9;
     --blue-effect: #1D269A;
+    --horizontal-mv-card-background: #180d0d;
+    --prompt-container-background: #401313;
+    --prompt-area-background: #231b1b;
     --boundedFont: 'Unbounded', sans-serif;
     --super-text_size: 52px;
     --primary-text_size: 40px;

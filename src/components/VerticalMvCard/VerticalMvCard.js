@@ -8,7 +8,7 @@ const VerticalMvCard = (props) => {
 
     return (
         <MovieCard style={{ borderRadius: '10px' }}>
-            <Link to='/review-post'>
+            <Link to='/movie-info'>
                 <Image src={Img}></Image>
             </Link>
             <MvRating

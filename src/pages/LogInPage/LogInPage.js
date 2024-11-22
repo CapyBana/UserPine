@@ -1,63 +1,58 @@
 import React from 'react';
-import { BackToHomePage, FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
+import { InputBox, SignInBox, SignInLayout, SignInPage } from './logInStyle';
 
 const LogInPage = () => {
     return (
-        <LogInLayout>
+        <SignInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
-            <a href="sign-up">
-                <BackToHomePage>⬅ Back to Home page</BackToHomePage>
-            </a>
-            <SignInBox>
-                <MainContent>Log in</MainContent>
-                <form action="somewhere" method="POST">
-                    <div style={{ textAlign: 'left', marginBottom: '8px' }}>
-                        <text> Username or Email </text>
-                    </div>
-                    <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="text" id="username" minLength="6" maxLength="30" required />
-                        <box-icon
-                            style={{ position: 'absolute', top: '32.5%', right: '20px' }}
-                            type="solid"
-                            name="user"
-                            size="sm"
-                        />
-                    </InputBox>
-                    <br />
-                    <InputBox style={{ position: 'relative' }} />
-
-                    <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}>
-                        {' '}
-                        {/* Tăng margin ở đây */}
-                        Password
-                    </div>
-                    <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="password" id="password" minLength="8" maxLength="30" required />
-                        <box-icon
-                            style={{ position: 'absolute', top: '32.5%', right: '20px' }}
-                            type="solid"
-                            name="lock-alt"
-                            size="sm"
-                        />
-                    </InputBox>
-                    <br />
-                    <InputBox style={{ position: 'relative' }} />
-
-                    {/* Centered link */}
-                    <div style={{ textAlign: 'center' }}>
-                        <a href="sign-up">Forgot password • Create an account</a>
-                    </div>
-                    <br />
-                    {/* Centered Submit Button */}
-                    <div style={{ textAlign: 'center' }}>
-                        <SubmitButton type="submit" id="submitButton">
-                            Log in
-                        </SubmitButton>
-                    </div>
-                </form>
-            </SignInBox>
-        </LogInLayout>
+            <SignInPage>
+                <a href="sign-up">
+                    <text>⬅ Back to Home page</text>
+                </a>
+                <SignInBox>
+                    <h1 className="mainContent">Log In</h1>
+                    <form action="somewhere" method="POST" className="PC">
+                        {/* Username or Email Label */}
+                        <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}>
+                            <text style={{ fontSize: '23px' }}>Username or Email</text>
+                        </div>
+                        <InputBox style={{ position: 'relative' }}>
+                            <input
+                                className="fillInBox"
+                                type="text"
+                                id="username"
+                                minLength="6"
+                                maxLength="30"
+                                required
+                            />
+                            <box-icon type="solid" name="user" size="sm"></box-icon>
+                        </InputBox>
+                        
+                        {/* Password Label */}
+                        <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}>
+                            <text style={{ fontSize: '23px' }}>Password</text>
+                        </div>
+                        <InputBox style={{ position: 'relative' }}>
+                            <input
+                                className="fillInBox"
+                                type="password"
+                                id="password"
+                                minLength="8"
+                                maxLength="30"
+                                required
+                            />
+                            <box-icon type="solid" name="lock-alt" size="sm"></box-icon>
+                        </InputBox>
+                        <text>
+                            <a href="sign-up" style={{ color: 'white' }}>Forgot password • Create an account</a>
+                        </text>                        
+                        <button type="submit" id="submitButton">
+                        <text style={{ fontSize: '30px' }}>Log in</text>
+                        </button>
+                    </form>
+                </SignInBox>
+            </SignInPage>
+        </SignInLayout>
     );
 };
 

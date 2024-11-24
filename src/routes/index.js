@@ -5,6 +5,7 @@ import UserProfile from '~/pages/UserProfile/userProfile';
 import Review from '~/pages/Review/Review';
 import ReviewPage from '~/pages/Review/Review';
 import MovieInfo from '~/pages/MovieInfo/MovieInfo';
+import trendingMovie from '~/components/trendingMoviePage/trendingMovie';
 
 
 const routes = [
@@ -14,6 +15,9 @@ const routes = [
     { path: '/log-in', component: LogInPage },
     { path: '/user-profile', component: UserProfile, layout: null },
     { path: '/movie-info', component: MovieInfo },
+    { path: '/trending-movie', component: trendingMovie },
+
+
 ];
 
 export { routes };

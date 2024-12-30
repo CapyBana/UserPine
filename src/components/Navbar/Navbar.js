@@ -6,9 +6,13 @@ import { Money } from '@mui/icons-material';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [CatOpen, setCat] = useState(false);
     //const [isMobile, setIsMobile] = useState(false); // Track mobile view
 
     const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+    const toggleCat = () => {
         setIsOpen(!isOpen);
     };
 
@@ -30,7 +34,7 @@ const Navbar = (props) => {
                 <MenuItem onClick={() => props.handlePage('/')} to="/about">
                     <ul>
                         <li>Categories
-                            <ul class="dropdown">
+                            <ul class="dropdown" CatOpen={CatOpen}>
                                 <li><a>Action</a></li>
                                 <li><a>Crime</a></li>
                                 <li><a>Horror</a></li>

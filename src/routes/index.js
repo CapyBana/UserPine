@@ -3,6 +3,9 @@ import SignUpPage from '~/pages/SignUpPage/signUpPage';
 import LogInPage from '~/pages/LogInPage/LogInPage';
 import UserProfile from '~/pages/UserProfile/userProfile';
 import Review from '~/pages/Review/Review';
+//import ReviewPage from '~/pages/Review/Review';
+import MovieInfo from '~/pages/MovieInfo/MovieInfo';
+import Notification from '~/components/Notification/NotiMess';
 
 import SearchPage from '~/pages/SearchPage/SearchPage';
 
@@ -13,7 +16,8 @@ const routes = [
     { path: '/log-in', component: LogInPage },
     { path: '/user-profile', component: UserProfile, layout: null },
     { path: '/search-result', component: SearchPage, layout: null },
-
+    { path: '/movie-info', component: MovieInfo },
+    { path: '/noti', component: Notification }
 ];
 
 export { routes };

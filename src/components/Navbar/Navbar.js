@@ -22,9 +22,10 @@ const Navbar = (props) => {
                 <span></span>
             </HamburgerIcon>
             <Menu isOpen={isOpen}>
-                <MenuItem onClick={() => props.handlePage('/')} to="/">
+                <MenuItem onClick={() => props.handlePage('/')} to="/>
                     Home
                 </MenuItem>
+                <MenuItem to="/">
                 <MenuItem onClick={() => props.handlePage('/')} to="/about">
                     <ul>
                         <li>

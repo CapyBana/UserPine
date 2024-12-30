@@ -7,17 +7,17 @@ import Review from '~/pages/Review/Review';
 import MovieInfo from '~/pages/MovieInfo/MovieInfo';
 import Notification from '~/components/Notification/NotiMess';
 
-
+import SearchPage from '~/pages/SearchPage/SearchPage';
 
 const routes = [
     { path: '/', component: Dashboard },
-    { path: '/review-post', component: Review },
+    { path: '/review-post', component: Review, layout: null },
     { path: '/sign-up', component: SignUpPage },
     { path: '/log-in', component: LogInPage },
     { path: '/user-profile', component: UserProfile, layout: null },
+    { path: '/search-result', component: SearchPage, layout: null },
     { path: '/movie-info', component: MovieInfo },
-    { path: '/noti', component: Notification },
-
+    { path: '/noti', component: Notification }
 ];
 
 export { routes };

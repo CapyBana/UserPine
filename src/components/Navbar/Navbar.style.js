@@ -78,7 +78,7 @@ export const MenuItem = styled(Link)`
         transform: translate(-17.5%, 0);
         padding: 5%;
         position: absolute;
-        z-index: 9;
+        z-index: 999;
         display: none;
     }
     ul li ul.dropdown li {

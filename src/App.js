@@ -3,6 +3,7 @@ import { routes } from './routes';
 import { Fragment, useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import SignUpPage from './pages/SignUpPage/signUpPage';
+import LogInPage from './pages/LogInPage/LogInPage';
 
 function App() {
     const [element, setElement] = useState('');
@@ -11,7 +12,7 @@ function App() {
         <div className="app">
             <Navbar handlePage={(val) => setElement(val)} />
             {element === 'sign-up' && <SignUpPage></SignUpPage>}
-
+            {element === 'log-in' && <LogInPage></LogInPage>}
             <Routes>
                 {routes.map((route, index) => {
                     const Layout = route.layout ? route.layout : Fragment;

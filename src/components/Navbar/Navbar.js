@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
-import { BrowserRouter as Router } from 'react-router-dom';
-//import SearchResultList from '../SearchResultList/SearchResultList';
-import { Money } from '@mui/icons-material';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +15,9 @@ const Navbar = (props) => {
 
     return (
         <NavbarContainer>
-            <Logo to="/">MyLogo</Logo>
+            <Logo onClick={() => props.handlePage('/')} to="/">
+                MyLogo
+            </Logo>
             <SearchContainer>
                 <SearchInput type="text" placeholder="Search..." />
             </SearchContainer>
@@ -47,7 +46,7 @@ const Navbar = (props) => {
                     </ul>
                 </MenuItem>
                 <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>
-                <MenuItem to="/log-in">Log In</MenuItem>
+                <MenuItem onClick={() => props.handlePage('log-in')}>Log In</MenuItem>
             </Menu>
         </NavbarContainer>
     );

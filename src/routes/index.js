@@ -3,13 +3,9 @@ import SignUpPage from '~/pages/SignUpPage/signUpPage';
 import LogInPage from '~/pages/LogInPage/LogInPage';
 import UserProfile from '~/pages/UserProfile/userProfile';
 import ReviewPage from '~/pages/Review/Review';
-import MovieInfo from '~/pages/MovieInfo/MovieInfo';
 import Review from '~/pages/Review/Review';
-//import ReviewPage from '~/pages/Review/Review';
 import MovieInfo from '~/pages/MovieInfo/MovieInfo';
 import Notification from '~/components/Notification/NotiMess';
-
-
 
 const routes = [
     { path: '/', component: Dashboard },
@@ -18,7 +14,6 @@ const routes = [
     { path: '/log-in', component: LogInPage },
     { path: '/user-profile', component: UserProfile, layout: null },
     { path: '/movie-info', component: MovieInfo },
-
     { path: '/noti', component: Notification },
 ];
 

@@ -13,6 +13,7 @@
     "axios": "^1.7.7",
     "boxicons": "^2.1.4",
     "customize-cra": "^1.0.0",
+    "dotenv": "^16.4.7",
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-app-rewired": "^2.2.1",

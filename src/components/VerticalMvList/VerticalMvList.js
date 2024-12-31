@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { MovieList, MovieListContainer, Navigator } from './VerticalMvList.style';
 import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
-const VerticalMvList = () => {
+const VerticalMvList = (props) => {
     const [count, setCount] = useState(0);
     const movieListRef = useRef(null);
 
@@ -16,7 +16,7 @@ const VerticalMvList = () => {
     };
     return (
         <MovieListContainer>
-            <h3>Top Movie</h3>
+            <h3>Title</h3>
             <div>
                 <MovieList ref={movieListRef}>
                     <VerticalMvCard name="Movie No1" />
@@ -37,5 +37,21 @@ const VerticalMvList = () => {
         </MovieListContainer>
     );
 };
-
+{
+    /* <MovieListContainer>
+            <h3>Title</h3>
+            <div>
+                <MovieList ref={movieListRef}>
+                    {data.map((movie, index) => (
+                        <VerticalMvCard key={index} name={movie.name} />
+                    ))}
+                </MovieList>
+                <Navigator
+                    onClick={() => {
+                        scrollRight();
+                    }}
+                />
+            </div>
+        </MovieListContainer> */
+}
 export default VerticalMvList;

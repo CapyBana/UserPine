@@ -5,7 +5,6 @@ const LogInPage = () => {
     return (
         <LogInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
             <a href="sign-up">
                 <BackToHomePage>⬅ Back to Home page</BackToHomePage>
             </a>

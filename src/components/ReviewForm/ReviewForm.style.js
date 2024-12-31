@@ -39,7 +39,12 @@ export const MovieImg = styled.img`
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 50px;
+    color: #fae6e5;
+    p {
+        margin-bottom: 20px;
+    }
 `;
 
 export const MovieTitle = styled.div`

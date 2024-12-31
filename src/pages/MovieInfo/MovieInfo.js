@@ -52,7 +52,7 @@ const MovieInfo = () => {
             <MoviePageLayout>
                 <MovieInfoCard>
                     <MovieImg src={naruto} alt="Movie Picture" />
-                    <Movie style={{margin: "20px"}}>
+                    <Movie style={{padding: "20px"}}>
                         <MovieRating>
                             <h4 style={{ marginRight:'30px' }}>{rating}</h4>
                             <StarRating size="large" name="rt" value={rating} precision={0.1} readOnly />

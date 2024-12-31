@@ -11,8 +11,8 @@ function App() {
     return (
         <div className="app">
             <Navbar handlePage={(val) => setElement(val)} />
-            {element === 'sign-up' && <SignUpPage></SignUpPage>}
-            {element === 'log-in' && <LogInPage></LogInPage>}
+            {element === 'sign-up' && <SignUpPage handlePage={(val) => setElement(val)}></SignUpPage>}
+            {element === 'log-in' && <LogInPage handlePage={(val) => setElement(val)}></LogInPage>}
             <Routes>
                 {routes.map((route, index) => {
                     const Layout = route.layout ? route.layout : Fragment;

@@ -3,8 +3,13 @@ import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, Hamburge
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [CatOpen, setCat] = useState(false);
+    //const [isMobile, setIsMobile] = useState(false); // Track mobile view
 
     const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+    const toggleCat = () => {
         setIsOpen(!isOpen);
     };
 
@@ -27,30 +32,15 @@ const Navbar = (props) => {
                 </MenuItem>
                 <MenuItem onClick={() => props.handlePage('/')} to="/about">
                     <ul>
-                        <li>
-                            Categories
-                            <ul class="dropdown">
-                                <li>
-                                    <a href="/">Action</a>
-                                </li>
-                                <li>
-                                    <a href="/">Crime</a>
-                                </li>
-                                <li>
-                                    <a href="/">Horror</a>
-                                </li>
-                                <li>
-                                    <a href="/">Drama</a>
-                                </li>
-                                <li>
-                                    <a href="/">Fantasy</a>
-                                </li>
-                                <li>
-                                    <a href="/">Comedy</a>
-                                </li>
-                                <li>
-                                    <a href="/">Mystery</a>
-                                </li>
+                        <li>Categories
+                            <ul class="dropdown" CatOpen={CatOpen}>
+                                <li><a>Action</a></li>
+                                <li><a>Crime</a></li>
+                                <li><a>Horror</a></li>
+                                <li><a>Drama</a></li>
+                                <li><a>Fantasy</a></li>
+                                <li><a>Comedy</a></li>
+                                <li><a>Mystery</a></li>
                             </ul>
                         </li>
                     </ul>

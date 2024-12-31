@@ -65,9 +65,13 @@ export const Review = styled.div`
     width: 85%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    height: 960px;
     border-radius: 30px;
-    background-color: var(--prompt-container-background);
+    background-color: #401313;
+    margin-top: 50px;
+    padding: 40px 60px 40px;
+    color: #fae6e5;
+
 `;
 
 export const StarReview = styled.div`

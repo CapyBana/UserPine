@@ -41,6 +41,7 @@ export const Menu = styled.div`
         width: 100%;
         padding: 20px;
     }
+    overflow-y: scroll;
 `;
 
 export const MenuItem = styled(Link)`
@@ -92,9 +93,36 @@ export const MenuItem = styled(Link)`
         display: block;
     }
     &:hover {
-        color: #fae6e5;
+        background: #791B16;
         ul.dropdown {
             display: block;
+        }
+    }
+    @media (max-width: 768px) {
+        ul {
+            width: 100%;
+            position: relative;
+        }
+        ul li a {
+            background: #791B16;
+            display: block;
+            margin: 0;
+            padding-left: 10px;
+            border-radius: 0;
+            text-align: left;
+        }
+        ul li ul.dropdown {
+            position: relative;
+            border-radius: 0;
+            transform: none;
+            left: 25%;
+            padding: 0;
+        }
+        ul li a:hover {
+            background-color: var(--primary-red);
+        }
+        ul li ul.dropdown li {
+            align: initial;
         }
     }
 `;

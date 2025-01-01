@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import narutoImg from 'src/assets/images/naruto.png';
 import { useEffect } from 'react';
-import onePieceImg from 'src/assets/images/one_piece.png';
 
 export const EffectCardContainer = styled.div`
     background-color: var(--blue-effect);
@@ -10,28 +8,34 @@ export const EffectCardContainer = styled.div`
     border-radius: 16px;
 `;
 export const EffectMovie = styled.div`
+    width: 240px;
     padding: 16px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
-const TranslateMvCard = () => {
-    let imgList = [narutoImg, onePieceImg];
+const TranslateMvCard = (props) => {
+    const mvData = props.data;
     const [idx, setIdx] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {
-            setIdx((prevIdx) => (prevIdx + 1) % imgList.length);
+            setIdx((prevIdx) => (prevIdx + 1) % mvData.length);
         }, 2000);
 
         return () => clearInterval(interval);
-    }, [imgList.length]);
+    }, [mvData.length]);
     return (
         <EffectCardContainer>
             <EffectMovie>
                 <h4>From your wishlist</h4>
                 <img
-                    style={{ height: '250px', width: '170px', borderRadius: '16px' }}
-                    src={imgList[idx]}
+                    style={{ height: '250px', width: '90%', borderRadius: '16px' }}
+                    src={mvData[idx].img}
                     alt="Slideshow"
                 ></img>
+                <h3>{mvData[idx].name}</h3>
             </EffectMovie>
         </EffectCardContainer>
     );

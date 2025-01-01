@@ -4,6 +4,8 @@ import axios from 'axios';
 import TranslateMvCard from '~/components/MvCardEffect/TranslateMvCard';
 import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
 import { LoginContext } from '~/context/loginContext';
+import narutoImg from 'src/assets/images/naruto.png';
+import onePieceImg from 'src/assets/images/one_piece.png';
 
 export const DashboardLayout = styled.div`
     width: 100%;
@@ -23,7 +25,7 @@ export default function Dashboard() {
                 const response = axios.get(`${apiUrl}/api/movies`, {
                     params: {
                         current: 1,
-                        pageSize: 2,
+                        pageSize: 10,
                     },
                 });
                 setData(response.data);
@@ -43,11 +45,21 @@ export default function Dashboard() {
     if (error) {
         return <p>Error: {error}</p>;
     }
+    const hardData = [
+        { name: 'Inception', rating: 4, img: narutoImg },
+        { name: 'The Dark Knight', rating: 3.5, img: onePieceImg },
+        { name: 'Interstellar', rating: 4, img: narutoImg },
+        { name: 'Parasite', rating: 4.5, img: onePieceImg },
+        { name: 'Avengers: Endgame', rating: 3, img: narutoImg },
+        { name: 'The Shawshank Redemption', rating: 2.5, img: onePieceImg },
+        { name: 'Pulp Fiction', rating: 3, img: narutoImg },
+        { name: 'The Godfather', rating: 4.5, img: onePieceImg },
+    ];
 
     return (
         <DashboardLayout>
-            <VerticalMvList data={data} />
-            <TranslateMvCard data={data} />
+            <VerticalMvList title="top Movie" data={hardData} />
+            <TranslateMvCard data={hardData} />
         </DashboardLayout>
     );
 }

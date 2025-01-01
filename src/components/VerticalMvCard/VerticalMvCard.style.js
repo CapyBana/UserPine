@@ -14,7 +14,9 @@ export const MovieCard = styled(Card)`
 
 export const Image = styled.img`
     width: 100%;
+    height: 100%;
     border-radius: 10px;
+    max-height: 260px;
 `;
 
 export const MvRating = styled(Rating)`

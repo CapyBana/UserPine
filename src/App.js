@@ -7,7 +7,6 @@ import LogInPage from './pages/LogInPage/LogInPage';
 
 function App() {
     const [element, setElement] = useState('');
-
     return (
         <div className="app">
             <Navbar handlePage={(val) => setElement(val)} />

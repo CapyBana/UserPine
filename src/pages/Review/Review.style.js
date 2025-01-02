@@ -9,3 +9,4 @@ export const ReviewPage = styled.div`
     font-family: var(--boundedFont);
     height: 970px;
 `;
+

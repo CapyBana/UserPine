@@ -39,6 +39,13 @@ export const InfoBlock = styled.div`
         border-radius: 30px;
         background-color: #0a674f;
     }
+    @media (max-width: 768px) {
+        width: 100%;
+        height: auto;
+        .descriptionBlock {
+            margin-bottom: 20px;
+        }
+    }
 `;
 
 export const MovieInfoCard = styled.div`
@@ -49,6 +56,7 @@ export const MovieInfoCard = styled.div`
     transform: translateX(-50%);
     width: 85%;
     height: 250px;
+    padding: 25px;
     border-radius: 30px;
     background-color: #180d0d;
 `;
@@ -63,6 +71,10 @@ export const PPAL = styled.div`
     background-color: #0a674f;
     color: #fae6e5;
     padding: 40px 40px 40px;
+    @media (max-width: 768px) {
+        width: 100%;
+
+    }
 `;
 
 export const MoviePageLayout = styled.div`
@@ -70,7 +82,6 @@ export const MoviePageLayout = styled.div`
     flex-direction: column;
     position: relative;
     width: 100%;
-    margin-top: 50px;
     * {
         font-family: var(--boundedFont);
     }

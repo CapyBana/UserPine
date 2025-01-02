@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
+import { LoginContext } from '~/context/loginContext';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [CatOpen, setCat] = useState(false);
+    //const [isMobile, setIsMobile] = useState(false); // Track mobile view
+    const { isLoggedIn } = useContext(LoginContext);
+    //const [accessToken, setAccessToken] = useState(null); // State for storing the token
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
+    const toggleCat = () => {
+        setIsOpen(!isOpen);
+    };
+    // useEffect(() => {
+    //     const token = localStorage.getItem('accessToken');
+    //     setAccessToken(token);
+    // }, []);
     return (
         <NavbarContainer>
             <Logo onClick={() => props.handlePage('/')} to="/">
@@ -29,34 +40,57 @@ const Navbar = (props) => {
                     <ul>
                         <li>
                             Categories
-                            <ul class="dropdown">
+                            <ul class="dropdown" CatOpen={CatOpen}>
                                 <li>
-                                    <a href="/">Action</a>
+                                    <a>Action</a>
                                 </li>
                                 <li>
-                                    <a href="/">Crime</a>
+                                    <a>Crime</a>
                                 </li>
                                 <li>
-                                    <a href="/">Horror</a>
+                                    <a>Horror</a>
                                 </li>
                                 <li>
-                                    <a href="/">Drama</a>
+                                    <a>Drama</a>
                                 </li>
                                 <li>
-                                    <a href="/">Fantasy</a>
+                                    <a>Fantasy</a>
                                 </li>
                                 <li>
-                                    <a href="/">Comedy</a>
+                                    <a>Comedy</a>
                                 </li>
                                 <li>
-                                    <a href="/">Mystery</a>
+                                    <a>Mystery</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </MenuItem>
-                <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>
-                <MenuItem onClick={() => props.handlePage('log-in')}>Log In</MenuItem>
+                {isLoggedIn ? (
+                  <MenuItem>
+                        <ul>
+                            <li>
+                                My Account
+                                <ul class="dropdown" CatOpen={CatOpen}>
+                                    <li>
+                                        <a>My movie</a>
+                                    </li>
+                                    <li>
+                                        <a>Settings</a>
+                                    </li>
+                                    <li>
+                                        <a>Log out</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </MenuItem>
+              ) : (
+                    <>
+                        <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>
+                        <MenuItem onClick={() => props.handlePage('log-in')}>Log In</MenuItem>
+                    </>
+                )}
             </Menu>
         </NavbarContainer>
     );

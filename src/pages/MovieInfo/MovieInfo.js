@@ -4,7 +4,7 @@ import { Movie, MovieImg, MovieRating, MovieTitle, StarRating } from "~/componen
 import naruto from 'src/assets/images/naruto.png';
 import { Link } from "react-router-dom";
 import ReturnBlock from "~/components/ReturnLink/Return";
-import { ReviewLayout } from "../Review/Review.style";
+import { ReviewPage } from "../Review/Review.style";
 import Img from 'src/assets/images/naruto.png';
 import { Image, MvDetail, MvRating } from "~/components/VerticalMvCard/VerticalMvCard.style";
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
@@ -41,7 +41,7 @@ const MovieInfo = () => {
     const movieListRef = useRef(null);
 
     return (
-        <ReviewLayout>
+        <ReviewPage>
             <Link to='/' style={{ 
                 textDecoration:'none', 
                 width:'400px', 
@@ -52,7 +52,7 @@ const MovieInfo = () => {
             <MoviePageLayout>
                 <MovieInfoCard>
                     <MovieImg src={naruto} alt="Movie Picture" />
-                    <Movie style={{margin: "20px"}}>
+                    <Movie style={{padding: "20px"}}>
                         <MovieRating>
                             <h4 style={{ marginRight:'30px' }}>{rating}</h4>
                             <StarRating size="large" name="rt" value={rating} precision={0.1} readOnly />
@@ -110,7 +110,7 @@ const MovieInfo = () => {
                     </PPAL>
                 </InfoLayout>
             </MoviePageLayout>
-        </ReviewLayout>
+        </ReviewPage>
     );
 };
 export default MovieInfo;

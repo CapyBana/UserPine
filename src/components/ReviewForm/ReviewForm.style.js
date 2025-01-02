@@ -39,7 +39,12 @@ export const MovieImg = styled.img`
 export const Movie = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 50px;
+    color: #fae6e5;
+    p {
+        margin-bottom: 20px;
+    }
 `;
 
 export const MovieTitle = styled.div`
@@ -65,9 +70,13 @@ export const Review = styled.div`
     width: 85%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    height: 960px;
     border-radius: 30px;
-    background-color: var(--prompt-container-background);
+    background-color: #401313;
+    margin-top: 50px;
+    padding: 40px 60px 40px;
+    color: #fae6e5;
+
 `;
 
 export const StarReview = styled.div`

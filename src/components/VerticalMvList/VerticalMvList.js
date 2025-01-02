@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { MovieList, MovieListContainer, Navigator } from './VerticalMvList.style';
 import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
-const VerticalMvList = () => {
+
+const VerticalMvList = (props) => {
     const [count, setCount] = useState(0);
     const movieListRef = useRef(null);
-
+    const mvList = props.data;
     const scrollRight = () => {
         const movieListElement = movieListRef.current;
         if (movieListElement) {
@@ -12,21 +13,17 @@ const VerticalMvList = () => {
         }
         const addingMovie = movieListElement.children[count].cloneNode(true);
         movieListElement.appendChild(addingMovie);
-        setCount((prevCount) => (prevCount + 1) % 8);
+        setCount((prevCount) => (prevCount + 1) % mvList.length);
     };
+
     return (
         <MovieListContainer>
-            <h3>Top Movie</h3>
+            <h3>{props.title}</h3>
             <div>
                 <MovieList ref={movieListRef}>
-                    <VerticalMvCard name="Movie No1" />
-                    <VerticalMvCard name="Movie No2" />
-                    <VerticalMvCard name="Movie No3" />
-                    <VerticalMvCard name="Movie No4" />
-                    <VerticalMvCard name="Movie No5" />
-                    <VerticalMvCard name="Movie No6" />
-                    <VerticalMvCard name="Movie No7" />
-                    <VerticalMvCard name="Movie No8" />
+                    {mvList.map((movie, index) => (
+                        <VerticalMvCard key={index} name={movie.name} rating={movie.rating} img={movie.img} />
+                    ))}
                 </MovieList>
                 <Navigator
                     onClick={() => {

@@ -66,7 +66,24 @@ const Navbar = (props) => {
                     </ul>
                 </MenuItem>
                 {Login ? (
-                    <MenuItem>My Account</MenuItem>
+                    <MenuItem>
+                        <ul>
+                            <li>
+                                My Account
+                                <ul class="dropdown" CatOpen={CatOpen}>
+                                    <li>
+                                        <a>My movie</a>
+                                    </li>
+                                    <li>
+                                        <a>Settings</a>
+                                    </li>
+                                    <li>
+                                        <a>Log out</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </MenuItem>
                 ) : (
                     <>
                         <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>

@@ -86,7 +86,7 @@ const MovieInfo = () => {
                                 <FavoriteBorderOutlinedIcon fontSize="large" />
                             </div>
                         </div>
-                        <div class="descriptionBlock" style={{height: "86%"}}>
+                        <div class="descriptionBlock" style={{height: "auto"}}>
                             <h2>Movie Description</h2>
                             <p>
                                 Naruto là một loạt manga Nhật Bản được viết và minh họa bởi Kishimoto Masashi. Câu chuyện xoay

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import TranslateMvCard from '~/components/MvCardEffect/TranslateMvCard';
 import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
+import { LoginContext } from '~/context/loginContext';
 import narutoImg from 'src/assets/images/naruto.png';
 import onePieceImg from 'src/assets/images/one_piece.png';
 
@@ -17,8 +18,7 @@ export default function Dashboard() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const apiUrl = process.env.REACT_APP_API_URL;
-
+    const { apiUrl } = useContext(LoginContext);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -36,7 +36,7 @@ export default function Dashboard() {
             }
         };
         fetchData();
-    }, []);
+    }, [apiUrl]);
 
     if (loading) {
         return <p>Loading...</p>;

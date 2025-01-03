@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
 import { LoginContext } from '~/context/loginContext';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [CatOpen, setCat] = useState(false);
     //const [isMobile, setIsMobile] = useState(false); // Track mobile view
-    const { isLoggedIn } = useContext(LoginContext);
+    const { isLoggedIn, logout } = useContext(LoginContext);
     //const [accessToken, setAccessToken] = useState(null); // State for storing the token
-
+    const navigate = useNavigate();
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -67,7 +68,7 @@ const Navbar = (props) => {
                     </ul>
                 </MenuItem>
                 {isLoggedIn ? (
-                  <MenuItem>
+                    <MenuItem>
                         <ul>
                             <li>
                                 My Account
@@ -79,13 +80,13 @@ const Navbar = (props) => {
                                         <a>Settings</a>
                                     </li>
                                     <li>
-                                        <a>Log out</a>
+                                        <a onClick={logout}>Log out</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </MenuItem>
-              ) : (
+                ) : (
                     <>
                         <MenuItem onClick={() => props.handlePage('sign-up')}>Sign Up</MenuItem>
                         <MenuItem onClick={() => props.handlePage('log-in')}>Log In</MenuItem>

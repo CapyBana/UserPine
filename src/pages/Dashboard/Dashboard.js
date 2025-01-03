@@ -131,6 +131,34 @@ export default function Dashboard() {
                 <VerticalMvList title="Top Movie" data={hardData} />
                 <CommentBlock>
                     <h3>Comment</h3>
+                    <UserComment>
+                        <text>Username</text>
+                        <div style={{display: "flex", flexDirection: "row"}}>
+                            <div style={{backgroundColor: "#1f1f1f", width: "1px", height: "auto", margin: "0 20px"}}></div>
+                            <div>
+                                <div className="head">
+                                    <MovieImg src={narutoImg} alt="Movie Picture" 
+                                        style={{width: "100px"}}/>
+                                    <div className="title">
+                                        <MovieTitle>Movie title</MovieTitle>
+                                        <MvRating
+                                            size="medium"
+                                            name="rt"
+                                            // value={rating}
+                                            precision={0.5}
+                                            readOnly
+                                        />
+                                    </div>
+                                </div>
+                                <text>Review title</text>
+                                <p>Lorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeerie
+                                gbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbj
+                                Lorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbjLorem nkjdvnkjdnfvksndvndsjkvnnesergeeriegbijreijbijbj
+                                </p>
+                            </div>
+                        </div>
+                        <div style={{backgroundColor: "#1f1f1f", width: "auto", height: "1px", margin: "0 20px"}}></div>
+                    </UserComment>
                     <CommentCard data={sth} />
                 </CommentBlock>
             </div>

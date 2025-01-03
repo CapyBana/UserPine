@@ -32,7 +32,7 @@ export const Menu = styled.div`
     display: flex;
     justify-content: right;
     @media (max-width: 768px) {
-        display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+        display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
         flex-direction: column;
         position: absolute;
         top: 60px;
@@ -83,6 +83,10 @@ export const MenuItem = styled(Link)`
     ul li ul.dropdown li {
         display: block;
         align: center;
+    }
+
+    ul li a {
+        color: #fff;
     }
     
     ul li a:hover {

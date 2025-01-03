@@ -18,7 +18,7 @@ export const DashboardLayout = styled.div`
 `;
 export const CommentBlock = styled.div`
     margin-top: 65px;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: black;
@@ -43,14 +43,46 @@ export const UserComment = styled.div`
     }
     p {
         font-size: var(--normal-text_size);
-        height: 150px;
+        max-height: 150px;
         width: auto;
+        padding: 10px 0;
         overflow-y: hidden;
     }
     text {
         font-size: var(--medium-text_size);
     }
 `
+
+const CommentCard = (props) => {
+    const cmtData = props.data;
+    return (
+        <UserComment>
+            <text>{cmtData.username}</text>
+            <div style={{display: "flex", flexDirection: "row"}}>
+                <div style={{backgroundColor: "#1f1f1f", width: "1px", height: "auto", margin: "0 20px"}}></div>
+                <div>
+                    <div class="head">
+                        <MovieImg src={narutoImg} alt="Movie Picture" 
+                            style={{width: "100px"}}/>
+                        <div class="title">
+                            <MovieTitle>{cmtData.title}</MovieTitle>
+                            <MvRating
+                                size="medium"
+                                name="rt"
+                                value={cmtData.rating}
+                                precision={0.5}
+                                readOnly
+                            />
+                        </div>
+                    </div>
+                    <p>{cmtData.review}</p>
+                </div>
+            </div>
+            <div style={{backgroundColor: "#1f1f1f", width: "auto", height: "1px", margin: "0 20px"}}></div>
+        </UserComment>
+    );
+};
+
 export default function Dashboard() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -92,10 +124,10 @@ export default function Dashboard() {
         { name: 'Pulp Fiction', rating: 3, img: narutoImg },
         { name: 'The Godfather', rating: 4.5, img: onePieceImg },
     ];
-
+    const sth = { username: 'aptapt', img: narutoImg, title: "Naruto", rating: 4, review: "hhsdbhcjscsjfwfwffoiwfofknfknkscnkjsnhwfhwknkwfhifhk"};
     return (
         <DashboardLayout>
-            <div style={{display: "flex", flexDirection: "column"}}>
+            <div style={{display: "flex", flexDirection: "column", margin: "10px"}}>
                 <VerticalMvList title="Top Movie" data={hardData} />
                 <CommentBlock>
                     <h3>Comment</h3>
@@ -127,6 +159,7 @@ export default function Dashboard() {
                         </div>
                         <div style={{backgroundColor: "#1f1f1f", width: "auto", height: "1px", margin: "0 20px"}}></div>
                     </UserComment>
+                    <CommentCard data={sth} />
                 </CommentBlock>
             </div>
             <TranslateMvCard data={hardData} />

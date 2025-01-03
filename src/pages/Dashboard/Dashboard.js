@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import TranslateMvCard from '~/components/MvCardEffect/TranslateMvCard';
 import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
+import { LoginContext } from '~/context/loginContext';
 import narutoImg from 'src/assets/images/naruto.png';
 import onePieceImg from 'src/assets/images/one_piece.png';
 import { MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
@@ -54,9 +55,7 @@ export default function Dashboard() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const apiUrl = process.env.REACT_APP_API_URL;
-    const [rating] = useState(4.5);
-
+    const { apiUrl } = useContext(LoginContext);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -74,7 +73,7 @@ export default function Dashboard() {
             }
         };
         fetchData();
-    }, []);
+    }, [apiUrl]);
 
     if (loading) {
         return <p>Loading...</p>;

@@ -6,6 +6,7 @@ export const EffectCardContainer = styled.div`
     background-color: var(--blue-effect);
     width: fit-content;
     border-radius: 16px;
+    height: fit-content;
 `;
 export const EffectMovie = styled.div`
     width: 240px;

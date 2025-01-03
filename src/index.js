@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.style';
 import { LoginProvider } from './context/loginContext';
+import { MovieProvider } from './context/movieContext';
 
 const container = document.getElementById('root');
 
@@ -15,9 +16,11 @@ if (container) {
         <React.StrictMode>
             <GlobalStyles />
             <LoginProvider>
-                <Router>
-                    <App />
-                </Router>
+                <MovieProvider>
+                    <Router>
+                        <App />
+                    </Router>
+                </MovieProvider>
             </LoginProvider>
         </React.StrictMode>,
     );

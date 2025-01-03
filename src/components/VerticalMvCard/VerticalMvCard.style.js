@@ -35,9 +35,11 @@ export const MvDetail = styled.div`
         font-size: 32px;
         margin-top: 0px;
         margin-left: 0px;
+        color: #fff;
     }
     h2 {
         padding-top: 20px;
         font-size: 12px;
+        color: #fff;
     }
 `;

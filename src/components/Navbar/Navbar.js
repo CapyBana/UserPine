@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
 import { LoginContext } from '~/context/loginContext';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,6 @@ const Navbar = (props) => {
     const { isLoggedIn, apiUrl, logout } = useContext(LoginContext);
     //const [accessToken, setAccessToken] = useState(null); // State for storing the token
     const [categories, setCategories] = useState([]);
-    const navigate = useNavigate();
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };

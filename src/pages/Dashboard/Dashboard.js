@@ -61,10 +61,10 @@ const CommentCard = (props) => {
             <div style={{display: "flex", flexDirection: "row"}}>
                 <div style={{backgroundColor: "#1f1f1f", width: "1px", height: "auto", margin: "0 20px"}}></div>
                 <div>
-                    <div class="head">
+                    <div className="head">
                         <MovieImg src={narutoImg} alt="Movie Picture" 
                             style={{width: "100px"}}/>
-                        <div class="title">
+                        <div className="title">
                             <MovieTitle>{cmtData.title}</MovieTitle>
                             <MvRating
                                 size="medium"
@@ -91,13 +91,9 @@ export default function Dashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = axios.get(`${apiUrl}/api/movies`, {
-                    params: {
-                        current: 1,
-                        pageSize: 10,
-                    },
-                });
-                setData(response.data);
+                const response = await axios.get(`${apiUrl}/api/movies`);
+                setData(response.data.data.result);
+                console.log(response.data.data.result)
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -128,7 +124,7 @@ export default function Dashboard() {
     return (
         <DashboardLayout>
             <div style={{display: "flex", flexDirection: "column", margin: "10px"}}>
-                <VerticalMvList title="Top Movie" data={hardData} />
+                <VerticalMvList title="Top Movie" data={data} />
                 <CommentBlock>
                     <h3>Comment</h3>
                     <UserComment>

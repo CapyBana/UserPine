@@ -104,15 +104,15 @@ export default function Dashboard() {
                         <div style={{display: "flex", flexDirection: "row"}}>
                             <div style={{backgroundColor: "#1f1f1f", width: "1px", height: "auto", margin: "0 20px"}}></div>
                             <div>
-                                <div class="head">
+                                <div className="head">
                                     <MovieImg src={narutoImg} alt="Movie Picture" 
                                         style={{width: "100px"}}/>
-                                    <div class="title">
+                                    <div className="title">
                                         <MovieTitle>Movie title</MovieTitle>
                                         <MvRating
                                             size="medium"
                                             name="rt"
-                                            value={rating}
+                                            // value={rating}
                                             precision={0.5}
                                             readOnly
                                         />

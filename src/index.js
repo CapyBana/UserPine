@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.style';
 import { SearchProvider } from './context/SearchProvider';
+import { LoginProvider } from './context/loginContext';
 
 const container = document.getElementById('root');
 
@@ -15,11 +16,14 @@ if (container) {
         
         <React.StrictMode>
             <GlobalStyles />
-            <SearchProvider>
-            <Router>
-                <App />
-            </Router>
-            </SearchProvider>
+            <LoginProvider>
+              <SearchProvider>
+                <Router>
+                    <App />
+                </Router>
+              </SearchProvider>
+            </LoginProvider>
+
         </React.StrictMode>,
     );
 

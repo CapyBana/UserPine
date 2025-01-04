@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BackToHomePage, FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
 import axios from 'axios';
+import { LoginContext } from '~/context/loginContext';
 
 const LogInPage = ({handlePage}) => {
+    const { login, apiUrl } = useContext(LoginContext);
+
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -22,7 +25,7 @@ const LogInPage = ({handlePage}) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://192.168.1.170:8080/login', {
+            const response = await axios.post(`${apiUrl}/login`, {
                 username: formData.username,
                 password: formData.password,
             });
@@ -30,8 +33,8 @@ const LogInPage = ({handlePage}) => {
             if (response.status === 200) {
                 setSuccess('Login successfully!');
                 setError(null);
+                login();
                 handlePage('/');
-                console.log(response);
             }
         } catch (err) {
             setError(err.response?.data?.message || 'An error occurred. Please try again.');

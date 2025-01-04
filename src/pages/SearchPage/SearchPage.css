@@ -1,0 +1,24 @@
+.search-result-page {
+    margin-top: 20px;
+    padding: 44px;
+    font-family: var(--boundedFont);
+}
+
+h3 {
+    color:#ccc;
+    width: 80%;
+    max-width: 1000px;
+    align-items: center;
+    margin:auto;
+    padding: 10px 0;
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* max-height: 90vh; /* Limit height for scrolling */
+    /* overflow-y: auto; Enable vertical scrolling */
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+}  

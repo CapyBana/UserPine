@@ -5,6 +5,7 @@ import UserProfile from '~/pages/UserProfile/userProfile';
 import Review from '~/pages/Review/Review';
 import MovieInfo from '~/pages/MovieInfo/MovieInfo';
 import Notification from '~/components/Notification/NotiMess';
+import SearchPage from '~/pages/SearchPage/SearchPage';
 
 const routes = [
     { path: '/', component: Dashboard },
@@ -14,6 +15,7 @@ const routes = [
     { path: '/user-profile', component: UserProfile, layout: null },
     { path: '/movie-info', component: MovieInfo },
     { path: '/noti', component: Notification },
+    { path: '/search-result/:result', component: SearchPage },
 ];
 
 export { routes };

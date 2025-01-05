@@ -3,17 +3,21 @@ import { MovieList, MovieListContainer, Navigator } from './VerticalMvList.style
 import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
 
 const VerticalMvList = (props) => {
-    const [count, setCount] = useState(0);
+    //const [count, setCount] = useState(0);
     const movieListRef = useRef(null);
-    const mvList = props.data;
+    const [mvList, setMvList] = useState(props.data);
     const scrollRight = () => {
         const movieListElement = movieListRef.current;
         if (movieListElement) {
+            // Scroll the movie list container
             movieListElement.scrollBy({ left: 176 + 16, behavior: 'smooth' });
         }
-        const addingMovie = movieListElement.children[count].cloneNode(true);
-        movieListElement.appendChild(addingMovie);
-        setCount((prevCount) => (prevCount + 1) % mvList.length);
+
+        // Clone the first movie and add it to the end of the list
+        setMvList((prevList) => {
+            const nextMovie = prevList[0]; // Take the first movie
+            return [...prevList.slice(1), nextMovie]; // Rotate the list
+        });
     };
 
     return (
@@ -21,15 +25,12 @@ const VerticalMvList = (props) => {
             <h3>{props.title}</h3>
             <div>
                 <MovieList ref={movieListRef}>
-                    {mvList.map((movie, index) => (
-                        <VerticalMvCard key={index} name={movie.name} rating={movie.rating} img={movie.img} />
-                    ))}
+                    {Array.isArray(mvList) &&
+                        mvList.map((movie) => (
+                            <VerticalMvCard key={movie.id} id={movie.id} name={movie.title} rating={movie.rating} img={movie.img} $movie={movie} />
+                        ))}
                 </MovieList>
-                <Navigator
-                    onClick={() => {
-                        scrollRight();
-                    }}
-                />
+                <Navigator onClick={scrollRight} />
             </div>
         </MovieListContainer>
     );

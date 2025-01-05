@@ -13,7 +13,7 @@ const routes = [
     { path: '/sign-up', component: SignUpPage },
     { path: '/log-in', component: LogInPage },
     { path: '/user-profile', component: UserProfile, layout: null },
-    { path: '/movie-info', component: MovieInfo },
+    { path: '/movie/:id', component: MovieInfo },
     { path: '/trending-movie', component: trendingMovie },
     { path: '/noti', component: Notification },
 ];

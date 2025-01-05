@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Image, MovieCard, MvDetail, MvRating } from './VerticalMvCard.style';
 import Img from 'src/assets/images/alterImg.png';
-import { useState, React } from 'react';
+import { React } from 'react';
 
 const VerticalMvCard = (props) => {
     return (

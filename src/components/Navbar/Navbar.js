@@ -9,10 +9,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [CatOpen, setCat] = useState(false);
 
     const [Login, setLogin] = useState(true);
-    const [accessToken, setAccessToken] = useState(null); // State for storing the token
   const { isLoggedIn, apiUrl, logout } = useContext(LoginContext);
   const [categories, setCategories] = useState([]);
 
@@ -28,9 +26,6 @@ const Navbar = (props) => {
     const handleKeywordChange = (e) => {
         setInputValue(e.target.value);
     }
-
-    
-
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };

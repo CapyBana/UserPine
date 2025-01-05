@@ -1,4 +1,4 @@
-import { React, useRef, useState } from "react";
+import { React, useContext, useRef, useState } from "react";
 import { InfoBlock, InfoLayout, MovieCard, MovieInfoCard, MovieList, MoviePageLayout, PPAL } from "./MovieInfo.style";
 import { Movie, MovieImg, MovieRating, MovieTitle, StarRating } from "~/components/ReviewForm/ReviewForm.style";
 import naruto from 'src/assets/images/naruto.png';
@@ -9,6 +9,7 @@ import Img from 'src/assets/images/naruto.png';
 import { Image, MvDetail, MvRating } from "~/components/VerticalMvCard/VerticalMvCard.style";
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { movieContext } from "~/context/movieContext";
 
 const HorizontalMVCard = (props) => {
     const [rating] = useState(4.5);
@@ -38,6 +39,7 @@ const HorizontalMVCard = (props) => {
 
 const MovieInfo = () => {
     const [rating, setRating] = useState(4.5);
+    const { movie } = useContext(movieContext);
     const movieListRef = useRef(null);
 
     return (
@@ -54,10 +56,10 @@ const MovieInfo = () => {
                     <MovieImg src={naruto} alt="Movie Picture" />
                     <Movie style={{padding: "20px"}}>
                         <MovieRating>
-                            <h4 style={{ marginRight:'30px' }}>{rating}</h4>
-                            <StarRating size="large" name="rt" value={rating} precision={0.1} readOnly />
+                            <h4 style={{ marginRight:'30px' }}>{movie.rating}</h4>
+                            <StarRating size="large" name="rt" value={movie.rating} precision={0.1} readOnly />
                         </MovieRating>
-                        <MovieTitle>Movie Title</MovieTitle>
+                        <MovieTitle>{movie.title}</MovieTitle>
                     </Movie>
                 </MovieInfoCard>
                 <InfoLayout>
@@ -89,9 +91,10 @@ const MovieInfo = () => {
                         <div class="descriptionBlock" style={{height: "auto"}}>
                             <h2>Movie Description</h2>
                             <p>
-                                Naruto là một loạt manga Nhật Bản được viết và minh họa bởi Kishimoto Masashi. Câu chuyện xoay
+                                {movie.description}
+                                {/* Naruto là một loạt manga Nhật Bản được viết và minh họa bởi Kishimoto Masashi. Câu chuyện xoay
                                 quanh Uzumaki Naruto, một ninja trẻ muốn tìm cách khẳng định mình để được mọi người công nhận và
-                                nuôi ước mơ trở thành Hokage - người lãnh đạo Làng Lá.
+                                nuôi ước mơ trở thành Hokage - người lãnh đạo Làng Lá. */}
                             </p>
                         </div>
                     </InfoBlock>

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.style';
 import { SearchProvider } from './context/SearchProvider';
 import { LoginProvider } from './context/loginContext';
+import { MovieProvider } from './context/movieContext';
 
 const container = document.getElementById('root');
 
@@ -23,7 +24,6 @@ if (container) {
                 </Router>
               </SearchProvider>
             </LoginProvider>
-
         </React.StrictMode>,
     );
 

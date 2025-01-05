@@ -4,6 +4,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.style';
+import { SearchProvider } from './context/SearchProvider';
 import { LoginProvider } from './context/loginContext';
 import { MovieProvider } from './context/movieContext';
 
@@ -13,14 +14,15 @@ if (container) {
     const root = createRoot(container);
 
     root.render(
+        
         <React.StrictMode>
             <GlobalStyles />
             <LoginProvider>
-                <MovieProvider>
-                    <Router>
-                        <App />
-                    </Router>
-                </MovieProvider>
+              <SearchProvider>
+                <Router>
+                    <App />
+                </Router>
+              </SearchProvider>
             </LoginProvider>
         </React.StrictMode>,
     );

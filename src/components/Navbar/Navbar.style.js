@@ -155,21 +155,4 @@ export const SearchContainer = styled.div`
     margin-left: 2rem;
 `;
 
-export const SearchInput = styled.input`
-    width: 100%;
-    padding: 12px;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-    font-size: 0.85rem;
-    font-family: var(--boundedFont);
-    transition: width 0.3s ease;
-    @media (max-width: 767px) {
-        width: 90%;
-        max-width: 200px;
-    }
-    @media (min-width: 768px) {
-        width: 90%;
-        max-width: 300px;
-    }
-`;
+

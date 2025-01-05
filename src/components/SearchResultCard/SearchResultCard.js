@@ -11,7 +11,7 @@ function updateButtonText({ isHovered, isOpen}) {
 const SearchResultCard = ({ img, title, category, rating, year, onAddToWishlist, onRemoveFromWishlist }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    const [isSmall] = useState(false);
+    //const [isSmall] = useState(false);
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);

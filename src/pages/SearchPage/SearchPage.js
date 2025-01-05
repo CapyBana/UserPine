@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import SearchResultCard from '~/components/SearchResultCard/SearchResultCard';
 import './SearchPage.css';
 import { SearchContext } from '~/context/SearchProvider';

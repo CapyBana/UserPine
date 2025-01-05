@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { NavbarContainer, Logo, MenuItem, SearchContainer, SearchInput, HamburgerIcon, Menu } from './Navbar.style';
-import { SearchContext, SearchProvider } from '~/context/SearchProvider';
+import { NavbarContainer, Logo, MenuItem, SearchContainer, HamburgerIcon, Menu } from './Navbar.style';
+import { SearchContext } from '~/context/SearchProvider';
 import { LoginContext } from '~/context/loginContext';
 import './Navbar.css';
 import axios from 'axios';
@@ -10,22 +10,22 @@ import { Link, useNavigate } from 'react-router-dom';
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const [Login, setLogin] = useState(true);
-  const { isLoggedIn, apiUrl, logout } = useContext(LoginContext);
-  const [categories, setCategories] = useState([]);
+    const { isLoggedIn, apiUrl, logout } = useContext(LoginContext);
+    const [categories, setCategories] = useState([]);
 
-    const { inputValue, setInputValue } = useContext(SearchContext);
+    const { setInputValue } = useContext(SearchContext);
     const [ tempInput, setTempInput ] = useState("");
 
     const navigate = useNavigate();
 
-    const handleNavigateSearch = ( input) => {
-        navigate(`search-result/${input}`)
+    const handleSearch = (e) => {
+        if (e.key === "Enter") {
+            setInputValue(e.target.value);
+            setTempInput("");
+            navigate(`search-result/${tempInput}`);
+        }
     }
 
-    const handleKeywordChange = (e) => {
-        setInputValue(e.target.value);
-    }
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -53,19 +53,14 @@ const Navbar = (props) => {
             </Logo>
             <SearchContainer>
                 <input 
-                    class="SearchInput" 
+                    className="SearchInput" 
                     value={tempInput} 
                     id="searchTxt" 
                     name = "searchTxt" 
                     type="text" 
                     placeholder="Search..." 
                     onChange={e => setTempInput(e.target.value)}
-                    onKeyDown={(e) => { 
-                        if (e.key === "Enter") {
-                            setInputValue(e.target.value);
-                            handleNavigateSearch(tempInput);
-                        }
-                    }}
+                    onKeyDown={(e) => handleSearch(e)}
                 />
             </SearchContainer>
             

@@ -1,10 +1,12 @@
 
 import ReviewForm from '~/components/ReviewForm/ReviewForm';
 import ReturnBlock from '~/components/ReturnLink/Return';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReviewPage } from './Review.style';
 
 const Review = () => {
+    const movieData = useLocation().state;
+    console.log(movieData)
     return (
         <ReviewPage>
             <Link
@@ -17,7 +19,7 @@ const Review = () => {
             >
                 <ReturnBlock backmessage="Back to homepage" />
             </Link>
-            <ReviewForm name="Movie Title" />
+            <ReviewForm movieData={movieData} />
         </ReviewPage>
     );
 };

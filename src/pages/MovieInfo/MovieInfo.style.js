@@ -33,6 +33,10 @@ export const InfoBlock = styled.div`
         border-radius: 20px;
         background-color: #0a674f;
         text-align: center;
+        button {
+            background-color: #0a674f;
+            border: none;
+        }
     }
     .heart {
         border: none;

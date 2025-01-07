@@ -27,7 +27,14 @@ const VerticalMvList = (props) => {
                 <MovieList ref={movieListRef}>
                     {Array.isArray(mvList) &&
                         mvList.map((movie) => (
-                            <VerticalMvCard key={movie.id} id={movie.id} name={movie.title} rating={movie.rating} img={movie.img} $movie={movie} />
+                            <VerticalMvCard
+                                key={movie.id}
+                                id={movie.id}
+                                name={movie.title}
+                                rating={movie.rating}
+                                img={`data:image/jpeg;base64,${movie.movieImg}`}
+                                $movie={movie}
+                            />
                         ))}
                 </MovieList>
                 <Navigator onClick={scrollRight} />

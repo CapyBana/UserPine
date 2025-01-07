@@ -9,30 +9,23 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const { isLoggedIn, apiUrl, logout } = useContext(LoginContext);
     const [categories, setCategories] = useState([]);
-
     const { setInputValue } = useContext(SearchContext);
-    const [ tempInput, setTempInput ] = useState("");
-
+    const [tempInput, setTempInput] = useState('');
     const navigate = useNavigate();
 
     const handleSearch = (e) => {
-        if (e.key === "Enter") {
+        if (e.key === 'Enter') {
             setInputValue(e.target.value);
-            setTempInput("");
+            setTempInput('');
             navigate(`search-result/${tempInput}`);
         }
-    }
+    };
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-    // useEffect(() => {
-    //     const token = localStorage.getItem('accessToken');
-    //     setAccessToken(token);
-    // }, []);
 
     useEffect(() => {
         const fetchCategory = async () => {
@@ -52,18 +45,18 @@ const Navbar = (props) => {
                 MyLogo
             </Logo>
             <SearchContainer>
-                <input 
-                    className="SearchInput" 
-                    value={tempInput} 
-                    id="searchTxt" 
-                    name = "searchTxt" 
-                    type="text" 
-                    placeholder="Search..." 
-                    onChange={e => setTempInput(e.target.value)}
+                <input
+                    className="SearchInput"
+                    value={tempInput}
+                    id="searchTxt"
+                    name="searchTxt"
+                    type="text"
+                    placeholder="Search..."
+                    onChange={(e) => setTempInput(e.target.value)}
                     onKeyDown={(e) => handleSearch(e)}
                 />
             </SearchContainer>
-            
+
             <HamburgerIcon onClick={toggleMenu}>
                 <span></span>
                 <span></span>
@@ -78,13 +71,14 @@ const Navbar = (props) => {
                         <li>
                             Categories
                             <ul className="dropdown">
-                                {categories.length > 0 && (
+                                {categories.length > 0 &&
                                     categories.map((category) => (
                                         <li key={category.id}>
-                                            <Link to={`/category/${category.categoryName}`}>{category.categoryName}</Link>
+                                            <Link to={`/category/${category.categoryName}`}>
+                                                {category.categoryName}
+                                            </Link>
                                         </li>
-                                    ))
-                                )}
+                                    ))}
                             </ul>
                         </li>
                     </ul>

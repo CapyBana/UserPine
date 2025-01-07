@@ -9,7 +9,9 @@ const VerticalMvCard = (props) => {
 
     return (
         <MovieCard style={{ borderRadius: '10px' }}>
-            <Link to={`/movie/${props.id}`} onClick={() => setMovie(props.$movie)}>{props.img ? <Image src={props.img}></Image> : <Image src={Img}></Image>}</Link>
+            <Link to={`/movie/${props.id}`} onClick={() => setMovie(props.$movie)}>
+                {props.img ? <Image src={props.img}></Image> : <Image src={Img}></Image>}
+            </Link>
             <MvRating
                 // onClick={} navigate to Review Page
                 size="large"

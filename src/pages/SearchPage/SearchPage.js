@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import SearchResultCard from '~/components/SearchResultCard/SearchResultCard';
 import './SearchPage.css';
 import { SearchContext } from '~/context/SearchProvider';
@@ -18,22 +18,36 @@ export default function SearchPage() {
         { id: 6, img: narutoImg, title: 'The Godfather', category: 'Movie', rating: '4.2', year: 1972 },
     ];
     const { inputValue } = useContext(SearchContext);
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/api/movies/search`, {
                     params: {
-                        title: 'a',
+                        title: inputValue,
                     },
                 });
+                setData(response.data.data.result);
                 console.log(response.data);
             } catch (err) {
+                setError(err.message);
             } finally {
+                setLoading(false);
             }
         };
         fetchData();
     }, []);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
+    }
 
     const handleAddToWishlist = ({ id }) => {
         alert('Added to Wishlist!');
@@ -46,14 +60,14 @@ export default function SearchPage() {
         <div className="search-result-page">
             <h3>Search Results for "{inputValue}"</h3>
             <div className="results-list">
-                {results.map((result) => (
+                {data.map((result) => (
                     <SearchResultCard
-                        key={result.id}
-                        img={result.img}
+                        id={result.id}
+                        img={result.movieImg}
                         title={result.title}
-                        category={result.category}
-                        rating={result.rating}
-                        year={result.year}
+                        category={result.category.categoryName}
+                        rating={4}
+                        year={result.releaseDate}
                         onAddToWishlist={() => handleAddToWishlist(result.id)}
                         onRemoveFromWishlist={() => handleRemoveFromWishlist(result.id)}
                     />

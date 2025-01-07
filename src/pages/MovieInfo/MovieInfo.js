@@ -9,7 +9,7 @@ import Img from 'src/assets/images/naruto.png';
 import { Image, MvDetail, MvRating } from "~/components/VerticalMvCard/VerticalMvCard.style";
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { movieContext } from "~/context/movieContext";
+import { MovieContext } from "~/context/movieContext";
 
 const HorizontalMVCard = (props) => {
     const [rating] = useState(4.5);
@@ -39,8 +39,26 @@ const HorizontalMVCard = (props) => {
 
 const MovieInfo = () => {
     const [rating, setRating] = useState(4.5);
-    const { movie } = useContext(movieContext);
+    const { movie, handleAddToWishlist } = useContext(MovieContext);
     const movieListRef = useRef(null);
+
+    // const handleAddToWishlist = async () => {
+    //     try {
+    //         const response = await axios.post(`${apiUrl}/api/wishlist`, {
+    //             userId: userId,
+    //             movieId: movie.id,
+    //         });
+
+    //         if (response.status === 200) {
+    //             alert('Added to Wishlist!');
+    //         }
+
+    //     } catch(err) {
+    //         alert('Failed to add Wishlist!');
+    //         console.log(userId);
+    //         console.log(movie.id);
+    //     }
+    // }
 
     return (
         <ReviewPage>
@@ -65,7 +83,7 @@ const MovieInfo = () => {
                 <InfoLayout>
                     <InfoBlock>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <div class="block" style={{width: "48%", float: "left"}}>
+                            <div className="block" style={{width: "48%", float: "left"}}>
                                 <h5>Give your own rating</h5>
                                 <Link to='/review-post'>
                                     <MvRating
@@ -79,16 +97,18 @@ const MovieInfo = () => {
                                     />
                                 </Link>
                             </div>
-                            <div class="block" style={{width: "24%", float: "right"}}>
+                            <div className="block" style={{width: "24%", float: "right"}}>
                                 <h5>Watch Trailer</h5>
                                 <MovieOutlinedIcon fontSize="large" />
                             </div>
-                            <div class="block" style={{width: "24%", float: "right"}}>
+                            <div className="block" style={{width: "24%", float: "right"}}>
                                 <h5>Add to Wishlist</h5>
-                                <FavoriteBorderOutlinedIcon fontSize="large" />
+                                <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
+                                    <FavoriteBorderOutlinedIcon fontSize="large" />
+                                </button>
                             </div>
                         </div>
-                        <div class="descriptionBlock" style={{height: "auto"}}>
+                        <div className="descriptionBlock" style={{height: "auto"}}>
                             <h2>Movie Description</h2>
                             <p>
                                 {movie.description}

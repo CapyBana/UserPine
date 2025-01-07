@@ -4,28 +4,44 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userId, setUserId] = useState(null);
     const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        // Check if user is logged in on component mount
+        // Load login state and userId from sessionStorage on component mount
         const storedLogin = sessionStorage.getItem('isLoggedIn');
-        if (storedLogin === 'true') {
+        const storedUserId = sessionStorage.getItem('userId');
+
+        if (storedLogin === 'true' && storedUserId) {
             setIsLoggedIn(true);
+            setUserId(storedUserId);
         }
     }, []);
 
-    const login = () => {
+    const login = (userId) => {
         setIsLoggedIn(true);
+        setUserId(userId);
         sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('userId', userId); // Persist userId
     };
 
     const logout = () => {
         setIsLoggedIn(false);
+        setUserId(null);
         sessionStorage.removeItem('isLoggedIn');
+        sessionStorage.removeItem('userId'); // Clear userId
+    };
+
+    const contextValue = {
+        isLoggedIn,
+        login,
+        logout,
+        apiUrl,
+        userId,
     };
 
     return (
-        <LoginContext.Provider value={{ isLoggedIn, login, logout, apiUrl }}>
+        <LoginContext.Provider value={contextValue}>
             {children}
         </LoginContext.Provider>
     );

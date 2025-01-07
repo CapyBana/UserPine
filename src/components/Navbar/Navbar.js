@@ -6,10 +6,12 @@ import { LoginContext } from '~/context/loginContext';
 import './Navbar.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { MovieContext } from '~/context/movieContext';
 
 const Navbar = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
     const { isLoggedIn, apiUrl, logout } = useContext(LoginContext);
+    const { setCategory } = useContext(MovieContext);
+    const [isOpen, setIsOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     const { setInputValue } = useContext(SearchContext);
     const [tempInput, setTempInput] = useState('');
@@ -74,7 +76,7 @@ const Navbar = (props) => {
                                 {categories.length > 0 &&
                                     categories.map((category) => (
                                         <li key={category.id}>
-                                            <Link to={`/category/${category.categoryName}`}>
+                                            <Link to={`/category/${category.categoryName}`} onClick={() => setCategory(category.categoryName)}>
                                                 {category.categoryName}
                                             </Link>
                                         </li>
@@ -90,7 +92,7 @@ const Navbar = (props) => {
                                 My Account
                                 <ul className="dropdown">
                                     <li>
-                                        <a>My movie</a>
+                                        <Link to='/user-profile'>My movie</Link>
                                     </li>
                                     <li>
                                         <a>Settings</a>

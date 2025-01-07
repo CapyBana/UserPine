@@ -1,16 +1,21 @@
 import { Link } from 'react-router-dom';
 import { MyMovieRatingBlock, MyMovieRatingTitler, Titler, MovieList, MovieListScroll } from './myMovieRating.style';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { IconButton } from '@mui/material';
 import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
+import axios from 'axios';
+import { LoginContext } from '~/context/loginContext';
 
 const ITEM_WIDTH = 196;
 
 const MyMovieRating = () => {
+    const { apiUrl, userId } = useContext(LoginContext);
+    const [wishlist, setWishlist] = useState([]);
+    const [isLoad, setIsLoad] = useState(false);
+    const [error, setError] = useState(null);
     const [scrollPosition, setScrollPosition] = useState(0);
-
     const containerRef = useRef();
 
     const handleScroll = (scrollAmount) => {
@@ -21,32 +26,33 @@ const MyMovieRating = () => {
         }
     };
 
-    const sample = [
-        { id: '1' },
-        { id: '2' },
-        { id: '3' },
-        { id: '4' },
-        { id: '5' },
-        { id: '6' },
-        { id: '7' },
-        { id: '8' },
-    ];
+    useEffect(() => {
+        const fetchWishlist = async () => {
+            try {
+                setIsLoad(true);
+                if (!userId) {
+                    setIsLoad(false); // Stop loading if user is not logged in
+                    return;
+                }
+                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`);
+                if (response.status === 200) {
+                    setWishlist(response.data.data.movies);
+                }
+            } catch (err) {
+                setError(err);
+            } finally {
+                setIsLoad(false); // Ensure loading stops regardless of success or failure
+            }
+        };
+
+        fetchWishlist();
+    }, [apiUrl, userId]);
 
     return (
         <MyMovieRatingBlock>
             <MyMovieRatingTitler>
                 <Titler />
                 <div>MY MOVIE RATINGS</div>
-                <Link
-                    to="/mymovieratings"
-                    style={{
-                        textDecoration: 'none',
-                        color: '#FAE6E5',
-                        marginLeft: '750px',
-                    }}
-                >
-                    <div>View all</div>
-                </Link>
             </MyMovieRatingTitler>
             <MovieListScroll>
                 <IconButton
@@ -58,9 +64,19 @@ const MyMovieRating = () => {
                     <ArrowCircleLeftIcon />
                 </IconButton>
                 <MovieList ref={containerRef} style={{ gap: '20px' }}>
-                    {sample.map(() => (
-                        <VerticalMvCard style={{ backgroundColor: 'inherit !important' }} />
+                    {wishlist.map((movie) => (
+                        <VerticalMvCard
+                            style={{ backgroundColor: 'inherit !important' }}
+                            key={movie.id}
+                            id={movie.id}
+                            name={movie.title}
+                            rating={movie.rating}
+                            img={movie.img}
+                            $movie={movie}
+                        />
                     ))}
+                    {isLoad && <div>Loading...</div>}
+                    {error && <div>Error: {error.message}</div>}
                 </MovieList>
                 <IconButton
                     onClick={() => {

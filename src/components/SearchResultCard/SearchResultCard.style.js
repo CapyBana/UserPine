@@ -19,6 +19,7 @@ export const Card = styled.div`
         background-color:rgb(41, 41, 41);
         box-shadow: 10px 10px 40px rgba(28, 28, 28, 0.3);
         transition: background-color 0.2s ease;
+        cursor: pointer;
     }
 `;
 

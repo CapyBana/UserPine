@@ -80,7 +80,10 @@ export default function Dashboard() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { apiUrl } = useContext(LoginContext);
+    const [wishlist, setWishlist] = useState([]);
+    const [isLoad, setIsLoad] = useState(false);
+    const [errorWishlist, setErrorWishlist] = useState(null);
+    const { apiUrl, userId } = useContext(LoginContext);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -93,8 +96,29 @@ export default function Dashboard() {
                 setLoading(false);
             }
         };
+
+        const fetchWishlist = async () => {
+            try {
+                setIsLoad(true);
+                if (!userId) {
+                    setIsLoad(false); // Stop loading if user is not logged in
+                    return;
+                }
+                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`);
+                if (response.status === 200) {
+                    setWishlist(response.data.data.movies);
+                    console.log(response.data.data.movies);
+                }
+            } catch (err) {
+                setErrorWishlist(err);
+            } finally {
+                setIsLoad(false); // Ensure loading stops regardless of success or failure
+            }
+        };
+
+        fetchWishlist();
         fetchData();
-    }, [apiUrl]);
+    }, [apiUrl, userId]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -129,7 +153,7 @@ export default function Dashboard() {
                     <CommentCard data={sth} />
                 </CommentBlock>
             </div>
-            <TranslateMvCard data={hardData} />
+            <TranslateMvCard data={wishlist} />
         </DashboardLayout>
     );
 }

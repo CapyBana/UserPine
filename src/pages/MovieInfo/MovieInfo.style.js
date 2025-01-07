@@ -34,6 +34,14 @@ export const InfoBlock = styled.div`
         background-color: #0a674f;
         text-align: center;
     }
+    .heart {
+        border: none;
+        background-color: transparent;
+        color: #fae6e5;
+    }
+    .heart:hover {
+        cursor: pointer;
+    }
     .descriptionBlock {
         padding: 40px;
         border-radius: 30px;

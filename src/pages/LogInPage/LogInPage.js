@@ -31,9 +31,10 @@ const LogInPage = ({handlePage}) => {
             });
 
             if (response.status === 200) {
+                const userId = response.data.data.userId;
                 setSuccess('Login successfully!');
                 setError(null);
-                login();
+                login(userId);
                 handlePage('/');
             }
         } catch (err) {

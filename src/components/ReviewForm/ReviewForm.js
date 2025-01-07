@@ -24,14 +24,16 @@ import axios from 'axios';
 const theme = createTheme();
 
 const ReviewForm = (props) => {
+    const { movieData } = props;
     return (
         <ThemeProvider theme={theme}>
-            <ResponsiveForm name={props.name} />
+            <ResponsiveForm movieData={movieData} />
         </ThemeProvider>
     );
 };
 
-const ResponsiveForm = ({ name }) => {
+const ResponsiveForm = (props) => {
+    const { movieData } = props;
     const [rating2, setRating2] = useState(0); // Fixed to set `rating2` properly
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -128,7 +130,7 @@ const ResponsiveForm = ({ name }) => {
                             fontSize: isComputer ? "var(--title-text_size)" : "var(--large-text_size)"
                         }}
                     >
-                        {name}
+                        {movieData.name}
                     </MovieTitle>
                     <p
                         style={{

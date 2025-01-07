@@ -2,7 +2,7 @@ import { React, useContext, useRef, useState } from "react";
 import { InfoBlock, InfoLayout, MovieCard, MovieInfoCard, MovieList, MoviePageLayout, PPAL } from "./MovieInfo.style";
 import { Movie, MovieImg, MovieRating, MovieTitle, StarRating } from "~/components/ReviewForm/ReviewForm.style";
 import naruto from 'src/assets/images/naruto.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReturnBlock from "~/components/ReturnLink/Return";
 import { ReviewPage } from "../Review/Review.style";
 import Img from 'src/assets/images/naruto.png';
@@ -42,6 +42,13 @@ const MovieInfo = () => {
     const { movie } = useContext(movieContext);
     const movieListRef = useRef(null);
 
+    const navigate = useNavigate();
+
+    const goToReview = () => {
+        navigate("/review-post", { state: movie });
+    };
+    console.log(movie)
+
     return (
         <ReviewPage>
             <Link to='/' style={{ 
@@ -67,7 +74,7 @@ const MovieInfo = () => {
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             <div class="block" style={{width: "48%", float: "left"}}>
                                 <h5>Give your own rating</h5>
-                                <Link to='/review-post'>
+                                <button onClick={goToReview}>
                                     <MvRating
                                         onChange={(event, newValue) => {
                                             setRating(newValue);
@@ -77,7 +84,7 @@ const MovieInfo = () => {
                                         value={rating}
                                         precision={0.5}
                                     />
-                                </Link>
+                                </button>
                             </div>
                             <div class="block" style={{width: "24%", float: "right"}}>
                                 <h5>Watch Trailer</h5>

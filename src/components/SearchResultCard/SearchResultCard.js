@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import { Card, ImagePlaceholder, Content, Titles, Category, MovieRating, WishlistButton } from './SearchResultCard.style';
-//import { YoutubeSearchedForSharp } from '@mui/icons-material';
+import { Link, useNavigate } from 'react-router-dom';
 
 function updateButtonText({ isHovered, isOpen}) {
     //const button = document.getElementById('dynamicButton');
 }
 
-const SearchResultCard = ({ img, title, category, rating, year, onAddToWishlist, onRemoveFromWishlist }) => {
+const SearchResultCard = ({ id, img, title, category, rating, year, onAddToWishlist, onRemoveFromWishlist }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    //const [isSmall] = useState(false);
+    const navigate = useNavigate();
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -21,13 +21,17 @@ const SearchResultCard = ({ img, title, category, rating, year, onAddToWishlist,
         setIsHovered(false);
         isOpen ? onRemoveFromWishlist() : onAddToWishlist();
     };
+
+    const toMoviePage = (id) => {
+        navigate(`../movie/${id}`);
+    }
     
     updateButtonText(isHovered ,isOpen)
     return (
-        <Card>
+        <Card onClick={()=> toMoviePage(id)}>
             <ImagePlaceholder src={img} alt="Movie Picture" />
             <Content>
-                <Titles>{title}</Titles>
+                <Titles onClick={toMoviePage({id})} >{title}</Titles>
                 <Category>{year} - {category}</Category>
                 <MovieRating value={rating} readOnly={true} precision={0.5}/>
             </Content>

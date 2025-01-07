@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {
     CommentArea,
     GeneralReview,
@@ -19,7 +19,7 @@ import {
 import naruto from 'src/assets/images/naruto.png';
 import { useMediaQuery, createTheme, ThemeProvider } from '@mui/material';
 import axios from 'axios';
-import { LoginContext } from '~/context/loginContext';
+//import { LoginContext } from '~/context/loginContext';
 
 const theme = createTheme();
 

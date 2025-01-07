@@ -14,15 +14,16 @@ if (container) {
     const root = createRoot(container);
 
     root.render(
-        
         <React.StrictMode>
             <GlobalStyles />
             <LoginProvider>
-              <SearchProvider>
-                <Router>
-                    <App />
-                </Router>
-              </SearchProvider>
+                <SearchProvider>
+                    <MovieProvider>
+                        <Router>
+                            <App />
+                        </Router>
+                    </MovieProvider>
+                </SearchProvider>
             </LoginProvider>
         </React.StrictMode>,
     );

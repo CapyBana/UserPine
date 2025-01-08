@@ -9,4 +9,6 @@ export const Return = styled.div`
     position: relative;
     top: 40px;
     left: 20px;
+
+    position: fixed;
 `;

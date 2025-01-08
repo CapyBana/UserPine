@@ -120,6 +120,26 @@ export default function Dashboard() {
         fetchData();
     }, [apiUrl, userId]);
 
+    const fetchNewMovie = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const fetchNewRating = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     if (loading) {
         return <p>Loading...</p>;
     }

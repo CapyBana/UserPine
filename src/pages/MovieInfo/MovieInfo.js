@@ -80,8 +80,9 @@ const MovieInfo = () => {
                 </MovieInfoCard>
                 <InfoLayout>
                     <InfoBlock>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <div className="block" style={{ width: '48%', float: 'left' }}>
+
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div classNameName="block" style={{width: "48%", float: "left"}}>
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
@@ -97,19 +98,23 @@ const MovieInfo = () => {
                                 </button>
                             </div>
 
-                            <div className="block" style={{ width: '24%', float: 'right' }}>
+
+                            <div classNameName="block" style={{width: "24%", float: "right"}}>
                                 <h5>Watch Trailer</h5>
                                 <MovieOutlinedIcon fontSize="large" />
                             </div>
-                            <div className="block" style={{ width: '24%', float: 'right' }}>
+                            <div classNameName="block" style={{width: "24%", float: "right"}}>
                                 <h5>Add to Wishlist</h5>
                                 <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
+                                    <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
                                     <FavoriteBorderOutlinedIcon fontSize="large" />
+                                </button>
                                 </button>
                             </div>
                         </div>
 
-                        <div className="descriptionBlock" style={{ height: 'auto' }}>
+
+                        <div classNameName="descriptionBlock" style={{height: "auto"}}>
                             <h2>Movie Description</h2>
                             <p>{movie.description}</p>
                         </div>

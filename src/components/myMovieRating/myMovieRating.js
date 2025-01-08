@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom';
 import { MyMovieRatingBlock, MyMovieRatingTitler, Titler, MovieList, MovieListScroll } from './myMovieRating.style';
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect, useContext, useEffect, useContext } from 'react';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { IconButton } from '@mui/material';
 import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
+import axios from 'axios';
+import { LoginContext } from '~/context/loginContext';
 
 const ITEM_WIDTH = 196;
 
 const MyMovieRating = () => {
+    const { apiUrl, userId } = useContext(LoginContext);
+    const [wishlist, setWishlist] = useState([]);
+    const [isLoad, setIsLoad] = useState(false);
+    const [error, setError] = useState(null);
     const { apiUrl, userId } = useContext(LoginContext);
     const [wishlist, setWishlist] = useState([]);
     const [isLoad, setIsLoad] = useState(false);

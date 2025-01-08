@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Capybana, InputBox, SignInBox, SignInLayout, SignInPage } from './signUpPage.style';
-import ReturnBlock from '~/components/ReturnLink/Return';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
 import StatusCard from '~/components/Notification/NotiMess';
@@ -31,7 +29,7 @@ const SignUpPage = ({ handlePage }) => {
         e.preventDefault();
 
         if (formData.password !== formData.cfpassword) {
-            setErrorMessage("Passwords do not match");
+            setErrorMessage('Passwords do not match');
             return;
         }
 
@@ -61,16 +59,6 @@ const SignUpPage = ({ handlePage }) => {
         <SignInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <SignInPage>
-                <Link
-                    to="/"
-                    style={{
-                        textDecoration: 'none',
-                        width: '400px',
-                        padding: '80px 2.5% 15px',
-                    }}
-                >
-                    <ReturnBlock backmessage="Back to homepage" />
-                </Link>
                 <SignInBox>
                     <text class="intro">
                         Be a part of <Capybana>Capybana Community</Capybana>

@@ -9,6 +9,5 @@ export const ReviewPage = styled.div`
     flex-direction: column;
     color: #fae6e5;
     font-family: var(--boundedFont);
-    margin-top: 500px;
 `;
 

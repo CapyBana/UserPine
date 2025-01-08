@@ -11,83 +11,105 @@ import { MovieContext } from '~/context/movieContext';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
 
-const HorizontalMVCard = (props) => {
-    const [rating] = useState(4.5);
+// HorizontalMVCard Component
+const HorizontalMVCard = ({ id, name, img, rating, item }) => {
+    const { setMovie } = useContext(MovieContext);
+
+    const handleMovieClick = () => {
+        setMovie(item); // Update movie in context
+    };
+
     return (
         <MovieCard>
-            <Link to="/review-post" style={{ width: '50%', float: 'left' }}>
-                <Image src={props.img} alt="Movie Thumbnail" />
+            {/* Optional: Remove 'to' if you want to prevent navigation */}
+            <Link
+                to={`/movie/${id}`}
+                style={{ width: '50%', float: 'left', cursor: 'pointer' }}
+                onClick={handleMovieClick}
+            >
+                <Image src={img} alt="Movie Thumbnail" />
             </Link>
             <div style={{ flexDirection: 'column', float: 'right' }}>
                 <MvRating size="medium" name="rt" value={rating} precision={0.5} readOnly />
                 <MvDetail>
                     <h1>{rating}</h1>
-                    <h2>{props.name}</h2>
+                    <h2>{name}</h2>
                 </MvDetail>
             </div>
         </MovieCard>
     );
 };
 
+// MovieInfo Component
 const MovieInfo = () => {
-    const {apiUrl} = useContext(LoginContext);
-    const [rating, setRating] = useState(4.5);
+    const { apiUrl } = useContext(LoginContext);
     const { movie, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
-    const movieListRef = useRef(null);
     const navigate = useNavigate();
 
+    // Navigate to Review Page
     const goToReview = () => {
         navigate('/review-post', { state: movie });
     };
 
-    const category = movie.category.categoryName;
+    // Fetch Related Movies Based on Current Movie's Category
     useEffect(() => {
+        if (!movie || !movie.category) return;
+
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/api/movies/category/${category}`);
+                const response = await axios.get(`${apiUrl}/api/movies/category/${movie.category.categoryName}`);
                 setData(response.data.data);
             } catch (err) {
-            } finally {
+                console.error('Error fetching related movies:', err);
             }
         };
+
         fetchData();
-    }, [apiUrl, category]);
+    }, [apiUrl, movie]);
+
+    if (!movie) {
+        return <p>Loading movie details...</p>; // Fallback for when movie is not loaded
+    }
 
     return (
         <ReviewPage>
-            <Link
-                to="/"
-                style={{
-                    textDecoration: 'none',
-                    width: '400px',
-                    padding: '80px 2.5% 15px',
-                }}
-            >
-                <ReturnBlock backmessage="Back to homepage" />
-            </Link>
+            {/* Movie Info Layout */}
             <MoviePageLayout>
+                {/* Back to Homepage */}
+                <Link
+                    to="/"
+                    style={{
+                        textDecoration: 'none',
+                        width: '400px',
+                        padding: '80px 2.5% 15px',
+                    }}
+                >
+                    <ReturnBlock backmessage="Back to homepage" />
+                </Link>
                 <MovieInfoCard>
-                    <MovieImg src={`data:image/jpeg;base64,${movie.movieImg}`} alt="Movie Picture" />
+                    {movie.movieImg && (
+                        <MovieImg src={`data:image/jpeg;base64,${movie.movieImg}`} alt="Movie Picture" />
+                    )}
                     <Movie style={{ padding: '20px' }}>
                         <MovieRating>
                             <h4 style={{ marginRight: '30px' }}>{movie.movieRating}</h4>
                             <StarRating size="large" name="rt" value={movie.movieRating} precision={0.1} readOnly />
                         </MovieRating>
                         <MovieTitle>{movie.title}</MovieTitle>
-                        <h5>{movie.category.categoryName}</h5>
+                        <h5>{movie.category?.categoryName}</h5>
                     </Movie>
                 </MovieInfoCard>
+
+                {/* Info Layout */}
                 <InfoLayout>
                     <InfoBlock>
+                        {/* Movie Actions */}
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <div className="block" style={{ width: '48%', float: 'left' }}>
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
-                                        // onChange={(event, newValue) => {
-                                        //     setRating(newValue);
-                                        // }}
                                         size="medium"
                                         name="rt"
                                         value={movie.movieRating}
@@ -96,7 +118,6 @@ const MovieInfo = () => {
                                     />
                                 </button>
                             </div>
-
                             <div className="block" style={{ width: '24%', float: 'right' }}>
                                 <h5>Watch Trailer</h5>
                                 <MovieOutlinedIcon fontSize="large" />
@@ -109,29 +130,33 @@ const MovieInfo = () => {
                             </div>
                         </div>
 
+                        {/* Movie Description */}
                         <div className="descriptionBlock" style={{ height: 'auto' }}>
                             <h2>Movie Description</h2>
                             <p>{movie.description}</p>
                         </div>
                     </InfoBlock>
+
+                    {/* Related Movies */}
                     <PPAL>
                         <h3>People also like</h3>
-                        <div>
-                            <MovieList ref={movieListRef}>
-                                {data.map((item) => (
-                                    <HorizontalMVCard
-                                        key={item.id}
-                                        name={item.title}
-                                        img={`data:image/jpeg;base64,${item.movieImg}`}
-                                        category={item.category.categoryName}
-                                    />
-                                ))}
-                            </MovieList>
-                        </div>
+                        <MovieList>
+                            {data.map((item) => (
+                                <HorizontalMVCard
+                                    key={item.id}
+                                    id={item.id}
+                                    name={item.title}
+                                    img={`data:image/jpeg;base64,${item.movieImg}`}
+                                    rating={item.movieRating}
+                                    item={item}
+                                />
+                            ))}
+                        </MovieList>
                     </PPAL>
                 </InfoLayout>
             </MoviePageLayout>
         </ReviewPage>
     );
 };
+
 export default MovieInfo;

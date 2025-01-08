@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import { Card, ImagePlaceholder, Content, Titles, Category, MovieRating, WishlistButton } from './SearchResultCard.style';
 import { useNavigate } from 'react-router-dom';
+import { MovieContext } from '~/context/movieContext';
 
 function updateButtonText({ isHovered, isOpen}) {
     //const button = document.getElementById('dynamicButton');
 }
 
-const SearchResultCard = ({ id, img, title, category, rating, year, onAddToWishlist, onRemoveFromWishlist }) => {
+const SearchResultCard = ({ id, img, title, category, rating, year, movie, onAddToWishlist, onRemoveFromWishlist }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate();
+    const { setMovie } = useContext(MovieContext);
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -22,15 +24,16 @@ const SearchResultCard = ({ id, img, title, category, rating, year, onAddToWishl
         isOpen ? onRemoveFromWishlist() : onAddToWishlist();
     };
 
-    const toMoviePage = (id) => {
+    const toMoviePage = (id, movie) => {
+        setMovie(movie);
         navigate(`../movie/${id}`);
     }
     
     updateButtonText(isHovered ,isOpen)
     return (
         <Card>
-            <ImagePlaceholder src={`data:image/jpeg;base64,${img}`} alt="Movie Picture" onClick={()=> toMoviePage(id)} />
-            <Content onClick={()=> toMoviePage(id)}>
+            <ImagePlaceholder src={`data:image/jpeg;base64,${img}`} alt="Movie Picture" onClick={()=> toMoviePage(id, movie)} />
+            <Content onClick={()=> toMoviePage(id, movie)}>
                 <Titles>{title}</Titles>
                 <Category>{year} - {category}</Category>
                 <MovieRating value={rating} readOnly={true} precision={0.5}/>

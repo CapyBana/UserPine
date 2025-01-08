@@ -107,10 +107,10 @@ export default function Dashboard() {
                     setIsLoad(false); // Stop loading if user is not logged in
                     return;
                 }
-                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`);
+                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`,{ params: { size: 5 } });
                 if (response.status === 200) {
-                    setWishlist(response.data.data.movies);
-                    console.log(response.data.data.movies);
+                    setWishlist(response.data.data);
+                    console.log(response.data);
                 }
             } catch (err) {
                 setErrorWishlist(err);
@@ -118,30 +118,31 @@ export default function Dashboard() {
                 setIsLoad(false); // Ensure loading stops regardless of success or failure
             }
         };
-        fetchNewMovie();
+
+        const fetchNewMovie = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        const fetchNewRating = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchWishlist();
         fetchData();
+        // fetchNewMovie();
+        // fetchNewRating();
     }, [apiUrl, userId]);
-
-    const fetchNewMovie = async () => {
-        try {
-            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 8 } });
-            setNewMovie(response.data.data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-    const fetchNewRating = async () => {
-        try {
-            const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     if (loading) {
         return <p>Loading...</p>;
@@ -169,7 +170,7 @@ export default function Dashboard() {
                     <CommentCard data={sth} />
                 </CommentBlock>
             </div>
-            <TranslateMvCard data={wishlist} />
+            <TranslateMvCard data={wishlist} $isLoad={isLoad} $error={errorWishlist} />
         </DashboardLayout>
     );
 }

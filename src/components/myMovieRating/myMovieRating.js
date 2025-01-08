@@ -31,17 +31,21 @@ const MyMovieRating = () => {
             try {
                 setIsLoad(true);
                 if (!userId) {
-                    setIsLoad(false); // Stop loading if user is not logged in
+                    setIsLoad(false);
+                    setWishlist([]); // Ensure it's an array if the user is not logged in
                     return;
                 }
                 const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`);
-                if (response.status === 200) {
-                    setWishlist(response.data.data.movies);
+                if (response.status === 200 && response.data?.data) {
+                    setWishlist(response.data.data);
+                } else {
+                    setWishlist([]); // Fallback if no movies data is available
                 }
             } catch (err) {
                 setError(err);
+                setWishlist([]); // Fallback in case of an error
             } finally {
-                setIsLoad(false); // Ensure loading stops regardless of success or failure
+                setIsLoad(false);
             }
         };
 
@@ -63,21 +67,27 @@ const MyMovieRating = () => {
                 >
                     <ArrowCircleLeftIcon />
                 </IconButton>
-                <MovieList ref={containerRef} style={{ gap: '20px' }}>
-                    {wishlist.map((movie) => (
-                        <VerticalMvCard
-                            style={{ backgroundColor: 'inherit !important' }}
-                            key={movie.id}
-                            id={movie.id}
-                            name={movie.title}
-                            rating={movie.rating}
-                            img={movie.img}
-                            $movie={movie}
-                        />
-                    ))}
+                <MovieList ref={containerRef} style={{ gap: '20px', display: 'flex' }}>
                     {isLoad && <div>Loading...</div>}
-                    {error && <div>Error: {error.message}</div>}
+                    {error && <div>Error: {error.message || 'Something went wrong!'}</div>}
+                    {!isLoad &&
+                        !error &&
+                        (wishlist?.length === 0 ? (
+                            <p>No movie in wishlist</p>
+                        ) : (
+                            wishlist?.map((movie) => (
+                                <VerticalMvCard
+                                    key={`${movie.id}-${movie.title}`}
+                                    id={movie.id}
+                                    name={movie.title}
+                                    rating={movie.rating}
+                                    img={`data:image/jpeg;base64,${movie.movieImg}`}
+                                    $movie={movie}
+                                />
+                            ))
+                        ))}
                 </MovieList>
+
                 <IconButton
                     onClick={() => {
                         handleScroll(ITEM_WIDTH);

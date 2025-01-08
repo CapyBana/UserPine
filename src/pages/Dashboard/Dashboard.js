@@ -77,6 +77,7 @@ const CommentCard = (props) => {
 
 export default function Dashboard() {
     const [data, setData] = useState([]);
+    const [newMovie, setNewMovie] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [wishlist, setWishlist] = useState([]);
@@ -86,9 +87,12 @@ export default function Dashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/api/movies`);
+                const response = await axios.get(`${apiUrl}/api/movies`, {
+                    params: {
+                        size: 10,
+                    },
+                });
                 setData(response.data.data.result);
-                console.log(response.data.data.result);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -140,7 +144,6 @@ export default function Dashboard() {
         // fetchNewRating();
     }, [apiUrl, userId]);
 
-
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -148,7 +151,7 @@ export default function Dashboard() {
     if (error) {
         return <p>Error: {error}</p>;
     }
-    
+
     const sth = {
         username: 'aptapt',
         img: narutoImg,
@@ -160,6 +163,8 @@ export default function Dashboard() {
         <DashboardLayout>
             <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
                 <VerticalMvList title="Top Movie" data={data} />
+                <VerticalMvList title="New Movie" data={newMovie} />
+
                 <CommentBlock>
                     <h3>Comment</h3>
                     <CommentCard data={sth} />

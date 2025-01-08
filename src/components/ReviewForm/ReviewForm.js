@@ -103,38 +103,54 @@ const ResponsiveForm = (props) => {
         <GeneralReview
             style={{
                 paddingBottom: isComputer ? "0px" : "20px",
-                marginTop: isComputer ? "50px" : "20px"
+                marginTop: isComputer ? "32 px" : "16px"
             }}
         >
             <HorizontalMovieCard
                 style={{
-                    flexDirection: isPhone ? "column" : "row"
+                    //flexDirection: isPhone ? "column" : "row"
+                    padding: "28px",
                 }}
             >
-                <MovieImg
+                <img
                     src={naruto}
                     alt="Movie Picture"
                     style={{
-                        margin: isPhone ? "20px 0px" : "20px 50px",
-                        ...(isPhone && { marginLeft: "auto", marginRight: "auto", width: "130px" })
+                        //margin:  "20px 0px" ,
+                        //...(isPhone && { marginLeft: "auto", marginRight: "auto", width: "130px" })
+                        width: "30%",
+                        maxWidth: "140px",
+                        height: "30%",
+                        borderRadius: "10px",
+
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto",
                     }}
                 />
                 <Movie
                     style={{
-                        margin: isComputer ? "25px 100px 25px 40px" : (isTab ? "18px 100px 18px 40px" : "10px 15px"),
-                        textAlign: isPhone ? "center" : "unset"
+                        //margin: isComputer ? "25px 100px 25px 40px" : (isTab ? "18px 100px 18px 40px" : "10px 15px"),
+                        marginLeft: "32px",
+                        textAlign: "unset",
                     }}
                 >
                     <MovieTitle
                         style={{
-                            fontSize: isComputer ? "var(--title-text_size)" : "var(--large-text_size)"
+                            fontSize: "var(--large-text_size)"
                         }}
                     >
                         {movieData.name}
                     </MovieTitle>
                     <p
                         style={{
-                            fontSize: isComputer ? "var(--normal-text_size)" : "14px",
+                            fontSize: "14px",
+                            display: "block",/* or inline-block */
+                            textOverflow: "ellipsis",
+                            wordWrap: "break-word",
+                            overflow: "hidden",
+                            lineHeight: "1.3rem",
+                            maxHeight: "6.5rem",
                             ...((isComputer || isTab) && { textAlign: "justify", textJustify: "inter-word" })
                         }}
                     >

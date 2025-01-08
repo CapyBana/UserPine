@@ -12,12 +12,13 @@ const Review = () => {
             <Link
                 to="/"
                 style={{
-                    textDecoration: 'none',
-                    width: '400px',
-                    padding: '80px 2.5% 15px',
+                    // textDecoration: 'none',
+                    // width: '400px',
+                    // padding: '80px 2.5% 15px',
+                    margin: '3% 3%',
                 }}
             >
-                <ReturnBlock backmessage="Back to homepage" />
+                <ReturnBlock backmessage="Home" />
             </Link>
             <ReviewForm movieData={movieData} />
         </ReviewPage>

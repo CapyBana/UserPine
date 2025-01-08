@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import { Card, ImagePlaceholder, Content, Titles, Category, MovieRating, WishlistButton } from './SearchResultCard.style';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function updateButtonText({ isHovered, isOpen}) {
     //const button = document.getElementById('dynamicButton');
@@ -28,6 +28,7 @@ const SearchResultCard = ({ id, img, title, category, rating, year, onAddToWishl
     
     updateButtonText(isHovered ,isOpen)
     return (
+        
         <Card>
             <ImagePlaceholder src={`data:image/jpeg;base64,${img}`} alt="Movie Picture" onClick={()=> toMoviePage(id)} />
             <Content onClick={()=> toMoviePage(id)}>

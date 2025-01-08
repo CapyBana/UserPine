@@ -2,10 +2,8 @@ import React, { useContext, useState } from 'react';
 import { FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
-import { Link } from 'react-router-dom';
-import ReturnBlock from '~/components/ReturnLink/Return';
 
-const LogInPage = ({handlePage}) => {
+const LogInPage = ({ handlePage }) => {
     const { login, apiUrl } = useContext(LoginContext);
 
     const [formData, setFormData] = useState({
@@ -19,7 +17,7 @@ const LogInPage = ({handlePage}) => {
     const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
         });
     };
 
@@ -47,16 +45,6 @@ const LogInPage = ({handlePage}) => {
     return (
         <LogInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-            <Link
-                to="/"
-                style={{
-                    textDecoration: 'none',
-                    width: '400px',
-                    padding: '80px 2.5% 15px',
-                }}
-            >
-                <ReturnBlock backmessage="Back to homepage" />
-            </Link>
             <SignInBox>
                 <MainContent>Log in</MainContent>
                 <form onSubmit={handleSubmit}>
@@ -64,7 +52,15 @@ const LogInPage = ({handlePage}) => {
                         <text> Username or Email </text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="text" id="username" minLength="6" maxLength="30" value={formData.username} onChange={handleChange} required />
+                        <FillInBox
+                            type="text"
+                            id="username"
+                            minLength="6"
+                            maxLength="30"
+                            value={formData.username}
+                            onChange={handleChange}
+                            required
+                        />
                         <box-icon
                             style={{ position: 'absolute', top: '32.5%', right: '20px' }}
                             type="solid"
@@ -77,7 +73,15 @@ const LogInPage = ({handlePage}) => {
                         <text>Password</text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="password" id="password" minLength="8" maxLength="30" value={formData.password} onChange={handleChange} required />
+                        <FillInBox
+                            type="password"
+                            id="password"
+                            minLength="8"
+                            maxLength="30"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
                         <box-icon
                             style={{ position: 'absolute', top: '32.5%', right: '20px' }}
                             type="solid"

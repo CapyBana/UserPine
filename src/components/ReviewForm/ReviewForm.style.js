@@ -33,7 +33,8 @@ export const HorizontalMovieCard = styled.div`
 `;
 
 export const MovieImg = styled.img`
-    
+    width: fit-content;
+    height: 100%;
 `;
 
 export const Movie = styled.div`

@@ -28,18 +28,12 @@ export const MvRating = styled(Rating)`
 export const MvDetail = styled.div`
     display: flex;
     flex-direction: row;
-    padding-left: 4px;
     gap: 8px;
+    align-items: center;
     justify-content: flex-start;
     h1 {
-        font-size: 32px;
-        margin-top: 0px;
-        margin-left: 0px;
-        color: #fff;
-    }
-    h2 {
-        padding-top: 20px;
-        font-size: 12px;
+        font-size: 20px;
+        margin: 0;
         color: #fff;
     }
 `;

@@ -17,21 +17,23 @@ const HorizontalMVCard = (props) => {
         <MovieCard>
             <Link to="/review-post" style={{ width: '50%', float: 'left' }}>
                 <Image src={props.img} alt="Movie Thumbnail" />
+                <div style={{ flexDirection: 'column', float: 'left', justifyContent: "center" }}>
+                    <MvDetail>
+                        <h1>{rating}</h1>
+                        <MvRating size="medium" name="rt" value={rating} precision={0.5} readOnly />
+                    </MvDetail>
+                    <h2 style={{ fontSize: "20px",color: "#fff", marginBottom: "10px" }}>
+                        {props.name}
+                    </h2>
+                </div>
             </Link>
-            <div style={{ flexDirection: 'column', float: 'right' }}>
-                <MvRating size="medium" name="rt" value={rating} precision={0.5} readOnly />
-                <MvDetail>
-                    <h1>{rating}</h1>
-                    <h2>{props.name}</h2>
-                </MvDetail>
-            </div>
         </MovieCard>
     );
 };
 
 const MovieInfo = () => {
     const {apiUrl} = useContext(LoginContext);
-    const [rating, setRating] = useState(4.5);
+    const [rating, setRating] = useState(0);
     const { movie, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
     const movieListRef = useRef(null);
@@ -85,14 +87,13 @@ const MovieInfo = () => {
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
-                                        // onChange={(event, newValue) => {
-                                        //     setRating(newValue);
-                                        // }}
+                                        onChange={(event, newValue) => {
+                                            setRating(newValue);
+                                        }}
                                         size="medium"
                                         name="rt"
-                                        value={movie.movieRating}
+                                        value={rating}
                                         precision={0.5}
-                                        readOnly
                                     />
                                 </button>
                             </div>

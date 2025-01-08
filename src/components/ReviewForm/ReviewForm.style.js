@@ -32,8 +32,7 @@ export const HorizontalMovieCard = styled.div`
 `;
 
 export const MovieImg = styled.img`
-    width: 140px;
-    border-radius: 10px;
+    
 `;
 
 export const Movie = styled.div`

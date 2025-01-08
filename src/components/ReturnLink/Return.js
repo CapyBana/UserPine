@@ -18,11 +18,11 @@ const ResponsiveReturnBlock = ({message}) => {
     return (
         <Return>
             <ArrowBackIcon style={{
-                fontSize: isComputer ? '40px' : '30px',
-                marginRight: '20px'
+                fontSize: isComputer ? '20px' : '16px',
+                marginRight: '12px'
             }} />
             <div style={{
-                fontSize: isComputer ? '28px' : '21px'
+                fontSize: isComputer ? '1.2rem' : '1rem'
             }}>
                 {message}
             </div>

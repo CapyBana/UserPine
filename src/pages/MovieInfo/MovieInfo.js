@@ -33,7 +33,6 @@ const MovieInfo = () => {
     const [rating, setRating] = useState(4.5);
     const { movie, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
-    // const { movie } = useContext(movieContext);
     const movieListRef = useRef(null);
     const navigate = useNavigate();
 

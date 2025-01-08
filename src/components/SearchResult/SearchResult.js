@@ -2,13 +2,29 @@ import React, { useState } from 'react';
 import { ResultBar, Img, Overview, Link } from './SearchResult.style';
 import naruto from 'src/assets/images/naruto.png';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import axios from 'axios';
 
 const SearchResult = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [wishlistHovered, setWishlistHovered] = useState(false);
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     function func() {
         alert('Added to wishlist');
     }
+    const handleRemoveFromWishlist = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/wishlist`, {
+                userId: 1,
+                movieId: 2,
+            });
+            console.log(response.data);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <ResultBar

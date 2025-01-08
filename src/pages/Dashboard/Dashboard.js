@@ -81,19 +81,38 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { apiUrl } = useContext(LoginContext);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies`);
+            setData(response.data.data.result);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const fetchNewMovie = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const fetchNewRating = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/api/movies`);
-                setData(response.data.data.result);
-                console.log(response.data.data.result);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+        fetchNewMovie();
         fetchData();
+        fetchNewRating();
     }, [apiUrl]);
 
     if (loading) {

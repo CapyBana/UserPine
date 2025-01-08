@@ -66,24 +66,20 @@ const ResponsiveForm = (props) => {
         }
     };
     const CommentSection = () => {
-        const row = isComputer ? "8" : "10";
+        const row = isComputer ? "6" : "8";
 
         return (
             <form onSubmit={handleSubmit}>
                 <CommentArea
                     rows={row}
-                    placeholder="Whatcha thinking about?"
+                    placeholder="Write a review..."
                     id="cmt"
                     required
                     style={{
                         fontSize: isPhone ? "var(--normal-text_size)" : "var(--medium-text_size)"
                     }}
                 />
-                <PostContainer
-                    style={{
-                        margin: isComputer ? "20px 0px" : "10px 0px"
-                    }}
-                >
+                <PostContainer>
                     <Post
                         type="submit"
                         value="Post"
@@ -124,7 +120,7 @@ const ResponsiveForm = (props) => {
                         borderRadius: "10px",
 
                         display: "block",
-                        marginLeft: "auto",
+                        marginLeft: "5%",
                         marginRight: "auto",
                     }}
                 />
@@ -137,10 +133,10 @@ const ResponsiveForm = (props) => {
                 >
                     <MovieTitle
                         style={{
-                            fontSize: "var(--large-text_size)"
+                            fontSize: "var(--title-text_size)"
                         }}
                     >
-                        {movieData.name}
+                        {movieData.title}
                     </MovieTitle>
                     <p
                         style={{
@@ -154,44 +150,43 @@ const ResponsiveForm = (props) => {
                             ...((isComputer || isTab) && { textAlign: "justify", textJustify: "inter-word" })
                         }}
                     >
-                        Naruto là một loạt manga Nhật Bản được viết và minh họa bởi Kishimoto Masashi. Câu chuyện xoay
-                        quanh Uzumaki Naruto, một ninja trẻ muốn tìm cách khẳng định mình để được mọi người công nhận và
-                        nuôi ước mơ trở thành Hokage - người lãnh đạo Làng Lá.
+                        {movieData.description}
                     </p>
                     <MovieRating
                         style={{
                             justifyContent: isPhone ? "center" : "flex-start"
                         }}
                     >
-                        <h4 style={{ marginRight: '30px' }}>{formData.rating}</h4>
+                        <h4 style={{ marginRight: '30px' }}>{movieData.rating}</h4>
                         <StarRating
                             size="large"
                             name="rt"
-                            value={formData.rating}
+                            value={movieData.rating}
                             precision={0.1}
                             readOnly
+                            //style={{ backgroundColor: "rgb(0, 0, 0)"}}
                         />
                     </MovieRating>
                 </Movie>
             </HorizontalMovieCard>
             <Review
                 style={{
-                    marginTop: isComputer ? "50px" : "20px"
+                    marginTop: "32px",
                 }}
             >
                 <StarReview
                     style={{
                         flexDirection: isPhone ? "column" : "row",
-                        marginBottom: (isPhone || isTab) ? "30px" : "40px",
-                        marginTop: isComputer ? "20px" : "10px",
-                        width: isComputer ? "93%" : (isTab ? "92%" : "85%")
+                        marginBottom: (isPhone || isTab) ? "10px" : "20px",
+                        width: "100%",
                     }}
                 >
                     <h3
                         style={{
                             ...(isComputer && { fontSize: "20px", marginRight: "200px" }),
                             ...(isTab && { fontSize: "15px", marginRight: "100px" }),
-                            ...(isPhone && { fontSize: "15px" })
+                            ...(isPhone && { fontSize: "15px" }),
+                            textAlign: isPhone ? "center" : "left",
                         }}
                     >
                         How much would you rate this movie?
@@ -214,22 +209,18 @@ const ResponsiveForm = (props) => {
                         />
                     </StarPrompt>
                 </StarReview>
-                <TextReview
+                <h3
                     style={{
-                        width: isComputer ? "93%" : (isTab ? "92%" : "90%")
+                        fontSize: isComputer ? "20px" : "15px",
+                        display: isPhone ? "none" : "block",
+                        margin: 0,
+                        marginBottom: "8px",
+                        padding: 0,
                     }}
                 >
-                    <h3
-                        style={{
-                            fontSize: isComputer ? "20px" : "15px",
-                            textAlign: isPhone ? 'center' : 'unset',
-                            marginBottom: isPhone ? '-10px' : "0px"
-                        }}
-                    >
-                        Share your thoughts
-                    </h3>
-                    <CommentSection />
-                </TextReview>
+                    Share your thoughts
+                </h3>
+                <CommentSection />
             </Review>
         </GeneralReview>
     );

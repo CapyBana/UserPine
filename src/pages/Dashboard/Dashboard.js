@@ -63,7 +63,7 @@ const CommentCard = (props) => {
                     <div className="head">
                         <MovieImg src={narutoImg} alt="Movie Picture" style={{ width: '100px' }} />
                         <div className="title">
-                            <MovieTitle>{cmtData.title}</MovieTitle>
+                            {/* <MovieTitle>{cmtData.title}</MovieTitle> */}
                             <MvRating size="medium" name="rt" value={cmtData.rating} precision={0.5} readOnly />
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function Dashboard() {
                     <CommentCard data={sth} />
                 </CommentBlock>
             </div>
-            <TranslateMvCard data={wishlist} $isLoad={isLoad} $error={errorWishlist} />
+            <TranslateMvCard data={hardData} />
         </DashboardLayout>
     );
 }

@@ -48,7 +48,7 @@ const LogInPage = ({ handlePage }) => {
             <SignInBox>
                 <MainContent>Log in</MainContent>
                 <form onSubmit={handleSubmit}>
-                    <div style={{ textAlign: 'left', marginBottom: '8px' }}>
+                    <div style={{ textAlign: 'left', margin: '0 0 5px 15px'}}>
                         <text> Username or Email </text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
@@ -68,13 +68,9 @@ const LogInPage = ({ handlePage }) => {
                             size="sm"
                         />
                     </InputBox>
-                    <br />
                     <InputBox style={{ position: 'relative' }} />
-
-                    <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}>
-                        {' '}
-                        {/* Tăng margin ở đây */}
-                        Password
+                    <div style={{ textAlign: 'left', margin: '0 0 5px 15px'}}>
+                        <text>Password</text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
                         <FillInBox
@@ -93,14 +89,12 @@ const LogInPage = ({ handlePage }) => {
                             size="sm"
                         />
                     </InputBox>
-                    <br />
                     <InputBox style={{ position: 'relative' }} />
 
                     {/* Centered link */}
                     <div style={{ textAlign: 'center' }}>
-                        <a href="sign-up">Forgot password • Create an account</a>
+                        <text><a href="sign-up">Forgot password • Create an account</a></text>
                     </div>
-                    <br />
                     {/* Centered Submit Button */}
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                     {success && <p style={{ color: 'green' }}>{success}</p>}

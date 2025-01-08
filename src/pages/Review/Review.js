@@ -15,7 +15,7 @@ const Review = () => {
                     // textDecoration: 'none',
                     // width: '400px',
                     // padding: '80px 2.5% 15px',
-                    margin: '3% 3%',
+                    margin: '80px 3% 10px 3%',
                 }}
             >
                 <ReturnBlock backmessage="Home" />

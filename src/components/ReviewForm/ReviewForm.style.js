@@ -29,6 +29,7 @@ export const HorizontalMovieCard = styled.div`
     width: 80%;
     border-radius: 30px;
     background-color: var(--horizontal-mv-card-background);
+    box-shadow: 0 0 30px rgb(20, 16, 16);
 `;
 
 export const MovieImg = styled.img`
@@ -49,6 +50,7 @@ export const Movie = styled.div`
 
 export const MovieTitle = styled.div`
     font-weight: var(--large-fontWeight);
+    margin-bottom: 10px;
 `;
 
 export const MovieRating = styled.div`
@@ -65,16 +67,19 @@ export const StarRating = styled(Rating)`
 export const Review = styled.div`
     display: flex;
     flex-direction: column;
+
     position: relative;
-    float: left;
-    width: 85%;
     left: 50%;
     transform: translateX(-50%);
-    height: 960px;
+    width: 80%;
     border-radius: 30px;
-    background-color: #401313;
-    margin-top: 50px;
-    padding: 40px 60px 40px;
+
+    height: fit-content;
+    border-radius: 30px;
+    background-color:rgb(13, 13, 13);
+    box-shadow: 0 0 30px rgb(20, 17, 17);
+
+    padding: 20px 44px;
     color: #fae6e5;
 
 `;
@@ -110,10 +115,6 @@ export const StarReviewRating = styled(Rating)`
 export const TextReview = styled.div`
     display: flex;
     flex-direction: column;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 40px 0px;
 `;
 
 export const CommentArea = styled.textarea`
@@ -122,8 +123,10 @@ export const CommentArea = styled.textarea`
     color: var(--primary-white);
     border: 0px;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 8px;
     border-radius: 10px;
+
+    resize: none;
 `;
 
 export const PostContainer = styled.div`

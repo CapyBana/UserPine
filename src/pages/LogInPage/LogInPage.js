@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { BackToHomePage, FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
+import { FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
 import { Link } from 'react-router-dom';

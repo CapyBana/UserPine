@@ -58,7 +58,7 @@ export default function CategoryPage() {
                         img={result.movieImg}
                         title={result.title}
                         category={result.category.categoryName}
-                        rating={4}
+                        rating={result.rating}
                         year={result.releaseDate}
                         onAddToWishlist={() => handleAddToWishlist(result.id)}
                         onRemoveFromWishlist={() => handleRemoveFromWishlist(result.id)}

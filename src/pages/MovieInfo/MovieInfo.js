@@ -1,16 +1,15 @@
 import { React, useContext, useEffect, useRef, useState } from 'react';
 import { InfoBlock, InfoLayout, MovieCard, MovieInfoCard, MovieList, MoviePageLayout, PPAL } from './MovieInfo.style';
 import { Movie, MovieImg, MovieRating, MovieTitle, StarRating } from '~/components/ReviewForm/ReviewForm.style';
-import naruto from 'src/assets/images/naruto.png';
 import { Link, useNavigate } from "react-router-dom";
 import ReturnBlock from "~/components/ReturnLink/Return";
 import { ReviewPage } from "../Review/Review.style";
-import Img from 'src/assets/images/naruto.png';
 import { Image, MvDetail, MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { MovieContext } from "~/context/movieContext";
 import axios from 'axios';
+import { LoginContext } from '~/context/loginContext';
 
 const HorizontalMVCard = (props) => {
     const [rating] = useState(4.5);
@@ -31,11 +30,10 @@ const HorizontalMVCard = (props) => {
 };
 
 const MovieInfo = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const {apiUrl} = useContext(LoginContext);
     const [rating, setRating] = useState(4.5);
     const { movie, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
-    const { movie } = useContext(movieContext);
     const movieListRef = useRef(null);
     const navigate = useNavigate();
 
@@ -54,7 +52,7 @@ const MovieInfo = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [apiUrl, category]);
 
     return (
         <ReviewPage>

@@ -29,7 +29,7 @@ const SearchResultCard = ({ id, img, title, category, rating, year, onAddToWishl
     updateButtonText(isHovered ,isOpen)
     return (
         <Card>
-            <ImagePlaceholder src={img} alt="Movie Picture" onClick={()=> toMoviePage(id)} />
+            <ImagePlaceholder src={`data:image/jpeg;base64,${img}`} alt="Movie Picture" onClick={()=> toMoviePage(id)} />
             <Content onClick={()=> toMoviePage(id)}>
                 <Titles>{title}</Titles>
                 <Category>{year} - {category}</Category>

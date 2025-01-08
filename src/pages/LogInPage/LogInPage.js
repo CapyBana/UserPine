@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { BackToHomePage, FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
+import { Link } from 'react-router-dom';
+import ReturnBlock from '~/components/ReturnLink/Return';
 
 const LogInPage = ({handlePage}) => {
     const { login, apiUrl } = useContext(LoginContext);
@@ -44,9 +46,16 @@ const LogInPage = ({handlePage}) => {
     return (
         <LogInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-            <a href="sign-up">
-                <BackToHomePage>⬅ Back to Home page</BackToHomePage>
-            </a>
+            <Link
+                to="/"
+                style={{
+                    textDecoration: 'none',
+                    width: '400px',
+                    padding: '80px 2.5% 15px',
+                }}
+            >
+                <ReturnBlock backmessage="Back to homepage" />
+            </Link>
             <SignInBox>
                 <MainContent>Log in</MainContent>
                 <form onSubmit={handleSubmit}>

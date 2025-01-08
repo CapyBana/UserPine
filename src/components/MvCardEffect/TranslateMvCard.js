@@ -36,7 +36,7 @@ const TranslateMvCard = (props) => {
                     src={mvData[idx].img}
                     alt="Slideshow"
                 ></img> */}
-                <h3>{mvData[idx].title}</h3>
+                {/* <h3>{mvData[idx].title}</h3> */}
             </EffectMovie>
         </EffectCardContainer>
     );

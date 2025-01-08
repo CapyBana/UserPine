@@ -5,7 +5,6 @@ import TranslateMvCard from '~/components/MvCardEffect/TranslateMvCard';
 import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
 import { LoginContext } from '~/context/loginContext';
 import narutoImg from 'src/assets/images/naruto.png';
-import onePieceImg from 'src/assets/images/one_piece.png';
 import { MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import { MovieImg, MovieTitle } from '~/components/ReviewForm/ReviewForm.style';
 
@@ -78,6 +77,7 @@ const CommentCard = (props) => {
 
 export default function Dashboard() {
     const [data, setData] = useState([]);
+    const [newMovie, setNewMovie] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [wishlist, setWishlist] = useState([]);
@@ -87,9 +87,12 @@ export default function Dashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/api/movies`);
+                const response = await axios.get(`${apiUrl}/api/movies`, {
+                    params: {
+                        size: 10,
+                    },
+                });
                 setData(response.data.data.result);
-                console.log(response.data.data.result);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -115,14 +118,15 @@ export default function Dashboard() {
                 setIsLoad(false); // Ensure loading stops regardless of success or failure
             }
         };
-
+        fetchNewMovie();
         fetchWishlist();
         fetchData();
     }, [apiUrl, userId]);
 
     const fetchNewMovie = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
+            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 8 } });
+            setNewMovie(response.data.data);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -139,7 +143,6 @@ export default function Dashboard() {
         }
     };
 
-
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -147,16 +150,7 @@ export default function Dashboard() {
     if (error) {
         return <p>Error: {error}</p>;
     }
-    const hardData = [
-        { name: 'Inception', rating: 4, img: narutoImg },
-        { name: 'The Dark Knight', rating: 3.5, img: onePieceImg },
-        { name: 'Interstellar', rating: 4, img: narutoImg },
-        { name: 'Parasite', rating: 4.5, img: onePieceImg },
-        { name: 'Avengers: Endgame', rating: 3, img: narutoImg },
-        { name: 'The Shawshank Redemption', rating: 2.5, img: onePieceImg },
-        { name: 'Pulp Fiction', rating: 3, img: narutoImg },
-        { name: 'The Godfather', rating: 4.5, img: onePieceImg },
-    ];
+
     const sth = {
         username: 'aptapt',
         img: narutoImg,
@@ -168,6 +162,8 @@ export default function Dashboard() {
         <DashboardLayout>
             <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
                 <VerticalMvList title="Top Movie" data={data} />
+                <VerticalMvList title="New Movie" data={newMovie} />
+
                 <CommentBlock>
                     <h3>Comment</h3>
                     <CommentCard data={sth} />

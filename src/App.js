@@ -5,12 +5,9 @@ import Navbar from './components/Navbar/Navbar';
 import SignUpPage from './pages/SignUpPage/signUpPage';
 import LogInPage from './pages/LogInPage/LogInPage';
 
-
-
 function App() {
     const [element, setElement] = useState('');
     return (
-
         <div className="app">
             <Navbar handlePage={(val) => setElement(val)} />
             {element === 'sign-up' && <SignUpPage handlePage={(val) => setElement(val)}></SignUpPage>}
@@ -33,7 +30,6 @@ function App() {
                 })}
             </Routes>
         </div>
-        
     );
 }
 

@@ -18,7 +18,7 @@ export const EffectMovie = styled.div`
 `;
 
 const TranslateMvCard = (props) => {
-    const mvData = props.data;
+    const mvData = props.data || [];
     const [idx, setIdx] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {
@@ -26,17 +26,26 @@ const TranslateMvCard = (props) => {
         }, 2000);
 
         return () => clearInterval(interval);
-    }, [mvData.length]);
+    }, [mvData]);
     return (
         <EffectCardContainer>
             <EffectMovie>
                 <h4>From your wishlist</h4>
-                {/* <img
-                    style={{ height: '250px', width: '90%', borderRadius: '16px' }}
-                    src={mvData[idx].img}
-                    alt="Slideshow"
-                ></img> */}
-                {/* <h3>{mvData[idx].title}</h3> */}
+                {mvData.length > 0 ? (
+                    <>
+                        <img
+                            style={{ height: '250px', width: '90%', borderRadius: '16px' }}
+                            src={`data:image/jpeg;base64,${mvData[idx].movieImg}`}
+                            alt="Slideshow"
+                        ></img>
+                        <h3>{mvData[idx].title}</h3>
+                    </>
+                ) : 
+                (
+                    <p>No movie in wishlist</p>
+                )}
+                {props.$isLoad && <p>Loading...</p>}
+                {props.$error && <p>{props.$error}</p>}
             </EffectMovie>
         </EffectCardContainer>
     );

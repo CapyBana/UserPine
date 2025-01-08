@@ -1,16 +1,15 @@
 import { React, useContext, useEffect, useRef, useState } from 'react';
 import { InfoBlock, InfoLayout, MovieCard, MovieInfoCard, MovieList, MoviePageLayout, PPAL } from './MovieInfo.style';
 import { Movie, MovieImg, MovieRating, MovieTitle, StarRating } from '~/components/ReviewForm/ReviewForm.style';
-import naruto from 'src/assets/images/naruto.png';
-import { Link, useNavigate } from "react-router-dom";
-import ReturnBlock from "~/components/ReturnLink/Return";
-import { ReviewPage } from "../Review/Review.style";
-import Img from 'src/assets/images/naruto.png';
+import { Link, useNavigate } from 'react-router-dom';
+import ReturnBlock from '~/components/ReturnLink/Return';
+import { ReviewPage } from '../Review/Review.style';
 import { Image, MvDetail, MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { MovieContext } from "~/context/movieContext";
+import { MovieContext } from '~/context/movieContext';
 import axios from 'axios';
+import { LoginContext } from '~/context/loginContext';
 
 const HorizontalMVCard = (props) => {
     const [rating] = useState(4.5);
@@ -31,7 +30,7 @@ const HorizontalMVCard = (props) => {
 };
 
 const MovieInfo = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const {apiUrl} = useContext(LoginContext);
     const [rating, setRating] = useState(4.5);
     const { movie, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
@@ -39,7 +38,7 @@ const MovieInfo = () => {
     const navigate = useNavigate();
 
     const goToReview = () => {
-        navigate("/review-post", { state: movie });
+        navigate('/review-post', { state: movie });
     };
 
     const category = movie.category.categoryName;
@@ -53,7 +52,7 @@ const MovieInfo = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [apiUrl, category]);
 
     return (
         <ReviewPage>
@@ -72,8 +71,8 @@ const MovieInfo = () => {
                     <MovieImg src={`data:image/jpeg;base64,${movie.movieImg}`} alt="Movie Picture" />
                     <Movie style={{ padding: '20px' }}>
                         <MovieRating>
-                            <h4 style={{ marginRight: '30px' }}>{movie.rating}</h4>
-                            <StarRating size="large" name="rt" value={movie.rating} precision={0.1} readOnly />
+                            <h4 style={{ marginRight: '30px' }}>{movie.movieRating}</h4>
+                            <StarRating size="large" name="rt" value={movie.movieRating} precision={0.1} readOnly />
                         </MovieRating>
                         <MovieTitle>{movie.title}</MovieTitle>
                         <h5>{movie.category.categoryName}</h5>
@@ -81,28 +80,28 @@ const MovieInfo = () => {
                 </MovieInfoCard>
                 <InfoLayout>
                     <InfoBlock>
-
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <div className="block" style={{width: "48%", float: "left"}}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <div className="block" style={{ width: '48%', float: 'left' }}>
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
-                                        onChange={(event, newValue) => {
-                                            setRating(newValue);
-                                        }}
+                                        // onChange={(event, newValue) => {
+                                        //     setRating(newValue);
+                                        // }}
                                         size="medium"
                                         name="rt"
-                                        value={rating}
+                                        value={movie.movieRating}
                                         precision={0.5}
+                                        readOnly
                                     />
                                 </button>
                             </div>
 
-                            <div className="block" style={{width: "24%", float: "right"}}>
+                            <div className="block" style={{ width: '24%', float: 'right' }}>
                                 <h5>Watch Trailer</h5>
                                 <MovieOutlinedIcon fontSize="large" />
                             </div>
-                            <div className="block" style={{width: "24%", float: "right"}}>
+                            <div className="block" style={{ width: '24%', float: 'right' }}>
                                 <h5>Add to Wishlist</h5>
                                 <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
                                     <FavoriteBorderOutlinedIcon fontSize="large" />
@@ -110,7 +109,7 @@ const MovieInfo = () => {
                             </div>
                         </div>
 
-                        <div className="descriptionBlock" style={{height: "auto"}}>
+                        <div className="descriptionBlock" style={{ height: 'auto' }}>
                             <h2>Movie Description</h2>
                             <p>{movie.description}</p>
                         </div>

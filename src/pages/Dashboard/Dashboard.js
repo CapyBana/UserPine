@@ -4,7 +4,6 @@ import axios from 'axios';
 import TranslateMvCard from '~/components/MvCardEffect/TranslateMvCard';
 import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
 import { LoginContext } from '~/context/loginContext';
-import narutoImg from 'src/assets/images/naruto.png';
 import { MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import { MovieImg, MovieTitle } from '~/components/ReviewForm/ReviewForm.style';
 
@@ -36,9 +35,11 @@ export const UserComment = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-between;
     }
     .title {
         padding-left: 20px;
+        flex-basis: 30%;
     }
     p {
         font-size: var(--normal-text_size);
@@ -50,24 +51,37 @@ export const UserComment = styled.div`
     text {
         font-size: var(--medium-text_size);
     }
+    .comment {
+        flex-basis: 50%;
+    }
 `;
 
 const CommentCard = (props) => {
     const cmtData = props.data;
     return (
         <UserComment>
-            <text>{cmtData.username}</text>
+            <text>{cmtData.user.username}</text>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <div style={{ backgroundColor: '#1f1f1f', width: '1px', height: 'auto', margin: '0 20px' }}></div>
                 <div>
                     <div className="head">
-                        <MovieImg src={narutoImg} alt="Movie Picture" style={{ width: '100px' }} />
+                        <MovieImg
+                            src={`data:image/jpeg;base64,${cmtData.movie.movieImg}`}
+                            alt="Movie Picture"
+                            style={{ width: '100px' }}
+                        />
                         <div className="title">
-                            <MovieTitle>{cmtData.title}</MovieTitle>
-                            <MvRating size="medium" name="rt" value={cmtData.rating} precision={0.5} readOnly />
+                            <MovieTitle>{cmtData.movie.title}</MovieTitle>
+                            <MvRating
+                                size="medium"
+                                name="rt"
+                                value={cmtData.movie.movieRating}
+                                precision={0.5}
+                                readOnly
+                            />
                         </div>
+                        <p className="comment">{cmtData.ratingContent}</p>
                     </div>
-                    <p>{cmtData.review}</p>
                 </div>
             </div>
             <div style={{ backgroundColor: '#1f1f1f', width: 'auto', height: '1px', margin: '0 20px' }}></div>
@@ -78,71 +92,82 @@ const CommentCard = (props) => {
 export default function Dashboard() {
     const [data, setData] = useState([]);
     const [newMovie, setNewMovie] = useState([]);
+    const [rating, setRating] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [wishlist, setWishlist] = useState([]);
     const [isLoad, setIsLoad] = useState(false);
     const [errorWishlist, setErrorWishlist] = useState(null);
     const { apiUrl, userId } = useContext(LoginContext);
+    const [loadedImages, setLoadedImages] = useState(0);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies`, {
+                params: {
+                    size: 5,
+                },
+            });
+            setData(response.data.data.result);
+            setLoadedImages((prev) => prev + 5);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const fetchWishlist = async () => {
+        try {
+            setIsLoad(true);
+            if (!userId) {
+                setIsLoad(false);
+                return;
+            }
+            const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`, { params: { size: 5 } });
+            if (response.status === 200) {
+                setWishlist(response.data.data);
+                setLoadedImages((prev) => prev + 5);
+            }
+        } catch (err) {
+            setErrorWishlist(err);
+        } finally {
+            setIsLoad(false);
+        }
+    };
+
+    const fetchNewMovie = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
+            setNewMovie(response.data.data);
+            setLoadedImages((prev) => prev + 5);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const fetchNewRating = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
+            setRating(response.data.data.result.content);
+            setLoadedImages((prev) => prev + 5);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/api/movies`, {
-                    params: {
-                        size: 10,
-                    },
-                });
-                setData(response.data.data.result);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        const fetchWishlist = async () => {
-            try {
-                setIsLoad(true);
-                if (!userId) {
-                    setIsLoad(false); // Stop loading if user is not logged in
-                    return;
-                }
-                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`,{ params: { size: 5 } });
-                if (response.status === 200) {
-                    setWishlist(response.data.data);
-                    console.log(response.data);
-                }
-            } catch (err) {
-                setErrorWishlist(err);
-            } finally {
-                setIsLoad(false); // Ensure loading stops regardless of success or failure
-            }
-        };
-
-        const fetchNewMovie = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        const fetchNewRating = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
+        fetchNewRating();
         fetchWishlist();
         fetchData();
-        // fetchNewMovie();
-        // fetchNewRating();
-    }, [apiUrl, userId]);
+        fetchNewMovie();
+    }, []);
+    useEffect(() => {
+        if (loadedImages === 20) {
+            setLoading(false);
+        }
+    }, [loadedImages]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -151,23 +176,16 @@ export default function Dashboard() {
     if (error) {
         return <p>Error: {error}</p>;
     }
-
-    const sth = {
-        username: 'aptapt',
-        img: narutoImg,
-        title: 'Naruto',
-        rating: 4,
-        review: 'hhsdbhcjscsjfwfwffoiwfofknfknkscnkjsnhwfhwknkwfhifhk',
-    };
     return (
         <DashboardLayout>
             <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
                 <VerticalMvList title="Top Movie" data={data} />
                 <VerticalMvList title="New Movie" data={newMovie} />
-
                 <CommentBlock>
                     <h3>Comment</h3>
-                    <CommentCard data={sth} />
+                    {rating.map((commentData, index) => (
+                        <CommentCard key={index} data={commentData} />
+                    ))}
                 </CommentBlock>
             </div>
             <TranslateMvCard data={wishlist} $isLoad={isLoad} $error={errorWishlist} />

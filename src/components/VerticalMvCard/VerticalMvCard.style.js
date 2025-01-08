@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Card, Rating } from '@mui/material';
 
 export const MovieCard = styled(Card)`
-    min-width: 176px;
+    width: 180px;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,6 @@ export const MvRating = styled(Rating)`
 export const MvDetail = styled.div`
     display: flex;
     flex-direction: row;
-    padding-left: 4px;
     gap: 8px;
     justify-content: flex-start;
     h1 {
@@ -38,8 +37,7 @@ export const MvDetail = styled.div`
         color: #fff;
     }
     h2 {
-        padding-top: 20px;
-        font-size: 12px;
+        font-size: 14px;
         color: #fff;
     }
 `;

@@ -21,7 +21,6 @@ const HorizontalMVCard = ({ id, name, img, rating, item }) => {
 
     return (
         <MovieCard>
-            {/* Optional: Remove 'to' if you want to prevent navigation */}
             <Link
                 to={`/movie/${id}`}
                 style={{ width: '50%', float: 'left', cursor: 'pointer' }}
@@ -110,11 +109,13 @@ const MovieInfo = () => {
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
+//                                         onChange={(event, newValue) => {
+//                                             setRating(newValue);
+//                                         }}
                                         size="medium"
                                         name="rt"
-                                        value={movie.movieRating}
+                                        value={rating}
                                         precision={0.5}
-                                        readOnly
                                     />
                                 </button>
                             </div>

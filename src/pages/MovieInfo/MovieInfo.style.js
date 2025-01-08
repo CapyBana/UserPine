@@ -38,6 +38,14 @@ export const InfoBlock = styled.div`
             border: none;
         }
     }
+    .heart {
+        border: none;
+        background-color: transparent;
+        color: #fae6e5;
+    }
+    .heart:hover {
+        cursor: pointer;
+    }
     .descriptionBlock {
         padding: 40px;
         border-radius: 30px;

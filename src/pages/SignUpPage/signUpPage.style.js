@@ -28,22 +28,22 @@ export const SignInBox = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 35%;
     font-family: arial;
     background-color: #100c0c;
     color: #fae6e5;
     justify-content: space-between;
     text-align: center;
     border-radius: 45px;
-    padding: 2% 8% 2% 8%;
+    padding: 1% 4%;
 
     .mainContent {
         text-align: center;
         color: #fae6e5;
         font-style: strong;
-        font-size: var(--super-text_size);
-        margin-top: 0;
-        margin-bottom: 1%;
+        font-size: var(--primary-text_size);
+        margin-top: 2%;
+        margin-bottom: 8%;
     }
     form {
         display: flex;
@@ -60,6 +60,10 @@ export const SignInBox = styled.div`
             text-align: center;
             cursor: pointer;
             border: none;
+            &:hover {
+                background-color: #152157; /* Darker shade on hover */
+                transition: background-color 0.3s ease; /* Smooth transition */
+            }
         }
         .fillInBox {
             padding: 2% 9% 2% 4%;
@@ -73,7 +77,7 @@ export const SignInBox = styled.div`
         }
     }
     @media (max-width: 480px) {
-        width: 80%;
+        width: 90%;
         padding: 5% 8% 5% 8%;
         form {
             button {

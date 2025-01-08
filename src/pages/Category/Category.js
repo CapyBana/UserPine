@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SearchResultCard from '~/components/SearchResultCard/SearchResultCard';
-import './SearchPage.css';
-import { SearchContext } from '~/context/SearchProvider';
+import './Category.css';
 // import narutoImg from 'src/assets/images/naruto.png';
 // import onePieceImg from 'src/assets/images/one_piece.png';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
 import { MovieContext } from '~/context/movieContext';
 
-export default function SearchPage() {
-    const { apiUrl } = useContext(LoginContext);
-
+export default function CategoryPage() {
     // const results = [
     //     { id: 1, img: narutoImg, title: 'Inception', category: 'Movie', rating: '4.8', year: 2010 },
     //     { id: 2, img: onePieceImg, title: 'Breaking Bad', category: 'TV Show', rating: '3.5', year: 2008 },
@@ -19,8 +16,8 @@ export default function SearchPage() {
     //     { id: 5, img: onePieceImg, title: 'Breaking Bad', category: 'TV Show', rating: '3.5', year: 2008 },
     //     { id: 6, img: narutoImg, title: 'The Godfather', category: 'Movie', rating: '4.2', year: 1972 },
     // ];
-    const { inputValue } = useContext(SearchContext);
-    const { handleAddToWishlist } = useContext(MovieContext);
+    const { apiUrl } = useContext(LoginContext);
+    const { category, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -28,13 +25,9 @@ export default function SearchPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/api/movies/search`, {
-                    params: {
-                        title: inputValue,
-                    },
-                });
-                setData(response.data.data.result);
-                console.log(response.data);
+                const response = await axios.get(`${apiUrl}/api/movies/category/${category}`);
+                setData(response.data.data);
+                console.log(response.data.data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -42,7 +35,7 @@ export default function SearchPage() {
             }
         };
         fetchData();
-    }, [apiUrl, inputValue]);
+    }, [apiUrl, category]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -58,7 +51,6 @@ export default function SearchPage() {
 
     return (
         <div className="search-result-page">
-            <h3>Search Results for "{inputValue}"</h3>
             <div className="results-list">
                 {data.map((result) => (
                     <SearchResultCard

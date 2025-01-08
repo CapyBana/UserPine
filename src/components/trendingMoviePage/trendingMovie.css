@@ -1,0 +1,43 @@
+body {
+    background-color: #111; /* Dark background for contrast */
+    color: #fff; /* Text color */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full-screen layout */
+  }
+  
+  .movie-layout {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    width: 100%;
+  }
+  
+  .movie-poster img {
+    width: 300px;
+    height: auto;
+  }
+  
+  .movie-info {
+    padding: 20px;
+  }
+  
+  .movie-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .movie-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc; /* Lighter text for readability */
+  }
+  

@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { Image, MovieCard, MvDetail, MvRating } from './VerticalMvCard.style';
 import Img from 'src/assets/images/alterImg.png';
 import { React, useContext } from 'react';
-import { movieContext } from '~/context/movieContext';
+import { MovieContext } from '~/context/movieContext';
 
 const VerticalMvCard = (props) => {
-    const { setMovie } = useContext(movieContext);
+    const { setMovie } = useContext(MovieContext);
 
     return (
         <MovieCard style={{ borderRadius: '10px' }}>

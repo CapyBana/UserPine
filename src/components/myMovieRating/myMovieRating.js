@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { MyMovieRatingBlock, MyMovieRatingTitler, Titler, MovieList, MovieListScroll } from './myMovieRating.style';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';

@@ -122,12 +122,10 @@ const MovieInfo = () => {
                                 <h5>Watch Trailer</h5>
                                 <MovieOutlinedIcon fontSize="large" />
                             </div>
-                            <div classNameName="block" style={{width: "24%", float: "right"}}>
+                            <div className="block" style={{width: "24%", float: "right"}}>
                                 <h5>Add to Wishlist</h5>
                                 <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
-                                    <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
                                     <FavoriteBorderOutlinedIcon fontSize="large" />
-                                </button>
                                 </button>
                             </div>
                         </div>

@@ -170,7 +170,7 @@ export default function Dashboard() {
                     <CommentCard data={sth} />
                 </CommentBlock>
             </div>
-            <TranslateMvCard data={hardData} />
+            <TranslateMvCard data={wishlist} />
         </DashboardLayout>
     );
 }

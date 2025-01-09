@@ -92,6 +92,7 @@ export default function Dashboard() {
     const [data, setData] = useState([]);
     const [newMovie, setNewMovie] = useState([]);
     const [rating, setRating] = useState([]);
+    const [topMovie, setTopMovie] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [wishlist, setWishlist] = useState([]);
@@ -154,7 +155,7 @@ export default function Dashboard() {
             if (currentIndex < fetchFunctions.length) {
                 fetchFunctions[currentIndex]();
                 currentIndex++;
-                setTimeout(callNextFunction, 1000);
+                setTimeout(callNextFunction, 500);
             }
         };
 
@@ -198,7 +199,7 @@ export default function Dashboard() {
     }
     return (
         <div>
-            <TrendingMovie></TrendingMovie>
+            <TrendingMovie data={topMovie[1]}></TrendingMovie>
             <DashboardLayout>
                 <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
                     <VerticalMvList title="Top Movie" data={data} />

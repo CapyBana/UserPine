@@ -6,11 +6,10 @@ import { MovieContext } from '~/context/movieContext';
 
 const VerticalMvCard = (props) => {
     const { setMovie } = useContext(MovieContext);
-
     return (
         <MovieCard style={{ borderRadius: '10px' }}>
             <Link to={`/movie/${props.id}`} onClick={() => setMovie(props.$movie)}>
-                {props.img ? <Image src={props.img}></Image> : <Image src={Img}></Image>}
+                {props.img ? <Image src={props.img} loading="lazy"></Image> : <Image src={Img} loading="lazy"></Image>}
             </Link>
             <MvRating
                 // onClick={} navigate to Review Page

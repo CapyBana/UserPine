@@ -13,12 +13,13 @@ export const MovieListContainer = styled.div`
         display: flex;
         flex-direction: row;
     }
+    width: 100%;
 `;
 export const MovieList = styled.div`
     display: flex;
     flex-direction: row;
     gap: 16px;
-    max-width: 800px;
+    width: 900px;
     overflow-x: hidden;
     white-space: nowrap;
 `;

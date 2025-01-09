@@ -19,7 +19,7 @@ const VerticalMvList = (props) => {
     return (
         <MovieListContainer>
             <h3>{props.title}</h3>
-            <div>
+            <div style={{ width: 'max-content' }}>
                 <MovieList ref={movieListRef}>
                     {Array.isArray(mvList) &&
                         mvList.map((movie) => (

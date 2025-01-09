@@ -188,7 +188,7 @@ export default function Dashboard() {
                     ))}
                 </CommentBlock>
             </div>
-            <TranslateMvCard data={wishlist} $isLoad={isLoad} $error={errorWishlist} />
+            <TranslateMvCard data={wishlist} />
         </DashboardLayout>
     );
 }

@@ -119,7 +119,7 @@ export const MovieList = styled.div`
 `;
 
 export const MovieCard = styled(Card)`
-    flex-direction: row;
+    flex-direction: column;
     margin: 20px 0;
     padding: 12px 5px 0 12px;
     && {

@@ -29,6 +29,7 @@ export const MvDetail = styled.div`
     display: flex;
     flex-direction: row;
     gap: 8px;
+    align-items: center;
     justify-content: flex-start;
     h1 {
         font-size: 32px;

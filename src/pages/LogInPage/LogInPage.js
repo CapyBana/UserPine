@@ -2,10 +2,8 @@ import React, { useContext, useState } from 'react';
 import { FillInBox, InputBox, LogInLayout, MainContent, SignInBox, SubmitButton } from './logInStyle';
 import axios from 'axios';
 import { LoginContext } from '~/context/loginContext';
-import { Link } from 'react-router-dom';
-import ReturnBlock from '~/components/ReturnLink/Return';
 
-const LogInPage = ({handlePage}) => {
+const LogInPage = ({ handlePage }) => {
     const { login, apiUrl } = useContext(LoginContext);
 
     const [formData, setFormData] = useState({
@@ -19,7 +17,7 @@ const LogInPage = ({handlePage}) => {
     const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
         });
     };
 
@@ -47,24 +45,22 @@ const LogInPage = ({handlePage}) => {
     return (
         <LogInLayout>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-            <Link
-                to="/"
-                style={{
-                    textDecoration: 'none',
-                    width: '400px',
-                    padding: '80px 2.5% 15px',
-                }}
-            >
-                <ReturnBlock backmessage="Back to homepage" />
-            </Link>
             <SignInBox>
                 <MainContent>Log in</MainContent>
                 <form onSubmit={handleSubmit}>
-                    <div style={{ textAlign: 'left', marginBottom: '8px' }}>
+                    <div style={{ textAlign: 'left', margin: '0 0 5px 15px'}}>
                         <text> Username or Email </text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="text" id="username" minLength="6" maxLength="30" value={formData.username} onChange={handleChange} required />
+                        <FillInBox
+                            type="text"
+                            id="username"
+                            minLength="6"
+                            maxLength="30"
+                            value={formData.username}
+                            onChange={handleChange}
+                            required
+                        />
                         <box-icon
                             style={{ position: 'absolute', top: '32.5%', right: '20px' }}
                             type="solid"
@@ -72,16 +68,20 @@ const LogInPage = ({handlePage}) => {
                             size="sm"
                         />
                     </InputBox>
-                    <br />
                     <InputBox style={{ position: 'relative' }} />
-
-                    <div style={{ textAlign: 'left', margin: '16px 0 8px 0' }}>
-                        {' '}
-                        {/* Tăng margin ở đây */}
-                        Password
+                    <div style={{ textAlign: 'left', margin: '0 0 5px 15px'}}>
+                        <text>Password</text>
                     </div>
                     <InputBox style={{ position: 'relative' }}>
-                        <FillInBox type="password" id="password" minLength="8" maxLength="30" value={formData.password} onChange={handleChange} required />
+                        <FillInBox
+                            type="password"
+                            id="password"
+                            minLength="8"
+                            maxLength="30"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
                         <box-icon
                             style={{ position: 'absolute', top: '32.5%', right: '20px' }}
                             type="solid"
@@ -89,14 +89,12 @@ const LogInPage = ({handlePage}) => {
                             size="sm"
                         />
                     </InputBox>
-                    <br />
                     <InputBox style={{ position: 'relative' }} />
 
                     {/* Centered link */}
                     <div style={{ textAlign: 'center' }}>
-                        <a href="sign-up">Forgot password • Create an account</a>
+                        <text><a href="sign-up">Forgot password • Create an account</a></text>
                     </div>
-                    <br />
                     {/* Centered Submit Button */}
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                     {success && <p style={{ color: 'green' }}>{success}</p>}

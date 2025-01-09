@@ -12,12 +12,13 @@ export const LogInLayout = styled.div`
 `;
 export const SubmitButton = styled.button`
     height: 100%;
-    padding: 4% 10%;
+    width: 100%;
+    padding: 2.5% 5%;
     margin: 2%;
     background-color: #1d269a;
     color: #fae6e5;
     border-radius: 45px;
-    font-size: 1.3em;
+    font-size: var(--large-text_size);
     text-align: center;
     cursor: pointer;
     border: none;
@@ -29,12 +30,11 @@ export const SubmitButton = styled.button`
 `;
 
 export const SignInBox = styled.div`
-    width: 50%;
+    width: 35%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     display: flex;
     flex-direction: column;
     font-family: unbounded, arial;
@@ -43,14 +43,21 @@ export const SignInBox = styled.div`
     justify-content: space-between;
     text-align: left; /* Change to left for alignment */
     border-radius: 45px;
-    padding: 5% 10%;
+    padding: 2% 4%;
+    h1 {
+        margin: 0;
+    }
+    text {
+        font-size: 18px;
+    }
 `;
 
 export const MainContent = styled.h1`
     text-align: center;
     color: #fae6e5;
-    font-weight: bold; /* Changed from font-style to font-weight */
-    font-size: 2.5em;
+    font-size: var(--primary-text_size);
+    margin-top: 0;
+    margin-bottom: 2%;
 `;
 
 export const ThirdContent = styled.h3`
@@ -66,18 +73,19 @@ export const InputBox = styled.div`
     background-color: #231b1b;
     color: #fae6e5;
     border: none;
-    border-radius: 20px;
+    border-radius: 15px;
     margin: auto;
 `;
 
 export const FillInBox = styled.input`
-    padding: 20px 45px 20px 20px;
+    padding: 15px 45px 15px 15px;
     width: 100%;
     height: 100%;
     background-color: transparent;
     color: #fae6e5;
     outline: none;
     border: none;
+    font-size: 18px;
 `;
 
 export const BackToHomePage = styled.button`
@@ -86,9 +94,4 @@ export const BackToHomePage = styled.button`
     color: #dcd1d1;
     border: none;
     cursor: pointer;
-`;
-
-export const Capybana = styled.h3`
-    font-family: fantasy;
-    text-align: center; /* Ensured center alignment */
 `;

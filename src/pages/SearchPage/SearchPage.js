@@ -59,6 +59,7 @@ export default function SearchPage() {
                         category={result.category.categoryName}
                         rating={result.rating}
                         year={result.releaseDate}
+                        movie={result}
                         onAddToWishlist={() => handleAddToWishlist(result.id)}
                         onRemoveFromWishlist={() => handleRemoveFromWishlist(result.id)}
                     />

@@ -79,7 +79,7 @@ const MyMovieRating = () => {
                                     key={`${movie.id}-${movie.title}`}
                                     id={movie.id}
                                     name={movie.title}
-                                    rating={movie.rating}
+                                    rating={movie.movieRating}
                                     img={`data:image/jpeg;base64,${movie.movieImg}`}
                                     $movie={movie}
                                 />

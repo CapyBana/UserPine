@@ -7,21 +7,12 @@ import {
     PosterWrapper,
     MoviePoster,
     MovieInfo,
-    CategoryHeader,
     MovieDescription,
     MovieTitle,
-    MoviesSection,
-    SectionTitle,
-    MoviesGrid,
-    MovieCard,
-    Placeholder,
-    Rating,
 } from './trendingMovie.style';
 import TrendingPoster from 'src/assets/images/image.png';
-import Poster from 'src/assets/images/poster.png';
 
 const TrendingMovie = (props) => {
-    console.log(props.data);
     return (
         <Body>
             <Container>

@@ -23,6 +23,7 @@ export const LoginProvider = ({ children }) => {
         setUserId(userId);
         sessionStorage.setItem('isLoggedIn', 'true');
         sessionStorage.setItem('userId', userId); // Persist userId
+        window.location.reload();
     };
 
     const logout = () => {
@@ -30,6 +31,7 @@ export const LoginProvider = ({ children }) => {
         setUserId(null);
         sessionStorage.removeItem('isLoggedIn');
         sessionStorage.removeItem('userId'); // Clear userId
+        window.location.reload();
     };
 
     const contextValue = {

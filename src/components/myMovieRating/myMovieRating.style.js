@@ -49,4 +49,5 @@ export const MovieList = styled.div`
     align-items: center;
     overflow-x: auto; 
     scroll-behavior: smooth;
+    height: fit-content;
 `;

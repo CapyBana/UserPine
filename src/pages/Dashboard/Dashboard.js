@@ -6,6 +6,8 @@ import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
 import { LoginContext } from '~/context/loginContext';
 import { MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import { MovieImg, MovieTitle } from '~/components/ReviewForm/ReviewForm.style';
+import { TopMovies } from '~/components/trendingMoviePage/trendingMovie.style';
+import TrendingMovie from '~/components/trendingMoviePage/trendingMovie';
 
 export const DashboardLayout = styled.div`
     width: 100%;
@@ -99,22 +101,40 @@ export default function Dashboard() {
     const [isLoad, setIsLoad] = useState(false);
     const [errorWishlist, setErrorWishlist] = useState(null);
     const { apiUrl, userId } = useContext(LoginContext);
-    const [loadedImages, setLoadedImages] = useState(0);
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(`${apiUrl}/api/movies`, {
-                params: {
-                    size: 5,
-                },
-            });
-            setData(response.data.data.result);
-            setLoadedImages((prev) => prev + 5);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/api/movies`, {
+                    params: {
+                        size: 10,
+                    },
+                });
+                setData(response.data.data.result);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        const fetchWishlist = async () => {
+            try {
+                setIsLoad(true);
+                if (!userId) {
+                    setIsLoad(false); // Stop loading if user is not logged in
+                    return;
+                }
+                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`, { params: { size: 5 } });
+                if (response.status === 200) {
+                    setWishlist(response.data.data);
+                    console.log(response.data);
+                }
+            } catch (err) {
+                setErrorWishlist(err);
+            } finally {
+                setIsLoad(false); // Ensure loading stops regardless of success or failure
+            }
+        };
 
     const fetchWishlist = async () => {
         try {
@@ -177,18 +197,20 @@ export default function Dashboard() {
         return <p>Error: {error}</p>;
     }
     return (
-        <DashboardLayout>
-            <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
-                <VerticalMvList title="Top Movie" data={data} />
-                <VerticalMvList title="New Movie" data={newMovie} />
-                <CommentBlock>
-                    <h3>Comment</h3>
-                    {rating.map((commentData, index) => (
-                        <CommentCard key={index} data={commentData} />
-                    ))}
-                </CommentBlock>
-            </div>
-            <TranslateMvCard data={wishlist} />
-        </DashboardLayout>
+        <div>
+            <TrendingMovie></TrendingMovie>
+            <DashboardLayout>
+                <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
+                    <VerticalMvList title="Top Movie" data={data} />
+                    <VerticalMvList title="New Movie" data={newMovie} />
+                    <CommentBlock>
+                        <h3>Comment</h3>
+                        <CommentCard data={sth} />
+                    </CommentBlock>
+                </div>
+                <TranslateMvCard data={wishlist} />
+            </DashboardLayout>
+        </div>
+
     );
 }

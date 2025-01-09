@@ -109,12 +109,12 @@ const MovieInfo = () => {
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
-//                                         onChange={(event, newValue) => {
-//                                             setRating(newValue);
-//                                         }}
+                                        //                                         onChange={(event, newValue) => {
+                                        //                                             setRating(newValue);
+                                        //                                         }}
                                         size="medium"
                                         name="rt"
-                                        value={rating}
+                                        value={movie.movieRating}
                                         precision={0.5}
                                     />
                                 </button>
@@ -123,7 +123,7 @@ const MovieInfo = () => {
                                 <h5>Watch Trailer</h5>
                                 <MovieOutlinedIcon fontSize="large" />
                             </div>
-                            <div className="block" style={{width: "24%", float: "right"}}>
+                            <div className="block" style={{ width: '24%', float: 'right' }}>
                                 <h5>Add to Wishlist</h5>
                                 <button className="heart" onClick={() => handleAddToWishlist(movie.id)}>
                                     <FavoriteBorderOutlinedIcon fontSize="large" />

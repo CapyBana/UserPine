@@ -96,7 +96,10 @@ const MovieInfo = () => {
                             <StarRating size="large" name="rt" value={movie.movieRating} precision={0.1} readOnly />
                         </MovieRating>
                         <MovieTitle>{movie.title}</MovieTitle>
-                        <h5>{movie.category?.categoryName}</h5>
+                        <h5>
+                            {movie.category?.categoryName.charAt(0).toUpperCase() +
+                                movie.category?.categoryName.slice(1)}
+                        </h5>
                     </Movie>
                 </MovieInfoCard>
 

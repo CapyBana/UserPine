@@ -76,8 +76,12 @@ const Navbar = (props) => {
                                 {categories.length > 0 &&
                                     categories.map((category) => (
                                         <li key={category.id}>
-                                            <Link to={`/category/${category.categoryName}`} onClick={() => setCategory(category.categoryName)}>
-                                                {category.categoryName}
+                                            <Link
+                                                to={`/category/${category.categoryName}`}
+                                                onClick={() => setCategory(category.categoryName)}
+                                            >
+                                                {category.categoryName.charAt(0).toUpperCase() +
+                                                    category.categoryName.slice(1)}
                                             </Link>
                                         </li>
                                     ))}
@@ -92,7 +96,7 @@ const Navbar = (props) => {
                                 My Account
                                 <ul className="dropdown">
                                     <li>
-                                        <Link to='/user-profile'>My movie</Link>
+                                        <Link to="/user-profile">My movie</Link>
                                     </li>
                                     <li>
                                         <a>Settings</a>

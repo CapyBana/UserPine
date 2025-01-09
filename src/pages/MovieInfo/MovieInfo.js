@@ -26,9 +26,9 @@ const HorizontalMVCard = ({ id, name, img, rating, item }) => {
                 style={{ width: '50%', float: 'left', cursor: 'pointer' }}
                 onClick={handleMovieClick}
             >
-                <Image src={img} alt="Movie Thumbnail" />
+                <Image style={{ width: 160, height: 230 }} src={img} alt="Movie Thumbnail" />
             </Link>
-            <div style={{ flexDirection: 'column', float: 'right' }}>
+            <div style={{ flexDirection: 'column', float: 'right', marginLeft: 8 }}>
                 <MvRating size="medium" name="rt" value={rating} precision={0.5} readOnly />
                 <MvDetail>
                     <h1>{rating}</h1>
@@ -45,7 +45,7 @@ const MovieInfo = () => {
     const { movie, handleAddToWishlist } = useContext(MovieContext);
     const [data, setData] = useState([]);
     const navigate = useNavigate();
-
+    const [rating, setRating] = useState(0);
     // Navigate to Review Page
     const goToReview = () => {
         navigate('/review-post', { state: movie });
@@ -100,21 +100,19 @@ const MovieInfo = () => {
                     </Movie>
                 </MovieInfoCard>
 
-                {/* Info Layout */}
                 <InfoLayout>
                     <InfoBlock>
-                        {/* Movie Actions */}
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <div className="block" style={{ width: '48%', float: 'left' }}>
                                 <h5>Give your own rating</h5>
                                 <button onClick={goToReview}>
                                     <MvRating
-                                        //                                         onChange={(event, newValue) => {
-                                        //                                             setRating(newValue);
-                                        //                                         }}
+                                        onChange={(event, newValue) => {
+                                            setRating(newValue);
+                                        }}
                                         size="medium"
                                         name="rt"
-                                        value={movie.movieRating}
+                                        value={rating}
                                         precision={0.5}
                                     />
                                 </button>

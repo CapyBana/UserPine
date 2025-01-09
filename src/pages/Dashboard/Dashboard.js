@@ -50,9 +50,6 @@ export const UserComment = styled.div`
         padding: 10px 0;
         overflow-y: hidden;
     }
-    text {
-        font-size: var(--medium-text_size);
-    }
     .comment {
         flex-basis: 50%;
     }
@@ -101,40 +98,23 @@ export default function Dashboard() {
     const [isLoad, setIsLoad] = useState(false);
     const [errorWishlist, setErrorWishlist] = useState(null);
     const { apiUrl, userId } = useContext(LoginContext);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/api/movies`, {
-                    params: {
-                        size: 10,
-                    },
-                });
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies`, {
+                params: {
+                    size: 10,
+                },
+            });
+            if (response.status === 200) {
                 setData(response.data.data.result);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
+                console.log(data);
             }
-        };
-
-        const fetchWishlist = async () => {
-            try {
-                setIsLoad(true);
-                if (!userId) {
-                    setIsLoad(false); // Stop loading if user is not logged in
-                    return;
-                }
-                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`, { params: { size: 5 } });
-                if (response.status === 200) {
-                    setWishlist(response.data.data);
-                    console.log(response.data);
-                }
-            } catch (err) {
-                setErrorWishlist(err);
-            } finally {
-                setIsLoad(false); // Ensure loading stops regardless of success or failure
-            }
-        };
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const fetchWishlist = async () => {
         try {
@@ -146,7 +126,7 @@ export default function Dashboard() {
             const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`, { params: { size: 5 } });
             if (response.status === 200) {
                 setWishlist(response.data.data);
-                setLoadedImages((prev) => prev + 5);
+                // setLoadedImages((prev) => prev + 5);
             }
         } catch (err) {
             setErrorWishlist(err);
@@ -157,9 +137,13 @@ export default function Dashboard() {
 
     const fetchNewMovie = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { size: 5 } });
-            setNewMovie(response.data.data);
-            setLoadedImages((prev) => prev + 5);
+            const response = await axios.get(`${apiUrl}/api/movies`, { params: { page: 2, size: 5 } });
+            if (response.status === 200) {
+                setNewMovie(response.data.data);
+                console.log(response.data);
+            }
+
+            // setLoadedImages((prev) => prev + 5);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -170,7 +154,7 @@ export default function Dashboard() {
         try {
             const response = await axios.get(`${apiUrl}/api/ratings/newest`, { params: { size: 5 } });
             setRating(response.data.data.result.content);
-            setLoadedImages((prev) => prev + 5);
+            // setLoadedImages((prev) => prev + 5);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -178,16 +162,24 @@ export default function Dashboard() {
         }
     };
     useEffect(() => {
-        fetchNewRating();
-        fetchWishlist();
-        fetchData();
-        fetchNewMovie();
+        const fetchFunctions = [fetchData, fetchNewMovie, fetchNewRating, fetchWishlist];
+        let currentIndex = 0;
+
+        const callNextFunction = () => {
+            if (currentIndex < fetchFunctions.length) {
+                fetchFunctions[currentIndex]();
+                currentIndex++;
+                setTimeout(callNextFunction, 1000);
+            }
+        };
+
+        callNextFunction();
     }, []);
-    useEffect(() => {
-        if (loadedImages === 20) {
-            setLoading(false);
-        }
-    }, [loadedImages]);
+    // useEffect(() => {
+    //     if (loadedImages === 20) {
+    //         setLoading(false);
+    //     }
+    // }, [loadedImages]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -205,12 +197,13 @@ export default function Dashboard() {
                     <VerticalMvList title="New Movie" data={newMovie} />
                     <CommentBlock>
                         <h3>Comment</h3>
-                        <CommentCard data={sth} />
+                        {rating.map((commentData, index) => (
+                            <CommentCard key={index} data={commentData} />
+                        ))}
                     </CommentBlock>
                 </div>
                 <TranslateMvCard data={wishlist} />
             </DashboardLayout>
         </div>
-
     );
 }

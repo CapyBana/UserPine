@@ -8,7 +8,7 @@ export const LogInLayout = styled.div`
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);
     inset: 0px;
-    z-index: 1;
+    z-index: 2;
 `;
 export const SubmitButton = styled.button`
     height: 100%;

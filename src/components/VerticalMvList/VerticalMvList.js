@@ -1,19 +1,24 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MovieList, MovieListContainer, Navigator } from './VerticalMvList.style';
 import VerticalMvCard from '../VerticalMvCard/VerticalMvCard';
 
 const VerticalMvList = (props) => {
     const movieListRef = useRef(null);
-    const [mvList, setMvList] = useState(props.data);
+    const [mvList, setMvList] = useState([]);
+
+    useEffect(() => {
+        setMvList(props.data || []);
+    }, [props.data]);
+
     const scrollRight = () => {
         const movieListElement = movieListRef.current;
         if (movieListElement) {
             movieListElement.scrollBy({ left: 176 + 16, behavior: 'smooth' });
         }
-        setMvList((prevList) => {
-            const nextMovie = prevList[0];
-            return [...prevList.slice(1), nextMovie];
-        });
+        // setMvList((prevList) => {
+        //     const nextMovie = prevList[0];
+        //     return [...prevList.slice(1), nextMovie];
+        // });
     };
 
     return (

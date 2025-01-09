@@ -15,9 +15,8 @@ export const MovieCard = styled(Card)`
 
 export const Image = styled.img`
     width: fit-content;
-    height: 100%;
     border-radius: 10px;
-    max-height: 260px;
+    height: 260px;
     width: 100%;
 `;
 

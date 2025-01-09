@@ -15,6 +15,7 @@ export const EffectMovie = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
 `;
 
 const TranslateMvCard = (props) => {
@@ -30,7 +31,7 @@ const TranslateMvCard = (props) => {
     return (
         <EffectCardContainer>
             <EffectMovie>
-                <h4>From your wishlist</h4>
+                <h4 style={{ color: '#fff' }}>From your wishlist</h4>
                 {mvData.length > 0 ? (
                     <>
                         <img

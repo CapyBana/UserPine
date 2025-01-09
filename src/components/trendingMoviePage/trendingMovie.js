@@ -17,24 +17,21 @@ import {
     Placeholder,
     Rating,
 } from './trendingMovie.style';
-import TrendingPoster from 'src/assets/images/trending.jpg';
+import TrendingPoster from 'src/assets/images/image.png';
 import Poster from 'src/assets/images/poster.png';
 
-const TrendingMovie = () => {
+const TrendingMovie = (props) => {
+    console.log(props.data);
     return (
         <Body>
             <Container>
                 <TopMovies>
                     <Background src={TrendingPoster} />
                     <PosterWrapper>
-                        <MoviePoster src={Poster} alt="Inside Out 2" />
+                        <MoviePoster src={`data:image/jpeg;base64, ${props.data.movieImg}`} alt="Img" />
                         <MovieInfo>
-                            <CategoryHeader>Top Movies</CategoryHeader>
-                            <MovieTitle>Movie Name</MovieTitle>
-                            <MovieDescription>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus volutpat elit cubilia
-                                posuere. Nec proin eu viverra habitasse gravida fermentum, tempus consequat commodo.
-                            </MovieDescription>
+                            <MovieTitle>{props.data.title}</MovieTitle>
+                            <MovieDescription>{props.data.description}</MovieDescription>
                         </MovieInfo>
                     </PosterWrapper>
                 </TopMovies>

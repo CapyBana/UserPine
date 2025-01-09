@@ -1,5 +1,5 @@
-import { Card } from "@mui/material";
-import styled from "styled-components";
+import { Card } from '@mui/material';
+import styled from 'styled-components';
 
 export const VerticalMovieCard = styled.div`
     display: flex;
@@ -22,7 +22,7 @@ export const InfoLayout = styled.div`
 `;
 
 export const InfoBlock = styled.div`
-    flexDirection: column;
+    flex-direction: column;
     width: 65%;
     height: 100%;
     display: block;
@@ -85,7 +85,6 @@ export const PPAL = styled.div`
     padding: 40px 40px 40px;
     @media (max-width: 768px) {
         width: 100%;
-
     }
 `;
 

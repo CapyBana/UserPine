@@ -7,6 +7,8 @@ import { LoginContext } from '~/context/loginContext';
 import narutoImg from 'src/assets/images/naruto.png';
 import { MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import { MovieImg, MovieTitle } from '~/components/ReviewForm/ReviewForm.style';
+import { TopMovies } from '~/components/trendingMoviePage/trendingMovie.style';
+import TrendingMovie from '~/components/trendingMoviePage/trendingMovie';
 
 export const DashboardLayout = styled.div`
     width: 100%;
@@ -107,7 +109,7 @@ export default function Dashboard() {
                     setIsLoad(false); // Stop loading if user is not logged in
                     return;
                 }
-                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`,{ params: { size: 5 } });
+                const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`, { params: { size: 5 } });
                 if (response.status === 200) {
                     setWishlist(response.data.data);
                     console.log(response.data);
@@ -160,17 +162,19 @@ export default function Dashboard() {
         review: 'hhsdbhcjscsjfwfwffoiwfofknfknkscnkjsnhwfhwknkwfhifhk',
     };
     return (
-        <DashboardLayout>
-            <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
-                <VerticalMvList title="Top Movie" data={data} />
-                <VerticalMvList title="New Movie" data={newMovie} />
-
-                <CommentBlock>
-                    <h3>Comment</h3>
-                    <CommentCard data={sth} />
-                </CommentBlock>
-            </div>
-            <TranslateMvCard data={wishlist} />
-        </DashboardLayout>
+        <div>
+            <TrendingMovie></TrendingMovie>
+            <DashboardLayout>
+                <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
+                    <VerticalMvList title="Top Movie" data={data} />
+                    <VerticalMvList title="New Movie" data={newMovie} />
+                    <CommentBlock>
+                        <h3>Comment</h3>
+                        <CommentCard data={sth} />
+                    </CommentBlock>
+                </div>
+                <TranslateMvCard data={wishlist} />
+            </DashboardLayout>
+        </div>
     );
 }

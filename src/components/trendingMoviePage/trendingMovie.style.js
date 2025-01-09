@@ -3,22 +3,19 @@ import styled, { keyframes } from 'styled-components';
 export const Body = styled.div`
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #121212;
     color: #ffffff;
 `;
 
 export const Container = styled.div`
-    padding: 80px;
-    max-width: 1200px;
+    padding-top: 80px;
+    width: 85%;
     margin: 0 auto;
 `;
 
 export const TopMovies = styled.div`
     display: flex;
     align-items: center;
-    background-color: #1a1a1a;
-    border: 2px solid #111;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 50px;
     margin-bottom: 40px;
     position: relative;
@@ -31,16 +28,14 @@ export const Background = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${(props) => props.src}); 
+    background-image: url(${(props) => props.src});
     background-size: cover;
     background-position: center;
-    filter: blur(1px); 
-    z-index: 0; 
-    opacity: 0.6; 
+    filter: blur(1px);
+    z-index: 0;
+    opacity: 0.6;
     border-radius: 23px;
 
-    
-   
     &::before {
         content: '';
         position: absolute;
@@ -48,7 +43,7 @@ export const Background = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.3); 
+        background: rgba(0, 0, 0, 0.3);
         z-index: 1;
     }
 `;
@@ -57,17 +52,16 @@ export const PosterWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
-    position: relative; 
+    position: relative;
     max-width: 1000px;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 20px;
-    
+
     @media (max-width: 768px) {
-        flex-direction: column; 
-        text-align: center; 
+        flex-direction: column;
+        text-align: center;
     }
 `;
-
 
 export const MoviePoster = styled.img`
     width: 250px;
@@ -93,10 +87,10 @@ export const MovieTitle = styled.h2`
 `;
 
 export const MovieDescription = styled.p`
-    font-size: 14px; 
-    color: #d1d1d1; 
-    line-height: 1.5; 
-    margin-top: 10px; 
+    font-size: 14px;
+    color: #d1d1d1;
+    line-height: 1.5;
+    margin-top: 10px;
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 `;
 
@@ -134,12 +128,11 @@ export const MovieCard = styled.div`
     text-align: center;
     position: relative;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between; 
-    height: 250px; 
+    justify-content: space-between;
+    height: 250px;
 `;
-
 
 export const Placeholder = styled.div`
     background: rgba(255, 255, 255, 0.1);

@@ -92,6 +92,7 @@ export default function Dashboard() {
     const [data, setData] = useState([]);
     const [newMovie, setNewMovie] = useState([]);
     const [rating, setRating] = useState([]);
+    const [topMovie, setTopMovie] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [wishlist, setWishlist] = useState([]);
@@ -107,7 +108,6 @@ export default function Dashboard() {
             });
             if (response.status === 200) {
                 setData(response.data.data.result);
-                console.log(data);
             }
         } catch (err) {
             setError(err.message);
@@ -140,7 +140,6 @@ export default function Dashboard() {
             const response = await axios.get(`${apiUrl}/api/movies`, { params: { page: 2, size: 5 } });
             if (response.status === 200) {
                 setNewMovie(response.data.data);
-                console.log(response.data);
             }
 
             // setLoadedImages((prev) => prev + 5);
@@ -161,25 +160,32 @@ export default function Dashboard() {
             setLoading(false);
         }
     };
+    const fetchTopMovie = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/api/movies/search`, { params: { minRating: 4.5 } });
+            if (response.status === 200) {
+                setTopMovie(response.data.data.result);
+            }
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
     useEffect(() => {
-        const fetchFunctions = [fetchData, fetchNewMovie, fetchNewRating, fetchWishlist];
+        const fetchFunctions = [fetchTopMovie, fetchData, fetchNewMovie, fetchNewRating];
         let currentIndex = 0;
 
         const callNextFunction = () => {
             if (currentIndex < fetchFunctions.length) {
                 fetchFunctions[currentIndex]();
                 currentIndex++;
-                setTimeout(callNextFunction, 1000);
+                setTimeout(callNextFunction, 500);
             }
         };
 
         callNextFunction();
     }, []);
-    // useEffect(() => {
-    //     if (loadedImages === 20) {
-    //         setLoading(false);
-    //     }
-    // }, [loadedImages]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -190,7 +196,7 @@ export default function Dashboard() {
     }
     return (
         <div>
-            <TrendingMovie></TrendingMovie>
+            <TrendingMovie data={topMovie[1]}></TrendingMovie>
             <DashboardLayout>
                 <div style={{ display: 'flex', flexDirection: 'column', margin: '10px' }}>
                     <VerticalMvList title="Top Movie" data={data} />

@@ -6,7 +6,6 @@ import VerticalMvList from '~/components/VerticalMvList/VerticalMvList';
 import { LoginContext } from '~/context/loginContext';
 import { MvRating } from '~/components/VerticalMvCard/VerticalMvCard.style';
 import { MovieImg, MovieTitle } from '~/components/ReviewForm/ReviewForm.style';
-import { TopMovies } from '~/components/trendingMoviePage/trendingMovie.style';
 import TrendingMovie from '~/components/trendingMoviePage/trendingMovie';
 
 export const DashboardLayout = styled.div`
@@ -59,7 +58,7 @@ const CommentCard = (props) => {
     const cmtData = props.data;
     return (
         <UserComment>
-            <text>{cmtData.user.username}</text>
+            <span>{cmtData.user.username}</span>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <div style={{ backgroundColor: '#1f1f1f', width: '1px', height: 'auto', margin: '0 20px' }}></div>
                 <div>
@@ -123,7 +122,6 @@ export default function Dashboard() {
                 const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { page: 1, size: 10 } });
                 if (response.status === 200 && response.data.data) {
                     setNewMovie(response.data.data);
-                    console.log(response.data.data);
                 } else {
                     console.error('No data returned from the API');
                 }
@@ -215,7 +213,7 @@ export default function Dashboard() {
                         ))}
                     </CommentBlock>
                 </div>
-                <TranslateMvCard data={wishlist} $isLoad={isLoad} $error={error} />
+                <TranslateMvCard data={wishlist} $isLoad={isLoad} $error={errorWishlist} />
             </DashboardLayout>
         </div>
     );

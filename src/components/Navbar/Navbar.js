@@ -95,10 +95,10 @@ const Navbar = (props) => {
                                         <Link to='/user-profile'>My movie</Link>
                                     </li>
                                     <li>
-                                        <a>Settings</a>
+                                        <Link>Settings</Link>
                                     </li>
                                     <li>
-                                        <a onClick={logout}>Log out</a>
+                                        <Link onClick={logout}>Log out</Link>
                                     </li>
                                 </ul>
                             </li>

@@ -25,7 +25,6 @@ export default function SearchPage() {
                     },
                 });
                 setData(response.data.data.result);
-                console.log(response.data);
             } catch (err) {
                 setError(err.message);
             } finally {

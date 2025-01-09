@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
-import { useEffect } from 'react';
 
 export const EffectCardContainer = styled.div`
     background-color: var(--blue-effect);
@@ -19,7 +18,7 @@ export const EffectMovie = styled.div`
 `;
 
 const TranslateMvCard = (props) => {
-    const mvData = props.data || [];
+    const mvData = useMemo(() => props.data || [], [props.data]);
     const [idx, setIdx] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {

@@ -4,7 +4,7 @@ import { Card, Rating } from '@mui/material';
 export const MovieCard = styled(Card)`
     min-width: 180px;
     width: 100%;
-    height: 350px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -34,8 +34,6 @@ export const MvDetail = styled.div`
     justify-content: flex-start;
     h1 {
         font-size: 32px;
-        margin-top: 0px;
-        margin-left: 0px;
         color: #fff;
     }
     h2 {

@@ -27,7 +27,6 @@ export default function CategoryPage() {
             try {
                 const response = await axios.get(`${apiUrl}/api/movies/category/${category}`);
                 setData(response.data.data);
-                console.log(response.data.data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -54,6 +53,7 @@ export default function CategoryPage() {
             <div className="results-list">
                 {data.map((result) => (
                     <SearchResultCard
+                        key={result.id}
                         id={result.id}
                         img={result.movieImg}
                         title={result.title}

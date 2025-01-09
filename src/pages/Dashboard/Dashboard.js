@@ -117,7 +117,7 @@ export default function Dashboard() {
                 setLoading(false);
             }
         };
-    
+
         const fetchNewMovie = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/api/movies/newest`, { params: { page: 1, size: 10 } });
@@ -127,7 +127,7 @@ export default function Dashboard() {
                 } else {
                     console.error('No data returned from the API');
                 }
-    
+
                 // setLoadedImages((prev) => prev + 5);
             } catch (err) {
                 setError(err.message);
@@ -147,8 +147,18 @@ export default function Dashboard() {
                 setLoading(false);
             }
         };
+        const fetchTopMovie = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/api/movies/search`, { params: { minRating: 4.5 } });
+                setTopMovie(response.data.data.result);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-        const fetchFunctions = [fetchData, fetchNewMovie, fetchNewRating];
+        const fetchFunctions = [fetchTopMovie, fetchData, fetchNewMovie, fetchNewRating];
         let currentIndex = 0;
 
         const callNextFunction = () => {
@@ -161,11 +171,6 @@ export default function Dashboard() {
 
         callNextFunction();
     }, [apiUrl]);
-    // useEffect(() => {
-    //     if (loadedImages === 20) {
-    //         setLoading(false);
-    //     }
-    // }, [loadedImages]);
 
     useEffect(() => {
         const fetchWishlist = async () => {
@@ -178,7 +183,6 @@ export default function Dashboard() {
                 const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`);
                 if (response.status === 200) {
                     setWishlist(response.data.data);
-                    // setLoadedImages((prev) => prev + 5);
                 }
             } catch (err) {
                 setErrorWishlist(err);

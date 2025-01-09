@@ -5,11 +5,11 @@
 }
 
 h3 {
-    color:#ccc;
+    color: #ccc;
     width: 80%;
     max-width: 1000px;
     align-items: center;
-    margin:auto;
+    margin: auto;
     padding: 10px 0;
 }
 
@@ -17,8 +17,5 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    /* max-height: 90vh; /* Limit height for scrolling */
-    /* overflow-y: auto; Enable vertical scrolling */
     padding: 10px;
-    /* border: 1px solid #ccc; */
-}  
+}

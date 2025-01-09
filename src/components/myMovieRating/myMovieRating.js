@@ -31,18 +31,18 @@ const MyMovieRating = () => {
                 setIsLoad(true);
                 if (!userId) {
                     setIsLoad(false);
-                    setWishlist([]); // Ensure it's an array if the user is not logged in
+                    setWishlist([]);
                     return;
                 }
                 const response = await axios.get(`${apiUrl}/api/wishlist/${userId}`);
                 if (response.status === 200 && response.data?.data) {
                     setWishlist(response.data.data);
                 } else {
-                    setWishlist([]); // Fallback if no movies data is available
+                    setWishlist([]);
                 }
             } catch (err) {
                 setError(err);
-                setWishlist([]); // Fallback in case of an error
+                setWishlist([]);
             } finally {
                 setIsLoad(false);
             }
